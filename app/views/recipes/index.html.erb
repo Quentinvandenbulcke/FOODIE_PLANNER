@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="recipe-card">
+    <% @recipes.each do |recipe| %>
+      <h1><%= link_to recipe.name, recipe_path(recipe) %></h1>
+      <p>Recipe instructions :<%= recipe.description %></p>
+      <p>Preparation time:<%= recipe.prep_time %>minutes</p>
+      <p>Rating: <%= recipe.rating %>/5</p>
+      <p>Servings :<%= recipe.servings %> persons</p>
+    <% end %>
+  </div>
+</div>
