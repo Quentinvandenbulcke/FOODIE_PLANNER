@@ -1,9 +1,28 @@
 <div class="container">
   <div class="recipe-show">
-    <h1><%= @recipe.name %></h1>
-    <p>Recipe instructions :<%= @recipe.description %></p>
-    <p>Preparation time:<%= @recipe.prep_time %>minutes</p>
-    <p>Rating: <%= @recipe.rating %>/5</p>
-    <p>Servings :<%= @recipe.servings %> persons</p>
-  </div>
+    <div class="column">
+
+        <div class="one">
+          <h1><%= @recipe.name %></h1>
+          <div class="line top-left"></div>
+            <p>Recipe instructions :<%= @recipe.description %></p>
+            <p>Prep time<%= @recipe.prep_time %>min</p>
+            <p>Rating: <%= @recipe.rating %>/5</p>
+            <p>Serves<%= @recipe.servings %></p>
+          </div>
+        </div>
+
+        <div class="two">
+
+
+        </div>
+
+        <div class="three">
+
+        </div>
+
+        <div class="four">
+
+        </div>
+    </div>
 </div>
