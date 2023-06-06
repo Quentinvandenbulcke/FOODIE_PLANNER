@@ -1,4 +1,3 @@
-
 <div class="container m-5">
   <div class="home-content">
     <div class="home-recipes">
@@ -7,7 +6,10 @@
           <div class="home-recipe">
             <div class="recipe-top">
               <%= cl_image_tag recipe.photo.key, crop: :limit %>
-              <i class="fa-solid fa-bookmark"></i>
+              <div class="icons">
+                <i class="fa-reguwlar fa-plus"></i>
+                <i class="fa-solid fa-bookmark"></i>
+              </div>
             </div>
             <div class="recipe-info">
               <h4><%= recipe.name %></h4>
@@ -24,7 +26,7 @@
     </div>
     <div class="home-calednar">
       <%= week_calendar(number_of_weeks: 2) do |date| %>
-        <%= date %>
+        <%= date.day %>
       <% end %>
     </div>
   </div>

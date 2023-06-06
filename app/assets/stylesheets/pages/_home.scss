@@ -17,9 +17,15 @@
 
     .recipe-top {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
       margin: 8px;
+
+      .icons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
     }
     .home-recipe {
       margin: 16px;
