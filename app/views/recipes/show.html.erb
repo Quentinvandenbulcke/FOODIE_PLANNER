@@ -13,7 +13,7 @@
         </div>
 
         <div class="two">
-
+         <%= cl_image_tag @recipe.photo.key, height: 200, width: 300, crop: :fill %>
 
         </div>
 
@@ -25,4 +25,11 @@
 
         </div>
     </div>
+    <%= cl_image_tag @recipe.photo.key, height: 200, width: 300, crop: :fill %>
+    <h1><%= @recipe.name %></h1>
+    <p>Recipe instructions :<%= @recipe.description %></p>
+    <p>Preparation time:<%= @recipe.prep_time %>minutes</p>
+    <p>Rating: <%= @recipe.rating %>/5</p>
+    <p>Servings :<%= @recipe.servings %> persons</p>
+  </div>
 </div>
