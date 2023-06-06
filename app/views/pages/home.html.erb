@@ -4,21 +4,30 @@
       <% @recipes[0..25].each do |recipe| %>
         <%= link_to recipe_path(recipe) do %>
           <div class="home-recipe">
-            <div class="recipe-top">
-              <%= cl_image_tag recipe.photo.key, crop: :limit %>
-              <div class="icons">
-                <i class="fa-reguwlar fa-plus"></i>
-                <i class="fa-solid fa-bookmark"></i>
-              </div>
-            </div>
+            <%= cl_image_tag recipe.photo.key, crop: :limit %>
             <div class="recipe-info">
-              <h4><%= recipe.name %></h4>
-              <div class="recipe-data">
-                <p>Preparation time:<%= recipe.prep_time %>minutes</p>
-                <p>Rating: <%= recipe.rating %>/5</p>
-                <p>Servings:<%= recipe.servings %> persons</p>
+              <div class="recipe-info-top">
+                <h4><%= recipe.name %></h4>
+                <p>
+                  <% recipe.rating.times do %>
+                    <span><i class="fa-solid fa-star"></i></span>
+                  <% end %>
+                </p>
               </div>
-              <p>Recipe instructions :<%= recipe.description %></p>
+              <div class="recipe-sub-info">
+                <div class="prep">
+                  <p>Prep time: <%= recipe.prep_time %>minutes</p>
+                  <p>For: <%= recipe.servings %>pers.</p>
+                </div>
+                <div class="icons">
+                  <%= link_to  recipe_path(recipe) do %>
+                    <i class="fa-reguwlar fa-plus"></i>
+                  <% end %>
+                  <%= link_to  recipe_path(recipe) do %>
+                    <i class="fa-solid fa-bookmark"></i>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         <% end %>
