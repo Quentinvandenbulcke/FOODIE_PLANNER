@@ -1,3 +1,5 @@
+Ingredient.destroy_all
+Recipe.destroy_all
 
 require "json"
 require "open-uri"
@@ -14,7 +16,6 @@ cuisine_types = [
   "Mediterranean"
 ]
 
-
 puts "let's populate the databases !"
 
 cuisine_types.each do |type|
@@ -23,8 +24,9 @@ cuisine_types.each do |type|
   data = JSON.parse(file)
   puts "starting with #{type} recipes"
 
-  data["hits"].each do |hit|
-    recipe = Recipe.create!(
+  data["hits"][0..4].each do |hit|
+    photo = URI.open(hit["recipe"]["image"])
+    recipe = Recipe.new(
       name: hit["recipe"]["label"],
       description: hit["recipe"]["ingredientLines"].join("\n"),
       prep_time: hit["recipe"]["totalTime"].to_i > 0 ? hit["recipe"]["totalTime"].to_i : [15, 30, 45, 60].sample,
@@ -32,6 +34,8 @@ cuisine_types.each do |type|
       servings: hit["recipe"]["yield"].to_i,
       category: type
     )
+    recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
+    recipe.save!
     puts "creating ingredients for #{recipe.name}"
     hit["recipe"]["ingredients"].each do |ingredient|
       Ingredient.create!(

@@ -1,11 +1,14 @@
 <div class="container">
   <div class="recipe-card">
-    <% @recipes.each do |recipe| %>
-      <h1><%= link_to recipe.name, recipe_path(recipe) %></h1>
-      <p>Recipe instructions :<%= recipe.description %></p>
-      <p>Preparation time:<%= recipe.prep_time %>minutes</p>
-      <p>Rating: <%= recipe.rating %>/5</p>
-      <p>Servings :<%= recipe.servings %> persons</p>
+    <% @recipes[0..30].each do |recipe| %>
+      <%= link_to recipe_path(recipe) do %>
+        <%= cl_image_tag recipe.photo.key, height: 200, width: 300, crop: :fill %>
+        <h2><%= recipe.name %></h2>
+        <p>Recipe instructions :<%= recipe.description %></p>
+        <p>Preparation time:<%= recipe.prep_time %>minutes</p>
+        <p>Rating: <%= recipe.rating %>/5</p>
+        <p>Servings :<%= recipe.servings %> persons</p>
+      <% end %>
     <% end %>
   </div>
 </div>
