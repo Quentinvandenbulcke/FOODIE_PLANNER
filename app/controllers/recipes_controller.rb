@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @meal_day = MealDay.new
     authorize @recipe
+    @ingredients = @recipe.ingredients
   end
 
   # private
