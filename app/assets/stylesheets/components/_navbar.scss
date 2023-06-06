@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  border-bottom: 1px solid #1A1423;
+  height: 80px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +11,57 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.top-rectangle {
+  border-bottom: solid 1px #1A1423;
+  display: flex;
+}
+
+.searchbar {
+  height: 60px;
+  color:#1A1423;
+}
+
+.column-1, .column-2, .column-3 {
+  width: 33%;
+}
+
+.column-1 {
+  background-color: #EDE8DC;
+  padding: 14px 24px 10px 24px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.column-2 {
+  background-color: white;
+  padding: 24px 0px 0px 16px;
+
+  h4 {
+    color: rgba($color: #1A1423, $alpha: 0.7) !important;
+
+  }
+}
+
+.column-3 {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #FDF8F4;
+  padding-top: 11px;
+}
+
+
+.border-black:hover {
+  border-bottom: solid 5px #1A1423;
+  height: max-content;
+  // position: relative;
+  // bottom: 0px;
+}
+
