@@ -14,10 +14,11 @@ cuisine_types = [
   "Mediterranean"
 ]
 
+
 puts "let's populate the databases !"
 
 cuisine_types.each do |type|
-  url = "https://api.edamam.com/api/recipes/v2?type=public&app_id=#{EDAMAN_APP_ID}&app_key=#{EDAMAN_APP_KEY}&cuisineType=#{type}"
+  url = "https://api.edamam.com/api/recipes/v2?type=public&app_id=#{ENV.fetch("EDAMAN_APP_ID")}&app_key=#{ENV.fetch("EDAMAN_APP_KEY")}&cuisineType=#{type}&mealType=Dinner"
   file = URI.open(url).read
   data = JSON.parse(file)
   puts "starting with #{type} recipes"
