@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @meal_day = MealDay.new
     authorize @recipe
   end
 
