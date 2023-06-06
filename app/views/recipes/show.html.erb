@@ -1,5 +1,6 @@
 <div class="container">
   <div class="recipe-show">
+    <%= cl_image_tag @recipe.photo.key, height: 200, width: 300, crop: :fill %>
     <h1><%= @recipe.name %></h1>
     <p>Recipe instructions :<%= @recipe.description %></p>
     <p>Preparation time:<%= @recipe.prep_time %>minutes</p>
