@@ -79,3 +79,4 @@ end
 
 # new gem from foodie team
 gem "pundit"
+gem "cloudinary"
