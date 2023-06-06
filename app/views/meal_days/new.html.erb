@@ -1,0 +1,6 @@
+<%= simple_form_for[@meal_day, @recipe] do |f| %>
+  <%= f.input :date %>
+  <%= f.input :quantity %>
+  <%= f.association :recipes %>
+  <%= f.submit %>
+<% end %>
