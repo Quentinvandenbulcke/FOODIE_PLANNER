@@ -1,0 +1,7 @@
+<div class="container w-50">
+  <%= simple_form_for [recipe, meal_day] do |f| %>
+    <%= f.input :date, as: :date, html5: true %>
+    <%= f.input :quantity %>
+    <%= f.submit %>
+  <% end %>
+</div>
