@@ -26,4 +26,15 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+  # a activer à la fin si on a le temps = reload de l'image à l'inscription
+  # before_action :render_photo_registration, only: :create, if: :devise_controller?
+  # def render_photo_registration
+  #   if resource.save
+  #     redirect_to user_path(resource)
+  #   else
+  #     resource.photo = params[:user][:photo] if params[:user][:photo].present?
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 end
