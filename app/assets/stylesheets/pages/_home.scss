@@ -1,1 +1,59 @@
 // Specific CSS for your home-page
+
+.home-content {
+  .home-recipes {
+    display: flex;
+    overflow-y: scroll;
+    height: 400px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .recipe-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin: 8px;
+    }
+    .home-recipe {
+      margin: 16px;
+      padding: 16px;
+      width: 300px;
+      height: 300px;
+      overflow: scroll;
+      transition: 0.2s;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &:hover {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+      }
+
+      img {
+        width: 80%;
+        height: 70%;
+      }
+
+      .recipe-info {
+
+      }
+
+      .recipe-data {
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+  }
+
+  .home-calendar {
+    // background-color: red;
+  }
+}

@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="container m-5">
+  <div class="home-content">
+    <div class="home-recipes">
+      <% @recipes[0..25].each do |recipe| %>
+        <%= link_to recipe_path(recipe) do %>
+          <div class="home-recipe">
+            <div class="recipe-top">
+              <%= cl_image_tag recipe.photo.key, crop: :limit %>
+              <i class="fa-solid fa-bookmark"></i>
+            </div>
+            <div class="recipe-info">
+              <h4><%= recipe.name %></h4>
+              <div class="recipe-data">
+                <p>Preparation time:<%= recipe.prep_time %>minutes</p>
+                <p>Rating: <%= recipe.rating %>/5</p>
+                <p>Servings:<%= recipe.servings %> persons</p>
+              </div>
+              <p>Recipe instructions :<%= recipe.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="home-calednar">
+      <%= week_calendar(number_of_weeks: 2) do |date| %>
+        <%= date %>
+      <% end %>
+    </div>
+  </div>
+</div>
