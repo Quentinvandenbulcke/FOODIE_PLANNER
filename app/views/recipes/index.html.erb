@@ -1,7 +1,9 @@
 <div class="container">
-  <div class="line">
-    <h1>Your search results for "..."</h1>
-  </div>
+  <% if params[:query].present? %>
+    <div class="line">
+      <h3>Here are the results for <%= params[:query] %></h3>
+    </div>
+  <% end %>
   <div class="index-column">
       <% @recipes[0..30].each do |recipe| %>
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
