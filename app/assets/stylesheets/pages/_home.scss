@@ -5,53 +5,10 @@
   overflow-x: scroll;
   column-gap: 20px;
 
-
   &::-webkit-scrollbar {
     display: none;
   }
 }
-
-//
-  // .home-recipe {
-    // margin: 16px;
-    // padding: 32px;
-    // width: 300px;
-    // height: 350px;
-    // transition: 0.2s;
-    // box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    // &::-webkit-scrollbar {
-      // display: none;
-    // }
-//
-    // &:hover {
-      // box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-    // }
-//
-    // img {
-      // width: 250px;
-      // height: 185px;
-    // }
-//
-    // .recipe-info {
-      // .recipe-info-top {
-        // display: flex;
-        // justify-content: space-between;
-      // }
-      // .recipe-sub-info {
-        // margin: 20px 20px 5px 20px;
-        // display: flex;
-        // justify-content: space-between;
-        // .fa-solid {
-          // z-index: 10;
-          // transition: 0.2s;
-          // &:hover {
-            // color: rgba($color: #1A1423, $alpha: 1.0);
-          // }
-        // }
-      // }
-    // }
-//
-  // }
 
 .home-calendar {
   margin-top: 20px;
