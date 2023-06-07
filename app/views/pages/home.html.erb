@@ -34,7 +34,7 @@
       <% end %>
     </div>
     <div class="home-calednar">
-      <%= week_calendar(number_of_weeks: 2) do |date| %>
+      <%= week_calendar(events: @meal_days, number_of_weeks: 2) do |date| %>
         <%= date.day %>
       <% end %>
     </div>
