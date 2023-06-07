@@ -1,16 +1,4 @@
-.line {
-
-  // position: absolute;
-  // width: 564px;
-  // height: 0px;
-  // left: 116px;
-  // top: 351px;
-
-  border-bottom: 1px solid #000000;
-  margin-bottom: 10px;
-  }
-
-  .column {
+  .show-column {
     display: grid;
     grid-template-columns: 1.75fr 2.25fr;
     column-gap: 60px;
