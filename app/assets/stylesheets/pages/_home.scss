@@ -42,8 +42,7 @@
           display: flex;
           justify-content: space-between;
           .icons i {
-            color: rgba(0, 0, 0, 0.6);
-            opacity: 0.5;
+            color: rgba(0, 0, 0, 0.5);
             z-index: 10;
             transition: 0.2s;
             &:hover {
