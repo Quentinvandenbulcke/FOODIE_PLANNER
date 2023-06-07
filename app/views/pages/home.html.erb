@@ -1,33 +1,16 @@
-<div class="container m-5">
-  <div class="home-content">
-    <div class="home-recipes">
-      <% @recipes[0..25].each do |recipe| %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="home-recipe">
-            <%= cl_image_tag recipe.photo.key, crop: :fill %>
-            <div class="recipe-info">
-              <div class="recipe-info-top">
-                <h4><%= recipe.name %></h4>
-                <p>
-                  <% recipe.rating.times do %>
-                    <span><i class="fa-solid fa-star"></i></span>
-                  <% end %>
-                </p>
-              </div>
-              <div class="recipe-sub-info">
-                <div class="prep">
-                  <p>Prep time: <%= recipe.prep_time %>minutes</p>
-                  <p>For: <%= recipe.servings %>pers.</p>
+<div class="container">
+    <div class="scroll-box">
+      <% @recipes[0..10].each do |recipe| %>
+        <%= link_to recipe_path(recipe), class: "remove-link" do %>
+          <div class="recipe-card">
+            <%= cl_image_tag recipe.photo.key %>
+            <div class="w-100 justify-elements"><h2><%= recipe.name %></h2>
+                <div class="card-details">
+                  <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
+                  <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
+                  <p><% recipe.rating.times do %><i class="fa-solid fa-star"></i>
+                   <% end %></p>
                 </div>
-                <div class="icons">
-                  <%= link_to  recipe_path(recipe) do %>
-                    <i class="fa-reguwlar fa-plus"></i>
-                  <% end %>
-                  <%= link_to  recipe_path(recipe) do %>
-                    <i class="fa-solid fa-bookmark"></i>
-                  <% end %>
-                </div>
-              </div>
             </div>
           </div>
         <% end %>
@@ -36,6 +19,7 @@
     <div class="home-calendar">
       <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
         <div class="day-info">
+
         <%= date.day %>
         <%= link_to root_path do %>
           <i class="fa-solid fa-plus"></i>
@@ -49,6 +33,5 @@
           <% end %>
         <% end %>
       <% end %>
-    </div>
   </div>
 </div>
