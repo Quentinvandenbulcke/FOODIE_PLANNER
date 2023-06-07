@@ -1,4 +1,5 @@
 class Grocery < ApplicationRecord
-  belongs_to :meal_day
+  has_many :meal_days
   belongs_to :user
+  has_many :grocery_lists
 end

@@ -1,8 +1,19 @@
+puts "Destroying grocery list"
+GroceryList.destroy_all
+puts "Destroying ingredients"
 Ingredient.destroy_all
+puts "Destroying mealdays"
+MealDay.destroy_all
+puts "Destroying grocery"
+Grocery.destroy_all
+puts "Destroying recipes"
 Recipe.destroy_all
-
 require "json"
 require "open-uri"
+puts "Creating User quentin@test.com - 123456"
+User.create(username: "quent", first_name: "quentin", last_name: "vdb", email: "quentin@test.com", password: "123456")
+puts "Creating empty grocery to initialize mealdays"
+Grocery.create(user: User.first)
 
 cuisine_types = [
   "Mexican",
