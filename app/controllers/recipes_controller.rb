@@ -3,6 +3,9 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = policy_scope(Recipe)
+    if params[:query].present?
+      @recipes = @recipes.search_by_name_desc_cat(params[:query])
+    end
   end
 
   def show

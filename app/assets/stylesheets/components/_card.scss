@@ -4,16 +4,18 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+
   img {
     height: 200px;
       width: 275px;
       object-fit: cover;
       margin: 10px;
-    }
-    h2 {
+  }
+
+  h2 {
       text-align: start;
       margin: 10px 20px 10px 20px
-    }
+  }
 }
 
 
