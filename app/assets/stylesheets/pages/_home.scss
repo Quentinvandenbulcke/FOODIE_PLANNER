@@ -21,7 +21,7 @@
       height: 350px;
       transition: 0.2s;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-      
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -55,9 +55,5 @@
       }
 
     }
-  }
-
-  .home-calendar {
-    // background-color: red;
   }
 }

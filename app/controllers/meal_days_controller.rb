@@ -1,6 +1,7 @@
 class MealDaysController < ApplicationController
   def index
     @meal_days = policy_scope(MealDay)
+    @meal_days = current_user.meal_days
   end
 
   def create

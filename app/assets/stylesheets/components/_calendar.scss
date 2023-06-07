@@ -34,7 +34,6 @@
   .start-date {}
 
   .prev-month {
-    background-color: red;
   }
   .next-month { }
   .current-month {}
@@ -52,4 +51,54 @@
       color: rgba(0, 0, 0, 0.65);
     }
   }
+}
+
+.index-calendar {
+  a {
+    text-decoration: none;
+  }
+  tbody tr {
+    height: 60vh;
+  }
+  .meal-event {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+    margin: 8px;
+    padding: 16px;
+    background-color: $beige-light;
+    border-radius: 4px;
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .meal-info {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.5rem;
+    }
+  }
+
+}
+
+.home-calendar {
+
+  a {
+    text-decoration: none;
+  }
+
+  .home-event {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+    margin: 4px;
+    padding: 8px;
+    background-color: $beige-light;
+    color: black;
+    border-radius: 4px;
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+
 }

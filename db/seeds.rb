@@ -10,14 +10,14 @@ names = [
 ]
 puts "creatings users..."
 names.each do |name|
-  User.new(
+  User.create!(
     first_name: name,
     last_name: Faker::Name.last_name,
     username: "#{name.reverse}",
     email: "#{name}@test.com}",
-    encrypted_password: "qwerty"
+    password: "qwerty"
   )
-  puts "."
+  puts "|"
 end
 puts "done with users!"
 

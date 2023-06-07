@@ -1,9 +1,18 @@
 <div class="container">
-  <% @meal_days.each do |meal| %>
-    <ul>
-      <li><p>Date : <%= meal.date %></p></li>
-      <li><p>Number of portions : <%= meal.quantity %></p></li>
-      <li><p>Recipe of the day : <%= meal.recipe.name %></p></li>
-    </ul>
-  <% end %>
+  <div class="index-calendar">
+    <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
+      <%= date.day %>
+      <% meals.each do |meal| %>
+        <%= link_to recipe_path(meal.recipe) do %>
+          <div class="meal-event">
+            <%= cl_image_tag meal.recipe.photo.key, width: 150, height: 100, crop: :fill %>
+            <div class="meal-info">
+              <p><%= meal.recipe.name %></p>
+              <p><%= meal.recipe.servings %>pers.</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
