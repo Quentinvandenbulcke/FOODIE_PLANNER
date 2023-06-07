@@ -4,7 +4,7 @@
       <% @recipes[0..25].each do |recipe| %>
         <%= link_to recipe_path(recipe) do %>
           <div class="home-recipe">
-            <%= cl_image_tag recipe.photo.key, crop: :limit %>
+            <%= cl_image_tag recipe.photo.key, crop: :fill %>
             <div class="recipe-info">
               <div class="recipe-info-top">
                 <h4><%= recipe.name %></h4>
@@ -33,9 +33,16 @@
         <% end %>
       <% end %>
     </div>
-    <div class="home-calednar">
-      <%= week_calendar(number_of_weeks: 2) do |date| %>
+    <div class="home-calendar">
+      <%= week_calendar(events: @meal_days, number_of_weeks: 2) do |date, meals| %>
         <%= date.day %>
+        <% meals.each do |meal| %>
+          <%= link_to recipe_path(meal.recipe) do %>
+            <div class="home-event">
+              <%= meal.recipe.name %>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>

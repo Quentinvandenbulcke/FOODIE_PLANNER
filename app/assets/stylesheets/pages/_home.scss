@@ -9,6 +9,7 @@
     &::-webkit-scrollbar {
       display: none;
     }
+
     a {
       text-decoration: none;
       color: black;
@@ -20,6 +21,7 @@
       height: 350px;
       transition: 0.2s;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -29,8 +31,8 @@
       }
 
       img {
-        width: 250px;
-        height: 185px;
+        width: 210px;
+        height: 150px;
       }
 
       .recipe-info {
@@ -53,9 +55,5 @@
       }
 
     }
-  }
-
-  .home-calendar {
-    // background-color: red;
   }
 }
