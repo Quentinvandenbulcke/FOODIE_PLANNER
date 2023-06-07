@@ -17,6 +17,7 @@ class MealDaysController < ApplicationController
     authorize @meal_day
   end
 
+
   private
 
   def recipe_params

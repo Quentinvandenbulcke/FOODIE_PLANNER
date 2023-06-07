@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'groceries/new'
   get 'day_meals/index'
   devise_for :users
   root to: "pages#home"
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   end
 
   resources :meal_days, only: :index
+  resources :groceries, only: :show
 end

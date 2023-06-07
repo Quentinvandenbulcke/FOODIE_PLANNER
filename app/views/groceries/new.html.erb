@@ -1,0 +1,23 @@
+<h1>Groceries#new</h1>
+<p>Find me in app/views/groceries/new.html.erb</p>
+require 'bigdecimal'
+
+
+<%# <%= simple_form_for [@meal_days, @grocery] do |f| %>
+  <%# <%= f.association :meal_days %>
+  <%# <%= f.submit %>
+<%# <% end %>
+<% require 'bigdecimal'
+ %>
+
+<% @meal_days.each do |meal| %>
+  <p><%= meal.date %> - <%= meal.recipe.name %> (<%= meal.recipe.servings %>pers)</p>
+  <% meal.recipe.ingredients.each do |ingredient| %>
+  <% ingredient_quantity = BigDecimal.new(ingredient.quantity)%>
+  <% recipe_servings = BigDecimal.new(meal.recipe.servings) %>
+  <% meal_quantity = BigDecimal.new(meal.quantity) %>
+
+
+    <p><%= ingredient.name %> : <%= ((ingredient_quantity / recipe_servings) * meal_quantity) %> <%= ingredient.unit %></p>
+  <% end %>
+<% end %>
