@@ -5,4 +5,8 @@ class GroceriesController < ApplicationController
     @dates = MealDay.all.map { |element| element[:date] }
     authorize @grocery
   end
+
+  def create
+
+  end
 end

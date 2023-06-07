@@ -1,0 +1,20 @@
+.grocery-dates, .grocery-recap, .grocery-table {
+  width: 80%;
+  border: 1px solid grey;
+  padding: 10px 25px;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.grocery-row {
+  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  grid-gap: 4px;
+}
+
+.grocery-center {
+    display: flex;
+    justify-content: center;
+}
