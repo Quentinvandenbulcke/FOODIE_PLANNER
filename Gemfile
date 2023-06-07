@@ -80,3 +80,4 @@ end
 # new gem from foodie team
 gem "pundit"
 gem "cloudinary"
+gem "simple_calendar", "~> 2.4"

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_time_zone, if: :user_signed_in?
 
   include Pundit::Authorization
   # Pundit: allow-list approach
@@ -25,6 +26,10 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def set_time_zone
+    Time.zone = current_user.time_zone
   end
 
   # a activer à la fin si on a le temps = reload de l'image à l'inscription
