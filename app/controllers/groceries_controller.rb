@@ -9,7 +9,9 @@ class GroceriesController < ApplicationController
   end
 
   def show
-    @grocery = Grocery.new
+    @grocery = Grocery.find(params[:id])
+    @lists = GroceryList.select {|list| list.grocery_id = @grocery.id }
+    @meals = MealDay.select {|meal| meal.grocery_id = @grocery.id }
     authorize @grocery
   end
 
