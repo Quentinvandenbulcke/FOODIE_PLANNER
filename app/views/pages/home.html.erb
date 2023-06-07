@@ -16,8 +16,22 @@
         <% end %>
       <% end %>
     </div>
-      <%= week_calendar(number_of_weeks: 2) do |date| %>
+    <div class="home-calendar">
+      <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
+        <div class="day-info">
+
         <%= date.day %>
+        <%= link_to root_path do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+        </div>
+        <% meals.each do |meal| %>
+          <%= link_to recipe_path(meal.recipe) do %>
+            <div class="home-event">
+              <%= meal.recipe.name %>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
   </div>
 </div>

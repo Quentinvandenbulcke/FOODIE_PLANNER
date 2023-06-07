@@ -9,10 +9,14 @@
   </div>
   <div class="column-3">
     <div class ="border-black">
-      <h4>Your Grocery List</h4>
+      <%= link_to root_path do %>
+        <h4>Your Grocery List</h4>
+      <% end %>
     </div>
     <div class ="border-black">
-      <h4>Your Calendar</h4>
+      <%= link_to meal_days_path do %>
+        <h4>Your calendar</h4>
+      <% end %>
     </div>
     <i class="fa-solid fa-user" style="color: #1a1423; padding-bottom: 4px" id="user" ></i>
   </div>
@@ -23,4 +27,3 @@
     <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "" %>
   </li>
 </div>
-
