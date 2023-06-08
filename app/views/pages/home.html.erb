@@ -4,13 +4,25 @@
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
             <%= cl_image_tag recipe.photo.key %>
-            <div class="w-100 justify-elements"><h2><%= recipe.name %></h2>
-                <div class="card-details">
-                  <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
-                  <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
-                  <p><% recipe.rating.times do %><i class="fa-solid fa-star"></i>
-                   <% end %></p>
-                </div>
+            <div class="w-100 justify-elements">
+              <div class="card-details-top" data-controller="heart">
+                <h2><%= recipe.name %></h2>
+                <% if recipe.favorites.where(user: current_user).empty? %>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
+                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="card-details">
+                <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
+                <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
+                <p><% recipe.rating.times do %><i class="fa-solid fa-star"></i>
+                  <% end %></p>
+              </div>
             </div>
           </div>
         <% end %>

@@ -42,7 +42,8 @@ names.each do |name|
     last_name: Faker::Name.last_name,
     username: "#{name.reverse}",
     email: "#{name}@test.com}",
-    password: "qwerty"
+    password: "qwerty",
+    password_confirmation: "qwerty"
   )
   puts "|"
 end
