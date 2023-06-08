@@ -6,12 +6,15 @@
   <% end %>
   <div class="index-column">
       <% @recipes.each do |recipe| %>
-        <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
-            <%= cl_image_tag recipe.photo.key %>
+            <%= link_to recipe_path(recipe), class: "remove-link", data: {heart_target: "card"} do %>
+              <%= cl_image_tag recipe.photo.key %>
+            <% end %>
             <div class="w-100 justify-elements">
               <div class="card-details-top" data-controller="heart">
-                <h2><%= recipe.name %></h2>
+                <%= link_to recipe_path(recipe), class: "remove-link", data: {heart_target: "card"} do %>
+                  <h2><%= recipe.name %></h2>
+                <% end %>
                 <% if recipe.favorites.where(user: current_user).empty? %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
                     <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
@@ -33,7 +36,6 @@
               </div>
             </div>
           </div>
-        <% end %>
       <% end %>
   </div>
 </div>

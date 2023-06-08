@@ -1,7 +1,7 @@
 <div class="container">
     <div class="scroll-box">
       <% @recipes[0..10].each do |recipe| %>
-        <%= link_to recipe_path(recipe), class: "remove-link" do %>
+        <%= link_to recipe_path(recipe), class: "remove-link", data: {heart_target: "card"} do %>
           <div class="recipe-card">
             <%= cl_image_tag recipe.photo.key %>
             <div class="w-100 justify-elements">
@@ -13,7 +13,7 @@
                   <% end %>
                 <% else %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                    <%= render "favorites/icon_fill" %>
                   <% end %>
                 <% end %>
               </div>
