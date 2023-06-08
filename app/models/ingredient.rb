@@ -1,5 +1,6 @@
 class Ingredient < ApplicationRecord
   belongs_to :recipe
+  has_many :grocery_lists
 
   validates :name, presence: true
   validates :unit, presence: true

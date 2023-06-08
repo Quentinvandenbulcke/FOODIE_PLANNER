@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="grocery-recap">
+    <h2>You ask the groceries list for :</h2>
+    <ul>
+      <% @meals.each do |meal| %>
+        <li><%= meal.date %> - <%= meal.recipe.name %> (<%= meal.recipe.servings %>pers)</li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="grocery-table">
+    <div class="grocery-row header-row">
+      <div class="grocery-cell">Ingredients</div>
+      <div class="grocery-cell grocery-center">Quantity</div>
+      <div class="grocery-cell grocery-center">Measure</div>
+    </div>
+    <% @lists.each do |list| %>
+      <div class="grocery-row">
+        <div class="grocery-cell"><%= list.ingredient.name %></div>
+        <div class="grocery-cell grocery-center"><%= list.quantity %></div>
+        <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
