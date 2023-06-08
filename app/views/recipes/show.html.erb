@@ -33,6 +33,6 @@
     </div>
   </div>
   <div class="add-a-recipe-to-calendar">
-    <%= render "meal_days/new", recipe: @recipe, meal_day: @meal_day %>
+    <%= render partial: "meal_days/new", locals: { recipe: @recipe, meal_day: @meal_day } %>
   </div>
 </div>
