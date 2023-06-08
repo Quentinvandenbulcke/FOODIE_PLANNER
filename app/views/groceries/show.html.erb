@@ -1,17 +1,18 @@
 <div class="container">
   <div class="grocery-recap">
     <h2>You ask the groceries list for :</h2>
+    <div class="line"></div>
     <ul>
       <% @meals.each do |meal| %>
-        <li><%= meal.date %> - <%= meal.recipe.name %> (<%= meal.recipe.servings %>pers)</li>
+        <li><strong><%= meal.date.strftime("%Y-%m-%d") %> </strong>- <%= meal.recipe.name %> (<%= meal.quantity %>pers)</li>
       <% end %>
     </ul>
   </div>
   <div class="grocery-table">
     <div class="grocery-row header-row">
-      <div class="grocery-cell">Ingredients</div>
-      <div class="grocery-cell grocery-center">Quantity</div>
-      <div class="grocery-cell grocery-center">Measure</div>
+      <div class="grocery-cell"><h5>Ingredients</h5></div>
+      <div class="grocery-cell grocery-center"><h5>Quantity</h5></div>
+      <div class="grocery-cell grocery-center"><h5>Measure</h5></div>
     </div>
 
     <% categories = [] %>
@@ -24,12 +25,12 @@
 
     <% categories.each do |category| %>
       <div class="grocery-row category-row">
-        <%= category %>
+        <%= category.capitalize %>
       </div>
       <div class="grocery-row">
         <% @lists.each do |list| %>
           <% if list.ingredient.category == category %>
-              <div class="grocery-cell"><%= list.ingredient.name %></div>
+              <div class="grocery-cell cell-ingredient"><%= list.ingredient.name.capitalize %></div>
               <% if list.quantity > 1000 %>
                 <div class="grocery-cell grocery-center"><%= (list.quantity / 1000).round(2) %></div>
                 <div class="grocery-cell grocery-center">Kilo</div>
