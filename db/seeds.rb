@@ -1,13 +1,38 @@
+puts "Destroying Users"
 User.destroy_all
-# Ingredient.destroy_all
-# Recipe.destroy_all
+puts "Destroying grocery list"
+GroceryList.destroy_all
+puts "Destroying ingredients"
+Ingredient.destroy_all
+puts "Destroying mealdays"
+MealDay.destroy_all
+puts "Destroying grocery"
+Grocery.destroy_all
+puts "Destroying recipes"
+Recipe.destroy_all
+require "json"
+require "open-uri"
+
+cuisine_types = [
+  "Mexican",
+  "Asian",
+  "British",
+  "Caribbean",
+  "Chinese",
+  "Indian",
+  "Italian",
+  "Nordic",
+  "Mediterranean"
+]
 
 require 'faker'
+
 names = [
   "quentin",
   "gab",
   "thomas",
 ]
+
 puts "creatings users..."
 names.each do |name|
   User.create!(
@@ -20,6 +45,9 @@ names.each do |name|
   puts "|"
 end
 puts "done with users!"
+
+puts "Creating empty grocery to initialize mealdays"
+Grocery.create(user: User.first)
 
 # require "json"
 # require "open-uri"
