@@ -12,9 +12,15 @@
   right: 0;
   top: 0;
 
-  visibility: hidden;
-
-
+  .menu-top {
+    margin: 15px;
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+    align-items: center;
+  }
 
   .line {
     width: 100%;
@@ -22,18 +28,14 @@
 }
 
 .left-side {
-  background-color: rgba($color: #1A1423, $alpha: 0.2);
+  z-index: 10;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background-color: rgba($color: #000000, $alpha: 0.4);
 }
 
-.email {
-  margin: 15px;
-  font-weight: 500;
-  font-style: italic;
 
-}
 
-.menu-elements {
-  margin: 15px;
-  font-size: large;
-
-}

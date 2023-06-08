@@ -8,3 +8,21 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.form-control {
+  border: 0;
+  height: 100% !important;
+}
+
+.no-border {
+  border: 0;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none !important;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
