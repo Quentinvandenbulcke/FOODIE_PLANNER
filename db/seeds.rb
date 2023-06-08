@@ -2,8 +2,7 @@ require "json"
 require "open-uri"
 require 'faker'
 
-puts "Destroying Users"
-User.destroy_all
+
 puts "Destroying grocery list"
 GroceryList.destroy_all
 puts "Destroying ingredients"
