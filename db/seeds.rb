@@ -14,20 +14,8 @@ puts "Destroying grocery"
 Grocery.destroy_all
 puts "Destroying recipes"
 Recipe.destroy_all
-require "json"
-require "open-uri"
-
-cuisine_types = [
-  "Mexican",
-  "Asian",
-  "British",
-  "Caribbean",
-  "Chinese",
-  "Indian",
-  "Italian",
-  "Nordic",
-  "Mediterranean"
-]
+puts "Destroying Users"
+User.destroy_all
 
 names = [
   "quentin",
@@ -41,7 +29,7 @@ names.each do |name|
     first_name: name,
     last_name: Faker::Name.last_name,
     username: "#{name.reverse}",
-    email: "#{name}@test.com}",
+    email: "#{name}@test.com",
     password: "qwerty",
     password_confirmation: "qwerty"
   )
@@ -65,7 +53,7 @@ cuisine_types = [
   "Mediterranean"
 ]
 
-puts "let's populate the databases !"
+puts "let's populate the recipes and ingredients !"
 
 cuisine_types.each do |type|
   url = "https://api.edamam.com/api/recipes/v2?type=public&app_id=#{ENV.fetch("EDAMAN_APP_ID")}&app_key=#{ENV.fetch("EDAMAN_APP_KEY")}&cuisineType=#{type}&mealType=Dinner"
@@ -89,9 +77,10 @@ cuisine_types.each do |type|
     hit["recipe"]["ingredients"].each do |ingredient|
       Ingredient.create!(
         name: ingredient["food"],
-        quantity: ingredient["quantity"],
-        unit: ingredient["measure"].blank? ? "N.A" : ingredient["measure"],
-        recipe_id: recipe.id
+        quantity: ingredient["weight"],
+        unit: "grams",
+        recipe_id: recipe.id,
+        category: ingredient["foodCategory"]
       )
     end
   end
