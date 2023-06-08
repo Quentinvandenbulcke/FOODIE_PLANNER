@@ -23,6 +23,7 @@ class GroceriesController < ApplicationController
     array_of_selected_meals.each do |meal|
       if !meal.empty?
         @meal = MealDay.find(meal.to_i)
+        @meal.update(grocery_id: @grocery.id)
         @meal.recipe.ingredients.each do |ingredient|
           recipe_ingredient_qty = BigDecimal(ingredient.quantity)
           recipe_servings = @meal.recipe.servings
@@ -48,7 +49,6 @@ class GroceriesController < ApplicationController
     authorize @grocery
     redirect_to grocery_path(@grocery)
   end
-
 end
 
 

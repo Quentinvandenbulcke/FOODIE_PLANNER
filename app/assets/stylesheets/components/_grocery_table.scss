@@ -7,6 +7,10 @@
   margin-bottom: 10px;
 }
 
+.grocery-table {
+  background-color: #ece8dc;
+}
+
 .grocery-row {
   display: flex;
   display: grid;
@@ -17,4 +21,14 @@
 .grocery-center {
     display: flex;
     justify-content: center;
+}
+
+.category-row {
+  background-color: #e0dcd1;
+  border-color: 1px solid #e6e3dc;
+  font-weight: bold;
+}
+
+.header-row {
+  font-weight: bold;
 }

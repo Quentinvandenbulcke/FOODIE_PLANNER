@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="grocery-recap">
+  <div class="grocery-recap">
     <h2>You ask the groceries list for :</h2>
     <ul>
       <% @meals.each do |meal| %>
@@ -13,11 +13,32 @@
       <div class="grocery-cell grocery-center">Quantity</div>
       <div class="grocery-cell grocery-center">Measure</div>
     </div>
-    <% @lists.each do |list| %>
+
+    <% categories = [] %>
+    <% @meals.each do |meal| %>
+      <% meal.recipe.ingredients.map do |ingredient| %>
+        <% categories << ingredient.category %>
+      <% end %>
+    <% end %>
+    <% categories = categories.uniq %>
+
+    <% categories.each do |category| %>
+      <div class="grocery-row category-row">
+        <%= category %>
+      </div>
       <div class="grocery-row">
-        <div class="grocery-cell"><%= list.ingredient.name %></div>
-        <div class="grocery-cell grocery-center"><%= list.quantity %></div>
-        <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
+        <% @lists.each do |list| %>
+          <% if list.ingredient.category == category %>
+              <div class="grocery-cell"><%= list.ingredient.name %></div>
+              <% if list.quantity > 1000 %>
+                <div class="grocery-cell grocery-center"><%= (list.quantity / 1000).round(2) %></div>
+                <div class="grocery-cell grocery-center">Kilo</div>
+              <% else %>
+                <div class="grocery-cell grocery-center"><%= list.quantity.ceil %></div>
+                <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
+              <% end %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
