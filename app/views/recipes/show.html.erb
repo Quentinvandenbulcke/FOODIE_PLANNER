@@ -21,10 +21,19 @@
           <h2>Ingredients</h2>
           <div class="line"></div>
           <% @recipe.ingredients.each do |ingredient| %>
-          <div class="ingredients one-line"><h4><%= ingredient.name.capitalize %>&nbsp;</h4><h5><%= ingredient.quantity %>&nbsp;</h5><h5><%= ingredient.unit %></h5></div>
+            <div class="ingredients one-line">
+              <h4><%= ingredient.name.capitalize %>&nbsp;</h4>
+              <% if ingredient.quantity < 1000  %>
+                <h5><%= ingredient.quantity.ceil %>&nbsp;</h5>
+                <h5><%= ingredient.unit %></h5>
+              <% else %>
+                <h5><%= (ingredient.quantity / 1000).round(2) %>&nbsp;</h5>
+                <h5>Kg</h5>
+              <% end %>
+
+            </div>
           <% end %>
         </div>
-
         <div class="four">
           <h2>Instructions</h2>
           <div class="line"></div>
