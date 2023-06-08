@@ -1,3 +1,9 @@
+require "json"
+require "open-uri"
+require 'faker'
+
+puts "Destroying Users"
+User.destroy_all
 puts "Destroying grocery list"
 GroceryList.destroy_all
 puts "Destroying ingredients"
@@ -10,22 +16,6 @@ puts "Destroying recipes"
 Recipe.destroy_all
 puts "Destroying Users"
 User.destroy_all
-require "json"
-require "open-uri"
-
-cuisine_types = [
-  "Mexican",
-  "Asian",
-  "British",
-  "Caribbean",
-  "Chinese",
-  "Indian",
-  "Italian",
-  "Nordic",
-  "Mediterranean"
-]
-
-require 'faker'
 
 names = [
   "quentin",
@@ -45,13 +35,11 @@ names.each do |name|
   )
   puts "|"
 end
+
 puts "done with users!"
 
 puts "Creating empty grocery to initialize mealdays"
 Grocery.create(user: User.first)
-
-require "json"
-require "open-uri"
 
 cuisine_types = [
   "Mexican",
@@ -65,7 +53,7 @@ cuisine_types = [
   "Mediterranean"
 ]
 
-puts "let's populate the databases !"
+puts "let's populate the recipes and ingredients !"
 
 cuisine_types.each do |type|
   url = "https://api.edamam.com/api/recipes/v2?type=public&app_id=#{ENV.fetch("EDAMAN_APP_ID")}&app_key=#{ENV.fetch("EDAMAN_APP_KEY")}&cuisineType=#{type}&mealType=Dinner"
@@ -90,7 +78,7 @@ cuisine_types.each do |type|
       Ingredient.create!(
         name: ingredient["food"],
         quantity: ingredient["weight"],
-        unit: "grams",                                       #ingredient["measure"].blank? ? "N.A" : ingredient["measure"],
+        unit: "grams",
         recipe_id: recipe.id,
         category: ingredient["foodCategory"]
       )
