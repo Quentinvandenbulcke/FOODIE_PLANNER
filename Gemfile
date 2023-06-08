@@ -81,3 +81,5 @@ end
 gem "pundit"
 gem "cloudinary"
 gem "simple_calendar", "~> 2.4"
+gem 'faker'
+gem "pg_search"

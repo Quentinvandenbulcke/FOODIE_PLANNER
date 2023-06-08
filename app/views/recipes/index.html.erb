@@ -1,14 +1,24 @@
 <div class="container">
-  <div class="recipe-card">
-    <% @recipes[0..30].each do |recipe| %>
-      <%= link_to recipe_path(recipe) do %>
-        <%= cl_image_tag recipe.photo.key, height: 200, width: 300, crop: :fill %>
-        <h2><%= recipe.name %></h2>
-        <p>Recipe instructions :<%= recipe.description %></p>
-        <p>Preparation time:<%= recipe.prep_time %>minutes</p>
-        <p>Rating: <%= recipe.rating %>/5</p>
-        <p>Servings :<%= recipe.servings %> persons</p>
+  <% if params[:query].present? %>
+    <div class="line">
+      <h3>Here are the results for <%= params[:query] %></h3>
+    </div>
+  <% end %>
+  <div class="index-column">
+      <% @recipes[0..30].each do |recipe| %>
+        <%= link_to recipe_path(recipe), class: "remove-link" do %>
+          <div class="recipe-card">
+            <%= cl_image_tag recipe.photo.key %>
+            <div class="w-100 justify-elements"><h2><%= recipe.name %></h2>
+                <div class="card-details">
+                  <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
+                  <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
+                  <p><% recipe.rating.times do %><i class="fa-solid fa-star"></i>
+                   <% end %></p>
+                </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
   </div>
 </div>

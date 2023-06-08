@@ -1,77 +1,47 @@
-<div class="top-rectangle">
+<div class="top-rectangle" data-controller="menu">
   <div class="column-1">
       <%= link_to root_path do %>
-        <h1>FOODIE   <i class="fa-solid fa-utensils" style="color: #1a1423;">   </i> PLANNER</h1>
+        <h1>FOODIE <i class="fa-solid fa-utensils" style="color: #1a1423;"></i> PLANNER</h1>
       <% end %>
   </div>
   <div class="column-2">
-    <h4><i class="fa-solid fa-magnifying-glass" style="color: #1a1423;"></i> What would you like to cook ?</h4>
+    <%= form_with url: recipes_path, method: :get do %>
+      <button class="" type="submit">
+        <h4><i class="fa-solid fa-magnifying-glass" style="color: #1a1423;"></i></h4>
+      </button>
+      <%= text_field_tag :query, params[:query], class: "search-field", placeholder: "What would you like to cook ?"%>
+    <% end %>
   </div>
   <div class="column-3">
     <div class ="border-black">
-      <h4>Your Grocery List</h4>
+      <%= link_to root_path do %>
+        <h4>Your Grocery List</h4>
+      <% end %>
     </div>
     <div class ="border-black">
-      <h4>Your Calendar</h4>
+      <%= link_to meal_days_path do %>
+        <h4>Your calendar</h4>
+      <% end %>
     </div>
-    <i class="fa-solid fa-user" style="color: #1a1423; padding-bottom: 4px"></i>
+    <i class="fa-solid fa-user" style="color: #1a1423; padding-bottom: 4px" id="user" ></i>
   </div>
 </div>
 
+<div class="menu">
+  <div class="left-side"></div>
+    <div class="right-side">
+      <div class="email">
+        <%# <%= current_user.email %> 
+      </div>
+      <div class="line"></div>
+      <div class="menu-elements">
+      <% if user_signed_in? %>
+        <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></li>
+      <% else %>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+      <% end %>
+      </div>
+    </div>
+</div> 
 
-  <%# <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <%# <% end %>
-
-    <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> %>
-
-    <%# <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <%# <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          <%# </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-
-
-          <%# <li> %>
-            <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %> 
-          <%# </li> %>
-
-          <%# </li>
-
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          <%# </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-
-              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%# </div> %>
-          <%# </li> %>
-        <%# <% else %>
-          <%# <li class="nav-item"> %>
-            <%# <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <%# </li> %>
-        <%# <% end %>
-      <%# </ul> %>
-    <%# </div> %>
-  <%# </div> %>
-
-              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            <%# </div> %>
-          <%# </li> %>
-        <%# <% else %>
-          <%# <li class="nav-item"> %>
-            <%# <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <%# </li> %>
-        <%# <% end %>
-      <%# </ul> %>
-    <%# </div> %>
-  <%# </div> %>

@@ -1,0 +1,39 @@
+
+
+.right-side {
+  z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #FDF8F4;
+  width: 300px;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  visibility: hidden;
+
+
+
+  .line {
+    width: 100%;
+  }
+}
+
+.left-side {
+  background-color: rgba($color: #1A1423, $alpha: 0.2);
+}
+
+.email {
+  margin: 15px;
+  font-weight: 500;
+  font-style: italic;
+
+}
+
+.menu-elements {
+  margin: 15px;
+  font-size: large;
+
+}
