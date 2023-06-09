@@ -13,12 +13,15 @@ export default class extends Controller {
     this.hideableTargets.forEach(el => {
       el.hidden = false
     });
+    this.element.parentElement.classList.add("body-freeze")
   }
 
   hideTargets() {
     this.hideableTargets.forEach(el => {
       el.hidden = true
     });
+    this.element.parentElement.classList.remove("body-freeze")
+
   }
 
   toggleTargets() {
