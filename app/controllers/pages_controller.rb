@@ -5,5 +5,6 @@ class PagesController < ApplicationController
     # @recipes = policy_scope(Recipe)
     @recipes = Recipe.all
     @meal_days = user_signed_in? ? current_user.meal_days : []
+    @grocery = Grocery.new
   end
 end
