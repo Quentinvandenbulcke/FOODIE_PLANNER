@@ -1,48 +1,68 @@
-  .show-column {
-    display: grid;
-    grid-template-columns: 1.75fr 2.25fr;
-    column-gap: 60px;
-    row-gap: 30px;
-    grid-auto-rows: minmax(max-content, auto);
-  }
+.show-column {
+  display: grid;
+  grid-template-columns: 1.75fr 2.25fr;
+  column-gap: 60px;
+  row-gap: 30px;
+  grid-auto-rows: minmax(max-content, auto);
+}
 
-  .one {
-    margin-top: 150px;
-    grid-column: 1/2;
-    grid-row: 1;
-    text-align: end;
-  }
+.one {
+  margin-top: 150px;
+  grid-column: 1/2;
+  grid-row: 1;
+  text-align: end;
+}
 
-  .two {
-    margin-top: 20px;
-    grid-column: 2/2;
-    grid-row: 1;
-   img {
-    width: 600px;
-    height: 400px;
-    object-fit: cover;
-   }
+.two {
+  margin-top: 20px;
+  grid-column: 2/2;
+  grid-row: 1;
+  img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
   }
+}
 
-  .three {
-    text-align: end;
-    grid-column: 1/2;
-    grid-row: 2;
-  }
+.three {
+  text-align: end;
+  grid-column: 1/2;
+  grid-row: 2;
+}
 
-  .cooking-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h2, h3 {
-      margin: 0;
-    }
+.cooking-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2, h3 {
+    margin: 0;
   }
+}
 
-  .one-line {
-    display: flex;
-  }
+.one-line {
+  display: flex;
+}
 
-  .ingredients {
-    justify-content: flex-end;
-  }
+.ingredients {
+  justify-content: flex-end;
+}
+
+
+
+.add-recipe {
+  z-index: 10;
+  position: absolute;
+  width: 400px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: $beige-light;
+}
+
+.body-freeze {
+  overflow: hidden;
+  height: 100vh;
+}

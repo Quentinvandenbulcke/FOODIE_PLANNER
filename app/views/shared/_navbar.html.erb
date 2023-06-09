@@ -15,18 +15,18 @@
   <div class="column-3">
     <div class ="navbar-box border-black">
       <%= link_to root_path do %>
-        <h4>Your Grocery List</h4>
+        <h4>Your Saved Recipes</h4>
       <% end %>
     </div>
     <div class ="navbar-box border-black">
       <%= link_to meal_days_path do %>
-        <h4>Your calendar</h4>
+        <h4>Your Calendar</h4>
       <% end %>
     </div >
     <button><i class="fa-solid fa-user navbar-box" style="color: #1a1423" data-action="click->pop-up-menu#showTargets"></i></button>
   </div>
   <div class="menu" data-pop-up-menu-target="hideable" hidden>
-    <div class="left-side"></div>
+    <div class="darken-screen"></div>
       <div class="right-side">
         <% if user_signed_in? %>
           <div class="menu-top">
@@ -36,6 +36,7 @@
           <div class="line"></div>
            <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></li>
         <% else %>
+          <button><i class="fa-sharp fa-solid fa-xmark" data-action="click->pop-up-menu#hideTargets"></i></button>
           <li><%= link_to "Log in", new_user_session_path %></li>
           <li><%= link_to "Sign up", new_user_registration_path %></li>
         <% end %>
@@ -43,4 +44,3 @@
     </div>
   </div>
 </div>
-

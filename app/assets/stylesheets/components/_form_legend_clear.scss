@@ -26,3 +26,44 @@ legend ~ div.form-check:first-of-type {
 textarea:focus, input:focus{
   outline: none;
 }
+
+form abbr[title] {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+.new-form {
+  background-color: none;
+  margin: 20px;
+}
+
+// .group {
+//  display: flex !important;
+//  justify-content: space-between !important;
+
+// }
+
+#new_meal_day {
+  .require {
+  display: none;
+  }
+
+  .meal_day_date {
+    display: flex;
+    justify-content: space-between;
+  }
+  .meal_day_quantity{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+#meal_day_quantity {
+  background-color: white;
+  width: 70px;
+}
+
+#meal_day_date {
+  background-color: white;
+  // width: 70px;
+}
