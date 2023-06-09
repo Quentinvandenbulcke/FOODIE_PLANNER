@@ -2,7 +2,7 @@
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '<- previous week'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title"><%= t('simple_calendar.month', default: 'month') %> <%= calendar.week_number %></span>
+      <span class="calendar-title h2"><%= start_date.strftime("%B %Y") %></span>
     <% else %>
       <span class="calendar-title"> <%= start_date.strftime("%B %Y") %></span>
     <% end %>
@@ -15,8 +15,10 @@
         <tr>
             <% date_range.slice(0, 7).each do |day| %>
               <th>
-                <%= t('date.abbr_day_names')[day.wday] %>
-                <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                <div class="daybox">
+                  <%= t('date.abbr_day_names')[day.wday] %>
+                  <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                </div>
               </th>
             <% end %>
         </tr>
@@ -37,6 +39,6 @@
         <% end %>
       </tbody>
     </table>
-    <%= f.submit %>
+    <%= f.submit value: "GENERATE YOUR GROCERY LIST" %>
   <% end %>
 </div>

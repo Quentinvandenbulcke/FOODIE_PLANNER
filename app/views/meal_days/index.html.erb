@@ -7,8 +7,8 @@
           <div class="meal-event">
             <%= cl_image_tag meal.recipe.photo.key, width: 150, height: 100, crop: :fill %>
             <div class="meal-info">
-              <p><%= meal.recipe.name %></p>
-              <p><%= meal.quantity %>pers.</p>
+              <p class="pb-1"><%= meal.recipe.name %></p>
+              <p><%= meal.quantity %> pers</p>
             </div>
           </div>
         <% end %>

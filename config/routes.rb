@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :meal_days, only: :create
     resources :favorites, only: [:create, :destroy]
   end
+  resources :favorites, only: [:show]
 
   resources :meal_days, only: :index
   resources :groceries, only: [:index, :show, :new, :create]

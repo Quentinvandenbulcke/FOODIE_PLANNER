@@ -1,6 +1,6 @@
 .simple-calendar {
   background-color: $beige-light;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 24px;
   border: none;
   .day {
@@ -22,12 +22,19 @@
     border: none;
     border-collapse: separate;
   }
+  .daybox {
+    display: flex;
+    justify-content: space-between;
+  }
   th {
+    // flex-grow: 1;
     background-color: $beige-light;
+    // display: flex;
+    // justify-content: space-between;
   }
 
   .today {
-  border: 1px solid rgba(0, 0, 0, 0.728);  }
+  background-color: $calendar-color1;  }
   .past {}
   .future {}
 
@@ -62,7 +69,6 @@
   }
   .meal-event {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-    margin: 8px;
     padding: 16px;
     background-color: $beige-light;
     border-radius: 4px;
@@ -76,6 +82,11 @@
       margin-top: 16px;
       text-align: center;
       font-size: 0.5rem;
+
+     p {
+      margin: 0;
+     }
+
     }
   }
 
@@ -124,4 +135,11 @@
     }
   }
 
+}
+
+#new_grocery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
 }
