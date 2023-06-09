@@ -23,7 +23,7 @@
         <h4>Your Calendar</h4>
       <% end %>
     </div >
-    <button><i class="fa-solid fa-user navbar-box" style="color: #1a1423" data-action="click->pop-up-menu#showTargets"></i></button>
+    <button><i class="fa-solid fa-user fa-2xl navbar-box" style="color: #1a1423" data-action="click->pop-up-menu#showTargets"></i></button>
   </div>
   <div class="menu" data-pop-up-menu-target="hideable" hidden>
     <div class="darken-screen"></div>
@@ -31,7 +31,7 @@
         <% if user_signed_in? %>
           <div class="menu-top">
             <%= current_user.email %>
-            <button><i class="fa-sharp fa-solid fa-xmark" data-action="click->pop-up-menu#hideTargets"></i></button>
+            <button><i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i></button>
           </div>
           <div class="line"></div>
            <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></li>
