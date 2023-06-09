@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   def home
     @recipes = policy_scope(Recipe)
     @meal_days = current_user.meal_days
+    @grocery = Grocery.new
   end
 end
