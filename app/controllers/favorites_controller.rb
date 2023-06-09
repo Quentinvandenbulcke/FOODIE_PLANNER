@@ -15,6 +15,11 @@ class FavoritesController < ApplicationController
     # end
   end
 
+  def show
+    @favorites = current_user.favorites
+    authorize @favorites
+  end
+
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @favorite = @recipe.favorites.where(user: current_user)
