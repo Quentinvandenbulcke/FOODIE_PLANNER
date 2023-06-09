@@ -2,7 +2,7 @@
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '<- previous week'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title"><%= t('simple_calendar.month', default: 'month') %> <%= calendar.week_number %></span>
+      <span class="calendar-title h2"><%= t('simple_calendar.month', default: 'YOUR MEALS') %></span>
     <% else %>
       <span class="calendar-title"> <%= start_date.strftime("%B %Y") %></span>
     <% end %>
@@ -37,6 +37,6 @@
         <% end %>
       </tbody>
     </table>
-    <%= f.submit %>
+    <%= f.submit value: "GENERATE YOUR GROCERY LIST" %>
   <% end %>
 </div>

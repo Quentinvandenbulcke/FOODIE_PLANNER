@@ -17,3 +17,14 @@
   display: flex;
   flex-direction: column;
 }
+
+.index-page {
+  margin: 100px;
+  display: flex;
+  justify-content: space-between ;
+}
+
+.filters-box {
+  position: sticky;
+  margin-right: 50px;
+}
