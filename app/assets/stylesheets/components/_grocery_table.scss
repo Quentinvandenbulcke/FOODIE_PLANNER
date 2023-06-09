@@ -1,32 +1,46 @@
 .grocery-dates, .grocery-recap, .grocery-table {
-  width: 80%;
-  border: 1px solid grey;
+  width: 60%;
   padding: 10px 25px;
-  border-radius: 5px;
   margin: 0 auto;
   margin-bottom: 10px;
 }
 
-.grocery-table {
-  background-color: #ece8dc;
+// .grocery-table {
+//   background-color: #ece8dc;
+// }
+
+.grocery-recap {
+  ul {
+    padding-left: 0;
+  }
+  li {
+    list-style-type: none;
+  }
 }
 
 .grocery-row {
   display: flex;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   grid-gap: 4px;
 }
 
+.cell-ingredient {
+  padding-left: 15px;
+}
+
 .grocery-center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .category-row {
   background-color: #e0dcd1;
-  border-color: 1px solid #e6e3dc;
+  border-radius: 3px;
   font-weight: bold;
+  margin-top: 15px;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 .header-row {
