@@ -1,6 +1,10 @@
 require 'bigdecimal'
 
 class GroceriesController < ApplicationController
+  def index
+    @groceries = policy_scope(Grocery)
+  end
+
   def new
     @grocery = Grocery.new
     @meal_days = MealDay.all
