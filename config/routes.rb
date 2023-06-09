@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   end
 
   resources :meal_days, only: :index
-  resources :groceries, only: [:show, :new, :create]
+  resources :groceries, only: [:index, :show, :new, :create]
 end
