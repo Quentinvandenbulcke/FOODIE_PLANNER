@@ -1,10 +1,10 @@
-  <% require 'bigdecimal'
-  %>
-
 <div class="container">
   <div class="grocery-dates">
     <%= simple_form_for(@grocery) do |f| %>
-      <%= f.association :meal_days, as: :check_boxes, label_method: ->(meal_day) { "#{meal_day.date} - #{meal_day.recipe.name} (#{meal_day.quantity}pers.)"} %>
+      <%= f.association :meal_days,
+                        as: :check_boxes,
+                        label_method: ->(meal_day) { "#{meal_day.date} - #{meal_day.recipe.name} (#{meal_day.quantity}pers.)"},
+                        collection: current_user.meal_days %>
       <%= f.submit %>
     <% end %>
   </div>

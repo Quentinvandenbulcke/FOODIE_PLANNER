@@ -27,15 +27,12 @@
   }
 }
 
-.left-side {
-  z-index: 10;
+.darken-screen {
+  z-index: 8;
   height: 100vh;
   width: 100%;
   left: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
   background-color: rgba($color: #000000, $alpha: 0.4);
 }
-
-
-
