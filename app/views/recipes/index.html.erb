@@ -1,9 +1,4 @@
 <div class="index-page">
-  <% if params[:query].present? %>
-    <div class="line">
-      <h3>Here are the results for <%= params[:query] %></h3>
-    </div>
-  <% end %>
   <div class="filters-box">
     <% @categories.each do |category|%>
       <ul>
