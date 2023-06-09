@@ -3,6 +3,8 @@ require "open-uri"
 require 'faker'
 
 
+puts "Destroying favorites"
+Favorite.destroy_all
 puts "Destroying grocery list"
 GroceryList.destroy_all
 puts "Destroying ingredients"
@@ -82,6 +84,14 @@ cuisine_types.each do |type|
         category: ingredient["foodCategory"]
       )
     end
+  end
+end
+
+puts "creating random favorites"
+recipes_ids = Recipe.all.map { |recipe| recipe.id }
+User.all.each do |user|
+  8.times do
+    Favorite.create!(user_id: user.id, recipe_id: recipes_ids.shuffle.pop)
   end
 end
 

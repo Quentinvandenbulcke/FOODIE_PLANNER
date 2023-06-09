@@ -22,8 +22,15 @@
     border: none;
     border-collapse: separate;
   }
+  .daybox {
+    display: flex;
+    justify-content: space-between;
+  }
   th {
+    // flex-grow: 1;
     background-color: $beige-light;
+    // display: flex;
+    // justify-content: space-between;
   }
 
   .today {
