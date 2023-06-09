@@ -3,6 +3,8 @@ require "open-uri"
 require 'faker'
 
 
+puts "Destroying favorites"
+Favorite.destroy_all
 puts "Destroying grocery list"
 GroceryList.destroy_all
 puts "Destroying ingredients"

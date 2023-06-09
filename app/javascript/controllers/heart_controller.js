@@ -14,15 +14,15 @@ static targets = ["icon", "card"]
     // console.log(this.iconTarget.parentElement.href);
 
 
-    fetch(this.iconTarget.parentElement.href, {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: this.iconTarget
-    })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data)
-      })
+    // fetch(this.iconTarget.parentElement.href, {
+    //   method: "POST",
+    //   headers: { "Accept": "application/json" },
+    //   body: this.iconTarget
+    // })
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //   })
   }
 
   unfavorite() {}

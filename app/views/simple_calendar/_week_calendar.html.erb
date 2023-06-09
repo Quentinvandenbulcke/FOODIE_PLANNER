@@ -15,8 +15,10 @@
         <tr>
             <% date_range.slice(0, 7).each do |day| %>
               <th>
-                <%= t('date.abbr_day_names')[day.wday] %>
-                <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                <div class="daybox">
+                  <%= t('date.abbr_day_names')[day.wday] %>
+                  <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                </div>
               </th>
             <% end %>
         </tr>
