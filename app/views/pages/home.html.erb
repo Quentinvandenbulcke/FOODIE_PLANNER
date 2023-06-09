@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="pop-up-menu">
     <div class="scroll-box">
       <% @recipes[0..10].each do |recipe| %>
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
@@ -33,9 +33,9 @@
         <div class="day-info">
 
         <%= date.day %>
-        <%= link_to root_path do %>
-          <i class="fa-solid fa-plus"></i>
-        <% end %>
+        <button>
+          <i class="fa-solid fa-plus button" data-action="click->pop-up-menu#showTargets"></i>
+        </button>
         </div>
         <% meals.each do |meal| %>
           <%= link_to recipe_path(meal.recipe) do %>
