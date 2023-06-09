@@ -3,8 +3,9 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(user_id: current_user.id, recipe_id: params[:recipe_id])
     @recipe = Recipe.find(params[:recipe_id])
     authorize @favorite
+
+    @favorite.save
     # respond_to do |format|
-    #   if @favorite.save
     #     format.html { redirect_to root_path }
     #     format.json
     #   else
