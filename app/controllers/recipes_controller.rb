@@ -3,6 +3,11 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = policy_scope(Recipe)
+    @categories = []
+    @recipes.each do |recipe|
+      @categories << recipe.category unless @categories.include?(recipe.category)
+    end
+    
     if params[:query].present?
       @recipes = @recipes.search_by_name_desc_cat(params[:query])
     end

@@ -1,22 +1,18 @@
 
-.button{
+.button {
   background-color: $beige-dark;
   color: #1A1423 ;
   padding: 8px 16px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 40px;
 }
 
-.force-button {
+.force-button, input[type="submit"], input[type="reset"]{
   background-color: $beige-dark !important;
   color: #1A1423 !important;
   padding: 8px 16px !important;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2) !important;
-}
-
-.force-button {
-  background-color: #EDE8DC;
-  color: #1A1423;
-  padding: 8px 16px;
+  border-radius: 40px !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 }
 
 button, input[type="submit"], input[type="reset"] {
@@ -34,4 +30,18 @@ button, input[type="submit"], input[type="reset"] {
   color: $beige-light;
   padding: 8px 16px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);;
+}
+
+.filters {
+  background-color: rgba($color: $beige-dark, $alpha: 0.3);
+  border: $beige-dark 3px solid;
+  color: #1A1423 ;
+  padding: 8px 16px;
+  border-radius: 40px;
+  transition: 0.2s;
+  width: fit-content;
+
+  &:hover {
+    background-color: $beige-dark;
+  }
 }

@@ -1,41 +1,55 @@
-<div class="container">
+<div class="index-page">
   <% if params[:query].present? %>
     <div class="line">
       <h3>Here are the results for <%= params[:query] %></h3>
     </div>
   <% end %>
-  <div class="index-column">
-      <% @recipes.each do |recipe| %>
-          <div class="recipe-card">
-            <%= link_to recipe_path(recipe), class: "remove-link" do %>
-              <%= cl_image_tag recipe.photo.key %>
-            <% end %>
-            <div class="w-100 justify-elements">
-              <div class="card-details-top" data-controller="heart">
-                <%= link_to recipe_path(recipe), class: "remove-link" do %>
-                  <h2><%= recipe.name %></h2>
-                <% end %>
-                <% if recipe.favorites.where(user: current_user).empty? %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
-                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
+  <div class="filters-box">
+    <% @categories.each do |category|%>
+      <ul>
+        <li class="filters"><%= link_to category, recipes_path(query:category), class:"remove-link"%></li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="index">
+    <% if params[:query].present? %>
+      <div class="line">
+        <h3>Here are the results for <%= params[:query] %></h3>
+      </div>
+    <% end %>
+    <div class="index-column">
+        <% @recipes.each do |recipe| %>
+            <div class="recipe-card">
+              <%= link_to recipe_path(recipe), class: "remove-link w-100", data: {heart_target: "card"} do %>
+                <%= cl_image_tag recipe.photo.key, class: "w-100" %>
+              <% end %>
+              <div class="w-100 justify-elements">
+                <div class="card-details-top" data-controller="heart">
+                  <%= link_to recipe_path(recipe), class: "remove-link", data: {heart_target: "card"} do %>
+                    <h2><%= recipe.name %></h2>
                   <% end %>
-                <% else %>
-                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                  <% if recipe.favorites.where(user: current_user).empty? %>
+                    <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
+                      <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                      <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div class="card-details">
-                <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
-                <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
-                <p>
-                  <% recipe.rating.times do %>
-                    <i class="fa-solid fa-star"></i>
-                  <% end %>
-                </p>
+                </div>
+                <div class="card-details">
+                  <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
+                  <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
+                  <p>
+                    <% recipe.rating.times do %>
+                      <i class="fa-solid fa-star"></i>
+                    <% end %>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+    </div>
   </div>
 </div>

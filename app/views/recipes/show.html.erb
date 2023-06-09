@@ -12,16 +12,17 @@
           <div class="cooking-details">
             <div class="one-line"><h3>prep &nbsp;</h3><h2><%= @recipe.prep_time %>min</h2></div>
             <%# <div class="one-line"><p>Rating: <%= @recipe.rating/5</p></div>  %>
-            <div class="one-line"><h3>serves &nbsp;</h3><h2><%= @recipe.servings %></h2></div>
+
+            <div class="one-line px-3">
+              <h3>serves &nbsp;</h3>
+              <h2><%= @recipe.servings %></h2>
+            </div>
             <button class="button" data-action="click->pop-up-menu#showTargets">
               <h2>calendar +</h2>
             </button>
             <div data-pop-up-menu-target="hideable" hidden>
               <div class="darken-screen"></div>
-              <div class="add-recipe">
-                <button>
-                  <i class="fa-sharp fa-solid fa-xmark" data-action="click->pop-up-menu#hideTargets"></i>
-                </button> <%= render partial: "meal_days/new", locals: { recipe: @recipe, meal_day: @meal_day } %>
+              <div class="add-recipe"><button><i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i></button> <%= render partial: "meal_days/new", locals: { recipe: @recipe, meal_day: @meal_day } %>
               </div>
             </div>
 
