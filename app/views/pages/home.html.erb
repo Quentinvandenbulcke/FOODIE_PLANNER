@@ -1,5 +1,8 @@
-<div class="container" data-controller="pop-up-menu">
-    <div class="scroll-box">
+<div class="containerrr" data-controller="pop-up-menu">
+    <div class="title-home">
+      <h2>Trending recipes</h2>
+    </div>
+    <div class="scroll-box snap">
       <% @recipes[0..10].each do |recipe| %>
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
@@ -28,6 +31,9 @@
         <% end %>
       <% end %>
     </div>
+    <div class="see-more">
+      <%= link_to "See more...", recipes_path, class: "button" %>
+    </div>
     <div class="home-calendar">
       <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
         <div class="day-info">
@@ -40,7 +46,12 @@
         <% meals.each do |meal| %>
           <%= link_to recipe_path(meal.recipe) do %>
             <div class="home-event">
-              <%= meal.recipe.name %>
+              <div>
+                <%= cl_image_tag meal.recipe.photo.key %>
+              </div>
+              <p>
+                <%= meal.recipe.name %>
+              </p>
             </div>
           <% end %>
         <% end %>
