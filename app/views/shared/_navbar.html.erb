@@ -43,6 +43,8 @@
           <ul>
             <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "button" %></li>
             <li><%= link_to "Groceries lists", groceries_path, class: "button" %></li>
+            <li><%= link_to "Favorites", favorite_path(current_user.favorites.first), class: "button" %></li>
+            <li><%= link_to "Get inspired", recipes_path, class: "button" %></li>
           </ul>
         <% else %>
           <button>

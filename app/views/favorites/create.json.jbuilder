@@ -1,3 +1,4 @@
+
 if @favorite.persisted?
   json.inserted_icon render(partial: "favorites/icon_fill", formats: :html)
 else

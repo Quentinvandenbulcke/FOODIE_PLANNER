@@ -3,22 +3,22 @@
       <h2>Trending recipes</h2>
     </div>
     <div class="scroll-box snap">
-      <% @recipes[0..10].each do |recipe| %>
+      <% @recipes[0..20].each do |recipe| %>
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
             <%= cl_image_tag recipe.photo.key %>
-            <div class="w-100 justify-elements">
-              <div class="card-details-top">
+            <div class="w-100 justify-elements" data-controller="heart" >
+              <div class="card-details-top" data-heart-target="card">
                 <h2><%= recipe.name %></h2>
-                <% if recipe.favorites.where(user: current_user).empty? %>
+                <%# if recipe.favorites.where(user: current_user).empty? %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
                     <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
                   <% end %>
-                <% else %>
-                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
-                  <% end %>
-                <% end %>
+                <%# else %>
+                  <%#= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="icon"></i> %>
+                  <%# end %>
+                <%# end %>
               </div>
               <div class="card-details">
                 <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
