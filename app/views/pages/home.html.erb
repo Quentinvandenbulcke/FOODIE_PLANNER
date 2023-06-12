@@ -10,15 +10,21 @@
             <div class="w-100 justify-elements" data-controller="heart" >
               <div class="card-details-top" data-heart-target="card">
                 <h2><%= recipe.name %></h2>
-                <%# if recipe.favorites.where(user: current_user).empty? %>
+                <% if recipe.favorites.where(user: current_user).empty? %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
-                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
                   <% end %>
-                <%# else %>
-                  <%#= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="icon"></i> %>
-                  <%# end %>
-                <%# end %>
+                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete }, class: "hide-icon" do %>
+                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                  <% end %>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
+                  <% end %>
+                <% end %>
               </div>
               <div class="card-details">
                 <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
