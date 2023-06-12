@@ -1,10 +1,9 @@
 <div class="container">
   <div class="grocery-recap">
     <% @groceries.each do |grocery| %>
-      <% if !grocery.meal_days.empty? %>
         <% filtered_dates = [] %>
-        <% grocery.meal_days.each do |element| %>
-          <% date_str = element.date.strftime("%Y-%m-%d") %>
+        <% grocery.grocery_lists.each do |element| %>
+          <% date_str = element.meal_day.date.strftime("%Y-%m-%d") %>
           <% if filtered_dates.none? { |date| date == date_str } %>
             <% filtered_dates << date_str %>
           <% end %>
@@ -18,7 +17,6 @@
           -
           <%= link_to "OPEN", grocery_path(grocery), class:"text-decoration-none " %>
         </p>
-      <% end %>
     <% end %>
   </div>
 </div>
