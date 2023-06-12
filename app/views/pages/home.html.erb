@@ -3,7 +3,7 @@
       <h2>Trending recipes</h2>
     </div>
     <div class="scroll-box snap">
-      <% @top_recipes.each do |recipe| %>
+      <% @top_recipes[0..25].shuffle.each do |recipe| %>
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
             <%= cl_image_tag recipe.photo.key %>
@@ -43,11 +43,17 @@
     <div class="home-calendar">
       <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
         <div class="day-info">
-
-        <%= date.day %>
-        <button>
-          <i class="fa-solid fa-plus button" data-action="click->pop-up-menu#showTargets"></i>
-        </button>
+          <%= date.day %>
+          <i data-action="click->pop-up-menu#showTargets" class="fa-solid fa-plus button"></i>
+          <div data-pop-up-menu-target="hideable" hidden>
+            <div class="darken-screen"></div>
+            <div class="add-recipe">
+              <button>
+                <i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i>
+              </button>
+              <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites } %>
+            </div>
+          </div>
         </div>
         <% meals.each do |meal| %>
           <%= link_to recipe_path(meal.recipe) do %>

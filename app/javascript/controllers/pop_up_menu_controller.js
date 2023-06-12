@@ -2,12 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="pop-up-menu"
 export default class extends Controller {
-
-  // connect() {
-  //   console.log("hello")
-  // }
-
   static targets = [ "hideable" ]
+
+  connect() {
+    console.log("hello from popup controller")
+  }
 
   showTargets() {
     this.hideableTargets.forEach(el => {

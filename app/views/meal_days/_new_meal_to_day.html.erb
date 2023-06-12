@@ -1,8 +1,11 @@
 <div class="new-form">
-  <%  %>
+  <% favorites.each do |favorite| %>
+    <%= cl_image_tag favorite.photo.key %>
+    <%= favorite.name %>
+  <% end %>
   <%= simple_form_for [recipe, meal_day] do |f| %>
-    <%= f.input :date, as: :date, html5: true, class: "group" %>
-    <%= f.input :quantity, input_html: { min: '0'}, class: "group"%>
+    <%#= f.input :date, as: :date, html5: true, class: "group" %>
+    <%= f.input :quantity, input_html: { min: '1'}, class: "group"%>
     <%= f.submit class:"force-button", value: "Plan this meal"%>
   <% end %>
 </div>

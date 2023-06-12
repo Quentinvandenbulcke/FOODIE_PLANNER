@@ -22,7 +22,11 @@
             </button>
             <div data-pop-up-menu-target="hideable" hidden>
               <div class="darken-screen"></div>
-              <div class="add-recipe"><button><i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i></button> <%= render partial: "meal_days/new", locals: { recipe: @recipe, meal_day: @meal_day } %>
+              <div class="add-recipe">
+                <button>
+                  <i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i>
+                </button>
+                <%= render partial: "meal_days/new", locals: { recipe: @recipe, meal_day: @meal_day } %>
               </div>
             </div>
 
