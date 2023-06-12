@@ -3,6 +3,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 24px;
   border: none;
+  overflow-x: scroll;
   .day {
     background-color: $beige-dark;
     border: none;
@@ -58,6 +59,11 @@
       color: rgba(0, 0, 0, 0.65);
     }
   }
+
+}
+
+.cal-hide {
+  display: none;
 }
 
 .index-calendar {
@@ -70,6 +76,7 @@
   .meal-event {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
     padding: 16px;
+    margin-bottom: 12px;
     background-color: $beige-light;
     border-radius: 4px;
     transition: 0.2s;
@@ -93,7 +100,6 @@
 }
 
 .home-calendar {
-
   a {
     text-decoration: none;
   }
@@ -104,8 +110,8 @@
     margin: 0 12px;
 
     i {
-      font-size: 16px;
-      padding: 8px;
+      font-size: 12px;
+      padding: 4px;
       border: 1px solid rgba(0, 0, 0, 0.1);
       text-decoration: none;
       color: rgba(0, 0, 0, 0.568);
@@ -122,16 +128,29 @@
   .home-event {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
     margin: 4px;
-    padding: 8px;
+    // padding: 8px;
     background-color: rgba($color: $beige-light, $alpha: 0.7);
     color: black;
     border-radius: 4px;
     transition: 0.2s;
     text-align: center;
+    display: block;
 
     &:hover {
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
       background-color: rgba($color: $beige-light, $alpha: 1);
+    }
+
+    img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    p {
+      margin: 8px;
+      padding: 8px;
     }
   }
 

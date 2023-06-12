@@ -4,15 +4,15 @@ class FavoritesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     authorize @favorite
 
-    @favorite.save
-    # respond_to do |format|
-    #     format.html { redirect_to root_path }
-    #     format.json
-    #   else
-    #     format.html { render "pages/home", status: :unprocessable_entity }
-    #     format.json
-    #   end
-    # end
+    respond_to do |format|
+      if @favorite.save
+        format.html { redirect_to root_path }
+        format.json
+      else
+        format.html { render "pages/home", status: :unprocessable_entity }
+        format.json
+      end
+    end
   end
 
   def show

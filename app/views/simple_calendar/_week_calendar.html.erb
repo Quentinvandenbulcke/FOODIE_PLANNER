@@ -1,4 +1,4 @@
-<div class="simple-calendar">
+<div class="simple-calendar" data-controller="show-check-box">
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '<- previous week'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
@@ -17,7 +17,9 @@
               <th>
                 <div class="daybox">
                   <%= t('date.abbr_day_names')[day.wday] %>
-                  <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                  <div data-show-check-box-target="checkbox" class="cal-hide" >
+                    <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                  </div>
                 </div>
               </th>
             <% end %>
@@ -39,6 +41,10 @@
         <% end %>
       </tbody>
     </table>
-    <%= f.submit value: "GENERATE YOUR GROCERY LIST" %>
+    <%# <a href="" data-show-check-box-target="select" data-action="click->show-check-box#show" class="button">SELECT DAYS</a> %>
+    <p data-show-check-box-target="select" data-action="click->show-check-box#show" class="button">SELECT DAYS</p>
+    <div data-show-check-box-target="generate" class="cal-hide">
+      <%= f.submit value: "GENERATE YOUR GROCERY LIST" %>
+    </div>
   <% end %>
 </div>

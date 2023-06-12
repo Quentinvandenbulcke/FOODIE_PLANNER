@@ -6,7 +6,31 @@
   column-gap: 20px;
 
   &::-webkit-scrollbar {
-    display: none;
+    // display: none;
+  }
+}
+
+.snap {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 32px;
+  .recipe-card {
+    scroll-snap-align: start;
+  }
+}
+
+.title-home {
+  margin: 24px;
+}
+
+.see-more {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 48px;
+
+  a {
+    text-decoration: none;
   }
 }
 

@@ -1,27 +1,24 @@
-<div class="container" data-controller="pop-up-menu">
-    <div class="scroll-box">
-      <% @recipes[0..10].each do |recipe| %>
+<div class="containerrr" data-controller="pop-up-menu">
+    <div class="title-home">
+      <h2>Trending recipes</h2>
+    </div>
+    <div class="scroll-box snap">
+      <% @top_recipes.each do |recipe| %>
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
             <%= cl_image_tag recipe.photo.key %>
-            <div class="w-100 justify-elements">
-              <div class="card-details-top">
+            <div class="w-100 justify-elements" data-controller="heart" >
+              <div class="card-details-top" data-heart-target="card">
                 <h2><%= recipe.name %></h2>
-                <% if recipe.favorites.where(user: current_user).empty? %>
+                <%# if recipe.favorites.where(user: current_user).empty? %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
                     <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
                   <% end %>
-                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill hide-icon" data-action="click->heart#favorite" data-heart-target="icon"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
-                  <% end %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
-                    <i class="fa-regular fa-heart heart-empty hide-icon" data-action="click->heart#favorite" data-heart-target="icon"></i>
-                  <% end %>
-                <% end %>
+                <%# else %>
+                  <%#= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="icon"></i> %>
+                  <%# end %>
+                <%# end %>
               </div>
               <div class="card-details">
                 <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
@@ -33,6 +30,9 @@
           </div>
         <% end %>
       <% end %>
+    </div>
+    <div class="see-more">
+      <%= link_to "See more...", recipes_path, class: "button" %>
     </div>
     <div class="home-calendar">
       <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
@@ -46,7 +46,12 @@
         <% meals.each do |meal| %>
           <%= link_to recipe_path(meal.recipe) do %>
             <div class="home-event">
-              <%= meal.recipe.name %>
+              <div>
+                <%= cl_image_tag meal.recipe.photo.key %>
+              </div>
+              <p>
+                <%= meal.recipe.name %>
+              </p>
             </div>
           <% end %>
         <% end %>
