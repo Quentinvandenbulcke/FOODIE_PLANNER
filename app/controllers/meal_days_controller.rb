@@ -10,7 +10,8 @@ class MealDaysController < ApplicationController
     @meal_day = MealDay.new(recipe_params)
     @meal_day.recipe = @recipe
     @meal_day.user = current_user
-    @meal_day.grocery = Grocery.first
+    # @meal_day.grocery = Grocery.first
+
     if @meal_day.save!
       redirect_to meal_days_path
     else
