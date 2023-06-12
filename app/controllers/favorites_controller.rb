@@ -2,17 +2,18 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(user_id: current_user.id, recipe_id: params[:recipe_id])
     @recipe = Recipe.find(params[:recipe_id])
+    @favorite.save
     authorize @favorite
-
-    respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to root_path }
-        format.json
-      else
-        format.html { render "pages/home", status: :unprocessable_entity }
-        format.json
-      end
-    end
+    # redirect_to recipe_path(@recipe)
+    # respond_to do |format|
+    #   if @favorite.save
+    #     format.html { redirect_to root_path }
+    #     format.json
+    #   else
+    #     format.html { render "pages/home", status: :unprocessable_entity }
+    #     format.json
+    #   end
+    # end
   end
 
   def show
