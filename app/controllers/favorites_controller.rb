@@ -1,19 +1,11 @@
 class FavoritesController < ApplicationController
+  respond_to :json
+  skip_before_action :verify_authenticity_token
+
   def create
-    @favorite = Favorite.new(user_id: current_user.id, recipe_id: params[:recipe_id])
-    @recipe = Recipe.find(params[:recipe_id])
-    @favorite.save
+    @favorite = Favorite.new(user: current_user, recipe: Recipe.find(params[:recipe_id]))
     authorize @favorite
-    # redirect_to recipe_path(@recipe)
-    # respond_to do |format|
-    #   if @favorite.save
-    #     format.html { redirect_to root_path }
-    #     format.json
-    #   else
-    #     format.html { render "pages/home", status: :unprocessable_entity }
-    #     format.json
-    #   end
-    # end
+    @favorite.save!
   end
 
   def show

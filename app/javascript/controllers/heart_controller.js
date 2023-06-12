@@ -9,29 +9,24 @@ static targets = ["iconfill", "iconempty"]
   }
 
   favorite(event) {
-    // event.preventDefault()
-    // console.log("Lets favorite this");
-    // console.log("print iconemptytarger")
-    // console.log(this.iconemptyTarger);
-    // console.log("print iconemptytarget parent")
-    // console.log(this.iconemptyTarget.parentElement);
+    event.preventDefault()
+    console.log(this.iconemptyTarget.parentElement.href);
     this.iconemptyTarget.parentElement.classList.add("hide-icon")
     this.iconfillTarget.parentElement.classList.remove("hide-icon")
-    // fetch(this.iconTarget.parentElement.href, {
-    //   method: "POST",
-    //   headers: { "Accept": "application/json" },
-    //   body: this.iconTarget.parentElement
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   })
+    fetch(this.iconemptyTarget.parentElement.href, {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" }
+    })
   }
 
-  unfavorite() {
-    // event.preventDefault()
-    // console.log("Lets unfavorite this");
+  unfavorite(event) {
+    event.preventDefault()
     this.iconemptyTarget.parentElement.classList.remove("hide-icon")
     this.iconfillTarget.parentElement.classList.add("hide-icon")
+
+    fetch(this.iconfillTarget.parentElement.href, {
+      method: "DELETE",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" }
+    })
   }
 }
