@@ -19,12 +19,12 @@
     <div class="index-column">
         <% @recipes.each do |recipe| %>
             <div class="recipe-card">
-              <%= link_to recipe_path(recipe), class: "remove-link w-100", data: {heart_target: "card"} do %>
+              <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
                 <%= cl_image_tag recipe.photo.key, class: "w-100" %>
               <% end %>
               <div class="w-100 justify-elements">
                 <div class="card-details-top" data-controller="heart">
-                  <%= link_to recipe_path(recipe), class: "remove-link", data: {heart_target: "card"} do %>
+                  <%= link_to recipe_path(recipe), class: "remove-link" do %>
                     <h2><%= recipe.name %></h2>
                   <% end %>
                   <% if recipe.favorites.where(user: current_user).empty? %>
