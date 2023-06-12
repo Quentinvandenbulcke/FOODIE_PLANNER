@@ -52,3 +52,7 @@ button, input[type="submit"], input[type="reset"] {
     background-color: $beige-dark;
   }
 }
+
+.btn-disable {
+  visibility: hidden;
+}

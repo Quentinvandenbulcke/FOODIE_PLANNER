@@ -17,8 +17,8 @@
               <th>
                 <div class="daybox">
                   <%= t('date.abbr_day_names')[day.wday] %>
-                  <div data-show-check-box-target="checkbox" class="cal-hide" >
-                    <%= f.check_box :meal_days, { multiple: true }, day, nil %>
+                  <div data-show-check-box-target="checkbox" data-action="click->show-check-box#enableGenerate" class="cal-hide" >
+                    <%= f.check_box :meal_days, { multiple: true, data: { show_check_box_target: 'tick' } }, day, nil %>
                   </div>
                 </div>
               </th>
@@ -41,10 +41,9 @@
         <% end %>
       </tbody>
     </table>
-    <%# <a href="" data-show-check-box-target="select" data-action="click->show-check-box#show" class="button">SELECT DAYS</a> %>
     <p data-show-check-box-target="select" data-action="click->show-check-box#show" class="button">SELECT DAYS</p>
-    <div data-show-check-box-target="generate" class="cal-hide">
-      <%= f.submit value: "GENERATE YOUR GROCERY LIST" %>
+    <div data-show-check-box-target="generate" class="cal-hide" >
+      <%= f.submit value: "GENERATE YOUR GROCERY LIST", disabled: true, data: { show_check_box_target: "submit" }, class: "btn-disable" %>
     </div>
   <% end %>
 </div>
