@@ -19,21 +19,27 @@
     <div class="index-column">
         <% @recipes.each do |recipe| %>
             <div class="recipe-card">
-              <%= link_to recipe_path(recipe), class: "remove-link w-100", data: {heart_target: "card"} do %>
+              <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
                 <%= cl_image_tag recipe.photo.key, class: "w-100" %>
               <% end %>
               <div class="w-100 justify-elements">
                 <div class="card-details-top" data-controller="heart">
-                  <%= link_to recipe_path(recipe), class: "remove-link", data: {heart_target: "card"} do %>
+                  <%= link_to recipe_path(recipe), class: "remove-link" do %>
                     <h2><%= recipe.name %></h2>
                   <% end %>
                   <% if recipe.favorites.where(user: current_user).empty? %>
                     <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
-                      <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                      <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
+                    <% end %>
+                    <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete }, class: "hide-icon" do %>
+                      <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
                     <% end %>
                   <% else %>
                     <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                      <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                      <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                    <% end %>
+                    <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                      <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
                     <% end %>
                   <% end %>
                 </div>
