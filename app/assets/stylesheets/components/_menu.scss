@@ -25,6 +25,18 @@
   .line {
     width: 100%;
   }
+
+  ul {
+    list-style: none;
+    width: 100%;
+    margin-top: 48px;
+    li {
+      margin: 16px auto;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 .darken-screen {

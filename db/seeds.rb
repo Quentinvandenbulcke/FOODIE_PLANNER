@@ -62,7 +62,7 @@ cuisine_types.each do |type|
   data = JSON.parse(file)
   puts "starting with #{type} recipes"
 
-  data["hits"][0..4].each do |hit|
+  data["hits"].each do |hit|
     photo = URI.open(hit["recipe"]["image"])
     recipe = Recipe.new(
       name: hit["recipe"]["label"],
@@ -90,7 +90,7 @@ end
 puts "creating random favorites"
 recipes_ids = Recipe.all.map { |recipe| recipe.id }
 User.all.each do |user|
-  8.times do
+  16.times do
     Favorite.create!(user_id: user.id, recipe_id: recipes_ids.shuffle.pop)
   end
 end

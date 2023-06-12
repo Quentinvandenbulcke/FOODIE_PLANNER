@@ -1,3 +1,21 @@
 .container {
-  margin-top: 30px;
+  margin-top: 32px;
+}
+
+@media screen and (min-width: 1300px) {
+  .containerrr {
+    margin: 32px 48px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .containerrr {
+    margin: 32px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .containerrr {
+    margin: 32px 24px;
+  }
 }
