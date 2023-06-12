@@ -1,6 +1,10 @@
+<div class="banner-area">
+  <h6 class="headline">Welcome to your meal planner</h6>
+</div>
 <div class="containerrr" data-controller="pop-up-menu">
     <div class="title-home">
-      <h2>Trending recipes</h2>
+      <h6>Trending Recipes</h6>
+      <p class="subtitle mb-0">Quickly access our most popular recipes</p>
     </div>
     <div class="scroll-box snap">
       <% @top_recipes.each do |recipe| %>
@@ -32,7 +36,10 @@
       <% end %>
     </div>
     <div class="see-more">
-      <%= link_to "See more...", recipes_path, class: "button" %>
+      <h5><%= link_to "See more recipes", recipes_path %>&ensp;</h5><i class="fa-sharp fa-solid fa-chevron-right fa-xl ml-5"></i>
+    </div>
+    <div class="title-home">
+      <h6>Your Calendar</h6>
     </div>
     <div class="home-calendar">
       <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
