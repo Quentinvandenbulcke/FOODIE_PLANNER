@@ -6,8 +6,10 @@ class MealDaysController < ApplicationController
   end
 
   def create
+    # raise
     @recipe = Recipe.find(params[:recipe_id])
-    @meal_day = MealDay.new(recipe_params)
+    @meal_day = MealDay.new(meal_day_params)
+    # @meal_day.save
     @meal_day.recipe = @recipe
     @meal_day.user = current_user
     # @meal_day.grocery = Grocery.first
@@ -22,7 +24,10 @@ class MealDaysController < ApplicationController
 
   private
 
-  def recipe_params
-    params.require(:meal_day).permit(:date, :quantity)
+  def meal_day_params
+    attributes = params.require(:meal_day).permit(:date, :quantity)
+    attributes[:date] = Date.iso8601(attributes[:date])
+    attributes[:quantity] = attributes[:quantity].to_i
+    attributes
   end
 end

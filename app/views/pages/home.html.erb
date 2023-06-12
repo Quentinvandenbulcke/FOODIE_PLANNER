@@ -58,7 +58,7 @@
               <button>
                 <i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i>
               </button>
-              <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites } %>
+              <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites, meal_day: @meal_day } %>
             </div>
           </div>
         </div>
