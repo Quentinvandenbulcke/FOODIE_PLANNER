@@ -56,7 +56,7 @@
 .column-2 {
   background-color: white;
 
-  h4 {
+  h6 {
     color: rgba($color: #1A1423, $alpha: 0.7) !important;
   }
 
@@ -82,13 +82,14 @@
 
   a {
     text-decoration: none;
+    color: #1A1423;
   }
 }
 .navbar-box {
   height: 100%;
   display: flex;
   align-items: center;
-  h4 {
+  h6 {
     margin: 0;
   }
 }
