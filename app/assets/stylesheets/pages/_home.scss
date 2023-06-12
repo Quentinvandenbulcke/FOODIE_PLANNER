@@ -1,9 +1,11 @@
 .scroll-box {
   display: flex;
-  width: 100%;
+  width: inherit;
   height: 100%;
   overflow-x: scroll;
   column-gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   &::-webkit-scrollbar {
     // display: none;
@@ -12,25 +14,37 @@
 
 .snap {
   scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 32px;
+  // scroll-padding-inline: 32px;
   .recipe-card {
     scroll-snap-align: start;
   }
 }
 
 .title-home {
-  margin: 24px;
+
+  border-top: #1A1423 solid 6px;
+  margin-top: 100px;
+  padding-top: 25px;
+
+  h6 {
+    margin: 0;
+    text-decoration: underline;
+  }
 }
 
 .see-more {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 24px;
   margin-bottom: 48px;
+
+  h5 {
+    margin: 0;
+  }
 
   a {
     text-decoration: none;
+    color: #1A1423;
   }
 }
 
