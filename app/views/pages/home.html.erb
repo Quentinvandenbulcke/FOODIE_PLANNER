@@ -11,9 +11,15 @@
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
                     <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="icon"></i>
                   <% end %>
+                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                    <i class="fa-solid fa-heart heart-fill hide-icon" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                  <% end %>
                 <% else %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
                     <i class="fa-solid fa-heart heart-fill" data-action="click->heart#favorite" data-heart-target="icon"></i>
+                  <% end %>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
+                    <i class="fa-regular fa-heart heart-empty hide-icon" data-action="click->heart#favorite" data-heart-target="icon"></i>
                   <% end %>
                 <% end %>
               </div>
