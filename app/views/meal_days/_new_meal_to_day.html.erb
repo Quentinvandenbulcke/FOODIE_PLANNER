@@ -1,8 +1,11 @@
-<div class="new-form">
-  <%  %>
-  <%= simple_form_for [recipe, meal_day] do |f| %>
-    <%= f.input :date, as: :date, html5: true, class: "group" %>
-    <%= f.input :quantity, :label => "Servings", input_html: { min: '0'}, class: "group"%>
-    <%= f.submit class:"button", value: "Plan this meal"%>
+<div class="new-form form-fav">
+  <% favorites.each do |favorite| %>
+    <div class="form-fav-recipe">
+      <div class="recipe-card">
+        <%= cl_image_tag favorite.photo.key %>
+        <%= favorite.name %>
+      </div>
+      <%= button_to "add this recipe", {:controller => "meal_days", :action => "create", meal_day: { date: date, quantity: '2' }, recipe_id: favorite.id }, :method=>:post, class: "button modal-button" %>
+    </div>
   <% end %>
 </div>

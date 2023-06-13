@@ -10,6 +10,10 @@ class FavoritesController < ApplicationController
 
   def show
     @favorites = current_user.favorites
+    @fav_recipes = []
+    @favorites.each do |favorite|
+      @fav_recipes << Recipe.find(favorite.recipe_id)
+    end
     authorize @favorites
   end
 
