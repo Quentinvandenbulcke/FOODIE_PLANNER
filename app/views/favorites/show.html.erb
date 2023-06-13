@@ -23,14 +23,13 @@
                     <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
                   <% end %>
                 <% else %>
-
                   <%= link_to recipe_favorite_path(recipe, @favorites[index]), data: { "turbo-method": :delete } do %>
                     <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
                   <% end %>
-                  <%#= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
-                    <%# <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
                   <% end %>
-                <%# end %>
+                <% end %>
               </div>
               <div class="card-details">
                 <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>

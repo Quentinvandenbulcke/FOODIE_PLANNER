@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:show]
 
-  resources :meal_days, only: :index
+  resources :meal_days, only: [:index, :destroy]
   resources :groceries, only: [:index, :show, :create]
 end

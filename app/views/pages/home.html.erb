@@ -66,6 +66,7 @@
               <p>
                 <%= meal.recipe.name %>
               </p>
+              <%= link_to "delete", meal_day_path(meal), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
             </div>
           <% end %>
         <% end %>

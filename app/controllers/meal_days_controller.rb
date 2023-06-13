@@ -22,6 +22,12 @@ class MealDaysController < ApplicationController
     authorize @meal_day
   end
 
+  def destroy
+    @meal_day = MealDay.find(params[:meal_day_id])
+    @meal_day.destroy
+    authorize @favorite
+  end
+
   private
 
   def meal_day_params
