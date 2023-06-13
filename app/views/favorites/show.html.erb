@@ -7,8 +7,8 @@
   <div class="index-column">
       <% @fav_recipes.each_with_index do |recipe, index| %>
           <div class="recipe-card" data-controller="heart">
-            <%= link_to recipe_path(recipe), class: "remove-link" do %>
-              <%= cl_image_tag recipe.photo.key %>
+            <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
+              <%= cl_image_tag recipe.photo.key, class: "w-100" %>
             <% end %>
             <div class="w-100 justify-elements">
               <div class="card-details-top" data-controller="heart">
