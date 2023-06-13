@@ -16,17 +16,17 @@
     <div class ="navbar-box border-black gone">
       <% if user_signed_in? %>
         <%= link_to favorite_path(current_user.favorites.first) do %>
-          <h4>Favorites</h4>
-        <% end %>]
+          <h6 class="smaller">Favorites</h6>
+        <% end %>
       <% else %>
         <%= link_to user_session_path do %>
-          <h4>Favorites</h4>
-        <% end %>]
+          <h6 class="smaller">Favorites</h6>
+        <% end %>
       <% end %>
     </div>
     <div class ="navbar-box border-black gone">
       <%= link_to meal_days_path do %>
-        <h4>Calendar</h4>
+        <h6 class="smaller">Calendar</h6>
       <% end %>
     </div >
     <button><i class="fa-solid fa-user fa-2xl navbar-box" style="color: #1a1423" data-action="click->pop-up-menu#showTargets"></i></button>
@@ -36,25 +36,47 @@
       <div class="right-side">
         <% if user_signed_in? %>
           <div class="menu-top">
-            <%= current_user.username %>
-            <button><i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i></button>
+            <%= current_user.email %>
+              <button>
+                <i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i>
+              </button>
           </div>
-          <div class="line"></div>
-          <ul>
-            <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "button" %></li>
-            <li><%= link_to "Groceries lists", groceries_path, class: "button" %></li>
-            <li><%= link_to "Favorites", favorite_path(current_user.favorites.first), class: "button" %></li>
-            <li><%= link_to "Get inspired", recipes_path, class: "button" %></li>
-          </ul>
-        <% else %>
-          <button>
-            <i class="fa-sharp fa-solid fa-xmark" data-action="click->pop-up-menu#hideTargets"></i>
-          </button>
-          <ul>
-            <li><%= link_to "Log in", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-          </ul>
-        <% end %>
+          <div class="menu-bottom">
+            <div class="intro">
+              <h6>Hello, <br>
+              <%= @current_user.first_name.capitalize%>.</h6>
+              <div class="subtitle">What would you like to eat today?</div>
+            </div>
+            <ul>
+              <%= link_to favorite_path(current_user.favorites.first) do %>
+                <li>Favorites<div class="arrow-right">&#62;</div></li>
+              <% end %>
+              <%= link_to groceries_path do %>
+                <li>Groceries lists<div class="arrow-right">&#62;</div></li>
+              <% end %>
+              <%= link_to recipes_path do %>
+                <li>Get inspired<div class="arrow-right">&#62;</div></li>
+              <% end %>
+              <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+                <li>Log out<div class="arrow-right">&#62;</div></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <button>
+              <i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i>
+            </button>
+            <div class="menu-bottom">
+              <ul>
+                <%= link_to new_user_session_path do %>
+                  <li>Log in<div class="arrow-right">&#62;</div></li>
+                <% end %>
+                <%= link_to new_user_registration_path do %>
+                  <li>Sign up<div class="arrow-right">&#62;</div></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

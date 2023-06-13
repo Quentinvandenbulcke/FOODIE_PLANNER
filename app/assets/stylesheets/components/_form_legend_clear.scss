@@ -94,3 +94,22 @@ form abbr[title] {
     margin: 15px 20px 0 10px;
   }
 }
+
+
+.form-fav {
+  display: flex;
+  overflow: scroll;
+  .form-fav-recipe {
+    margin: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    a {
+      text-decoration: none;
+      margin: 16px auto;
+    }
+  }
+}

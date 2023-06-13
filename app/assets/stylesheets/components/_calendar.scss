@@ -110,17 +110,12 @@
     margin: 0 12px;
 
     i {
-      font-size: 12px;
-      padding: 4px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
       text-decoration: none;
-      color: rgba(0, 0, 0, 0.568);
       border-radius: 32px;
       transition: 0.2s;
-      background-color: rgba($color: $beige-light, $alpha: 0);
 
       &:hover {
-        background-color: rgba($color: $beige-light, $alpha: 0.5);
+        color: #1A1423;
       }
     }
   }

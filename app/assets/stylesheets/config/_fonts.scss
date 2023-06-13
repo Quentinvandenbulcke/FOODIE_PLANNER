@@ -1,10 +1,14 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
 
 // Define fonts for body and headers
 $body-font: "Inter", "sans-serif";
 $headers-font: "Inter", "sans-serif";
+
 
 body {
   background-color: #FDF8F4;
@@ -38,6 +42,27 @@ h5 {
   font-size: 1.2rem !important;
   font-weight: 700 !important;
   color: #1A1423 !important;
+}
+
+h6 {
+  font-family: "Lora" !important;
+  font-size: 2rem !important;
+}
+
+.first-title {
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  font-family: "Lora" !important;
+  font-size: 2rem !important;
+  color: rgba($color: #1A1423, $alpha: 0.3) !important ;
+  margin-top: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0;
+  text-decoration: none !important;
 }
 
 

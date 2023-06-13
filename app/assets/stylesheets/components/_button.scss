@@ -3,9 +3,9 @@
   background-color: $beige-dark;
   color: #1A1423 ;
   padding: 8px 16px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 40px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 5px 15px 2px rgba(0, 0, 0, 0.2);
   display: inline-block;
   transition: 0.2s;
 
@@ -14,7 +14,7 @@
   }
 }
 
-.force-button, input[type="submit"], input[type="reset"]{
+input[type="submit"], input[type="reset"]{
   background-color: $beige-dark !important;
   color: #1A1423 !important;
   padding: 8px 16px !important;
@@ -36,23 +36,10 @@ button, input[type="submit"], input[type="reset"] {
   background-color: $beige-brun;
   color: $beige-light;
   padding: 8px 16px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);;
-}
-
-.filters {
-  background-color: rgba($color: $beige-dark, $alpha: 0.3);
-  border: $beige-dark 3px solid;
-  color: #1A1423 ;
-  padding: 8px 16px;
-  border-radius: 40px;
-  transition: 0.2s;
-  width: fit-content;
-
-  &:hover {
-    background-color: $beige-dark;
-  }
+  // box-shadow: 2px 5px 15px 2px rgba(0, 0, 0, 0.2);;
 }
 
 .btn-disable {
   visibility: hidden;
 }
+

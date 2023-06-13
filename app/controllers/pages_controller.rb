@@ -7,5 +7,7 @@ class PagesController < ApplicationController
     @top_recipes = @recipes.select { |recipe| recipe.rating == 5 }
     @meal_days = user_signed_in? ? current_user.meal_days : []
     @grocery = Grocery.new
+    @favorites = user_signed_in? ? Recipe.where(favorites: User.last.favorites) : []
+    @meal_day = MealDay.new
   end
 end
