@@ -17,6 +17,8 @@
       <div class="grocery-cell"><h5>Ingredients</h5></div>
       <div class="grocery-cell grocery-center"><h5>Quantity</h5></div>
       <div class="grocery-cell grocery-center"><h5>Measure</h5></div>
+      <div class="grocery-cell grocery-center"><h5>Added Quantity</h5></div>
+      <div class="grocery-cell grocery-center"><h5>Last update</h5></div>
     </div>
 
     <% categories = [] %>
@@ -30,18 +32,38 @@
       <div class="grocery-row category-row">
         <%= category.capitalize %>
       </div>
-      <div class="grocery-row">
+      <div >
         <% @lists.each do |list| %>
-          <% if list.ingredient.category == category %>
-              <div class="grocery-cell cell-ingredient"><%= list.ingredient.name.capitalize %></div>
-              <% if list.quantity > 1000 %>
-                <div class="grocery-cell grocery-center"><%= (list.quantity / 1000).round(2) %></div>
-                <div class="grocery-cell grocery-center">Kilo</div>
-              <% else %>
-                <div class="grocery-cell grocery-center"><%= list.quantity.ceil %></div>
-                <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
-              <% end %>
-          <% end %>
+          <% list_delta = GroceryDelta.find_by(ingredient: list.ingredient, grocery: @grocery) %>
+              <% if list.ingredient.category == category %>
+                <div data-controller="delta" class="grocery-row" >
+                <div class="grocery-cell cell-ingredient"><%= list.ingredient.name.capitalize %></div>
+                  <% if list.quantity > 1000 %>
+                    <div class="grocery-cell grocery-center">
+                      <input type="text"
+                      name="my_field"
+                      data-action="change->delta#changeValue"
+                      data-delta-target="item"
+                      data-update-url="<%= grocery_grocery_delta_path(grocery_id: @grocery, id: list.ingredient ) %>"
+                      value="<%= (list.quantity / 1000).round(2) %>">
+                    </div>
+
+                    <div class="grocery-cell grocery-center">Kilo</div>
+                  <% else %>
+                    <div class="grocery-cell grocery-center">
+                      <input type="text"
+                            name="my_field"
+                            data-action="change->delta#changeValue"
+                            data-delta-target="item"
+                            data-update-url="<%= grocery_grocery_delta_path(grocery_id: @grocery, id: list.ingredient) %>"
+                            value="<%= list.quantity.ceil %>">
+                    </div>
+                    <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
+                  <% end %>
+                  <div class="grocery-cell grocery-center"><em><%= list_delta ? list_delta.quantity : "NA"   %></em></div>
+                  <div class="grocery-cell grocery-center" data-delta-target="update"></div>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
