@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 
 
 // Define fonts for body and headers
@@ -44,7 +45,7 @@ h5 {
 }
 
 h6 {
-  font-family: "DM Serif Display" !important;
+  font-family: "Lora" !important;
   font-size: 2rem !important;
 }
 
@@ -54,7 +55,7 @@ h6 {
 }
 
 .subtitle {
-  font-family: "DM Serif Display" !important;
+  font-family: "Lora" !important;
   font-size: 2rem !important;
   color: rgba($color: #1A1423, $alpha: 0.3) !important ;
   margin-top: 0;
