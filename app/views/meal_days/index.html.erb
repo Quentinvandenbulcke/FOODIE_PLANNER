@@ -7,7 +7,7 @@
       </button>
       <% meals.each do |meal| %>
         <%= link_to recipe_path(meal.recipe) do %>
-          <div class="meal-event">
+          <div class="event">
             <%= cl_image_tag meal.recipe.photo.key, width: 150, height: 100, crop: :fill %>
             <div class="meal-info">
               <p class="pb-1"><%= meal.recipe.name %></p>
