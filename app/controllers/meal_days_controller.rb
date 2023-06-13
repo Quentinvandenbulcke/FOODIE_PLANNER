@@ -15,7 +15,11 @@ class MealDaysController < ApplicationController
     # @meal_day.grocery = Grocery.first
 
     if @meal_day.save!
-      redirect_to meal_days_path
+      if params[:refresh_to].present?
+        redirect_to params[:refresh_to]
+      else
+        redirect_to meal_days_path
+      end
     else
       render "recipes/show", status: :unprocessable_entity
     end
