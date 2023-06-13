@@ -66,6 +66,12 @@
               <p>
                 <%= meal.recipe.name %>
               </p>
+              <div class="meal-event-icons">
+                <i class="fa-solid fa-circle-info"></i>
+                <%= link_to meal_day_path(meal, refresh_to: root_path), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %>
+              </div>
             </div>
           <% end %>
         <% end %>
