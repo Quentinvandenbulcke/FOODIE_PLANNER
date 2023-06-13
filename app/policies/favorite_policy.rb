@@ -6,11 +6,11 @@ class FavoritePolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def index?
     true
   end
-  
-  def show?
+
+  def create?
     true
   end
 
