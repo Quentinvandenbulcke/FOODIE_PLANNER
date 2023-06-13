@@ -31,7 +31,7 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then(data => {
-            this.updateTarget.insertAdjacentHTML("beforeend",`<em>${data.updated_at}</em>`)
+            this.updateTarget.insertAdjacentHTML("beforeend",`<em>${data.updated_at.strftime('%H:%M')}</em>`)
       })
   }
 

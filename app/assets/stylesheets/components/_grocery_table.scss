@@ -41,7 +41,11 @@
   margin-top: 15px;
   padding-left: 5px;
   margin-bottom: 5px;
+  input {
+    width: 20px;
+  }
 }
+
 
 .header-row {
   font-weight: bold;
@@ -65,4 +69,11 @@
 .grocery-quantity {
   padding: 2px 2px;
   margin: 0 15px;
+}
+
+.grocery-cell {
+  input[type="text"] {
+    width: 70px;
+    text-align: center;
+  }
 }
