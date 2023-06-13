@@ -2,6 +2,9 @@
   <div class="index-calendar">
     <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
       <%= date.day %>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
+        <p>+</p>
+      </button>
       <% meals.each do |meal| %>
         <%= link_to recipe_path(meal.recipe) do %>
           <div class="meal-event">
@@ -19,6 +22,22 @@
           </div>
         <% end %>
       <% end %>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="mymodal-<%= date %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Favorite meals</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites, meal_day: @meal_day, date: date} %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
