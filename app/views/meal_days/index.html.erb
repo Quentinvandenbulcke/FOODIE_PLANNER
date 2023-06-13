@@ -10,6 +10,12 @@
               <p class="pb-1"><%= meal.recipe.name %></p>
               <p><%= meal.quantity %> pers</p>
             </div>
+            <div class="meal-event-icons">
+              <i class="fa-solid fa-circle-info"></i>
+              <%= link_to meal_day_path(meal, refresh_to: day_meals_index_path(meal)), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-regular fa-trash-can"></i>
+              <% end %>
+            </div>
           </div>
         <% end %>
       <% end %>

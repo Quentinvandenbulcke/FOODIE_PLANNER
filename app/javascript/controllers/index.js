@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import DeltaController from "./delta_controller"
+application.register("delta", DeltaController)
+
 import HeartController from "./heart_controller"
 application.register("heart", HeartController)
 
@@ -15,6 +18,9 @@ application.register("menu", MenuController)
 
 import PopUpMenuController from "./pop_up_menu_controller"
 application.register("pop-up-menu", PopUpMenuController)
+
+import RemoveMealController from "./remove_meal_controller"
+application.register("remove-meal", RemoveMealController)
 
 import ShowCheckBoxController from "./show_check_box_controller"
 application.register("show-check-box", ShowCheckBoxController)

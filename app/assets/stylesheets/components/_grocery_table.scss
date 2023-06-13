@@ -1,5 +1,5 @@
 .grocery-dates, .grocery-recap, .grocery-table {
-  width: 60%;
+  width: 70%;
   padding: 10px 25px;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -21,7 +21,7 @@
 .grocery-row {
   display: flex;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   grid-gap: 4px;
 }
 
@@ -41,8 +41,39 @@
   margin-top: 15px;
   padding-left: 5px;
   margin-bottom: 5px;
+  input {
+    width: 20px;
+  }
 }
+
 
 .header-row {
   font-weight: bold;
+}
+
+.btn-delta {
+  background-color: $beige-dark;
+  color: #1A1423 ;
+  padding: 2px 2px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  transition: 0.2s;
+  margin: 0 5px;
+  &:hover {
+    background-color: $beige-light;
+  }
+}
+
+.grocery-quantity {
+  padding: 2px 2px;
+  margin: 0 15px;
+}
+
+.grocery-cell {
+  input[type="text"] {
+    width: 70px;
+    text-align: center;
+  }
 }
