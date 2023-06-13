@@ -15,7 +15,7 @@
   <div class="column-3">
     <div class ="navbar-box border-black gone">
       <% if user_signed_in? %>
-        <%= link_to favorite_path(current_user.favorites.first) do %>
+        <%= link_to favorites_path do %>
           <h6 class="smaller">Favorites</h6>
         <% end %>
       <% else %>
@@ -48,7 +48,7 @@
               <div class="subtitle">What would you like to eat today?</div>
             </div>
             <ul>
-              <%= link_to favorite_path(current_user.favorites.first) do %>
+              <%= link_to favorites_path do %>
                 <li>Favorites<div class="arrow-right">&#62;</div></li>
               <% end %>
               <%= link_to groceries_path do %>
