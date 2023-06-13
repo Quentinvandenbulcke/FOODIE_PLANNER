@@ -3,6 +3,7 @@ class MealDaysController < ApplicationController
     @meal_days = policy_scope(MealDay)
     @meal_days = current_user.meal_days
     @grocery = Grocery.new
+    @favorites = user_signed_in? ? Recipe.where(favorites: current_user.favorites) : []
   end
 
   def create
@@ -15,11 +16,11 @@ class MealDaysController < ApplicationController
     # @meal_day.grocery = Grocery.first
 
     if @meal_day.save!
-      if params[:refresh_to].present?
-        redirect_to params[:refresh_to]
-      else
-        redirect_to meal_days_path
-      end
+      # if params[:refresh_to].present?
+      #   redirect_to params[:refresh_to]
+      # else
+      redirect_to meal_days_path
+      # end
     else
       render "recipes/show", status: :unprocessable_entity
     end

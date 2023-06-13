@@ -15,18 +15,22 @@
               <div class="card-details-top">
                 <h2><%= recipe.name %></h2>
                 <% if recipe.favorites.where(user: current_user).empty? %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
-                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                    <%= render partial: "favorites/icon_empty" %>
+                    <%# <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i> %>
                   <% end %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete }, class: "hide-icon" do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                    <%= render partial: "favorites/icon_fill" %>
+                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i> %>
                   <% end %>
                 <% else %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                    <%= render partial: "favorites/icon_fill" %>
+                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i> %>
                   <% end %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
-                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
+                    <%= render partial: "favorites/icon_empty" %>
+                    <%# <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i> %>
                   <% end %>
                 <% end %>
               </div>
@@ -59,13 +63,14 @@
         </div>
         <% meals.each do |meal| %>
           <%= link_to recipe_path(meal.recipe) do %>
-            <div class="home-event">
+            <div class="event">
               <div>
                 <%= cl_image_tag meal.recipe.photo.key %>
               </div>
-              <p>
-                <%= meal.recipe.name %>
-              </p>
+              <div class="meal-info">
+                <p class="pb-1"><%= meal.recipe.name %></p>
+                <p><%= meal.quantity %> pers</p>
+              </div>
               <div class="meal-event-icons">
                 <i class="fa-solid fa-circle-info"></i>
                 <%= link_to meal_day_path(meal, refresh_to: root_path), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
