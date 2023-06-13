@@ -3,12 +3,12 @@ class FavoritesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    @favorites = policy_scope(Favorite)
     @favorites = current_user.favorites
     @fav_recipes = []
     @favorites.each do |favorite|
       @fav_recipes << Recipe.find(favorite.recipe_id)
     end
-    authorize @favorites
   end
 
   def create
@@ -16,15 +16,6 @@ class FavoritesController < ApplicationController
     authorize @favorite
     @favorite.save!
   end
-
-  # def show
-  #   @favorites = current_user.favorites
-  #   @fav_recipes = []
-  #   @favorites.each do |favorite|
-  #     @fav_recipes << Recipe.find(favorite.recipe_id)
-  #   end
-  #   authorize @favorites
-  # end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
