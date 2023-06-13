@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_075424) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_134056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_075424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groceries_on_user_id"
+  end
+
+  create_table "grocery_deltas", force: :cascade do |t|
+    t.bigint "ingredient_id", null: false
+    t.bigint "grocery_id", null: false
+    t.decimal "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grocery_id"], name: "index_grocery_deltas_on_grocery_id"
+    t.index ["ingredient_id"], name: "index_grocery_deltas_on_ingredient_id"
   end
 
   create_table "grocery_lists", force: :cascade do |t|
@@ -123,6 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_075424) do
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
   add_foreign_key "groceries", "users"
+  add_foreign_key "grocery_deltas", "groceries"
+  add_foreign_key "grocery_deltas", "ingredients"
   add_foreign_key "grocery_lists", "groceries"
   add_foreign_key "grocery_lists", "ingredients"
   add_foreign_key "grocery_lists", "meal_days"

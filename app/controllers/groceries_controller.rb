@@ -9,6 +9,8 @@ class GroceriesController < ApplicationController
     @grocery = Grocery.find(params[:id])
     @lists = []
     @grocery.grocery_lists.each do |list|
+      @grocery_delta = GroceryDelta.find_by(ingredient: list.ingredient.id, grocery_id: @grocery)
+      list[:quantity] += @grocery_delta.quantity if @grocery_delta
       existing_list = @lists.find { |l| l.ingredient.name == list.ingredient.name }
       if @lists.any?(existing_list)
         existing_list.quantity += list[:quantity]
@@ -21,11 +23,19 @@ class GroceriesController < ApplicationController
     authorize @grocery
   end
 
+
   def create
     meal_days_id = MealDay.where(date: params[:grocery][:meal_days]).pluck(:id)
     populate_grocery_items(meal_days_id)
     authorize @grocery
     redirect_to grocery_path(@grocery)
+  end
+
+  def destroy
+    @grocery = Grocery.find(params[:id])
+    @grocery.destroy
+    redirect_to groceries_path, status: :see_other
+    authorize @grocery
   end
 
   private

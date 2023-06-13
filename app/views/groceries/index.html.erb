@@ -16,6 +16,7 @@
           </strong>
           -
           <%= link_to "OPEN", grocery_path(grocery), class:"text-decoration-none " %>
+          <%= link_to "Delete", grocery_path(grocery), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
         </p>
     <% end %>
   </div>

@@ -1,6 +1,7 @@
 class Ingredient < ApplicationRecord
   belongs_to :recipe
   has_many :grocery_lists
+  has_many :grocery_deltas, dependent: :destroy
 
   validates :name, presence: true
   validates :unit, presence: true

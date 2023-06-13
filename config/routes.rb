@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :favorites, only: [:show]
 
   resources :meal_days, only: [:index, :destroy]
-  resources :groceries, only: [:index, :show, :create]
-end
+  resources :groceries, only: [:index, :show, :create, :destroy] do
+    resources :grocery_deltas, only: [:update]
+  end
