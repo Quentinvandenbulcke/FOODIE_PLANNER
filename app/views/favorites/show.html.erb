@@ -3,7 +3,6 @@
     <h6 class="first-title">Favorite recipes</h6>
     <p class="subtitle">Browse through your most liked dishes</p>
   </div>
-
   <div class="index-column">
       <% @fav_recipes.each_with_index do |recipe, index| %>
           <div class="recipe-card" data-controller="heart">
@@ -25,6 +24,9 @@
                 <% else %>
                   <%= link_to recipe_favorite_path(recipe, @favorites[index]), data: { "turbo-method": :delete } do %>
                     <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                  <% end %>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
                   <% end %>
                 <% end %>
               </div>
