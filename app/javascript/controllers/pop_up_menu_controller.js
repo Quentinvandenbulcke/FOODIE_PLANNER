@@ -5,27 +5,27 @@ export default class extends Controller {
   static targets = [ "hideable" ]
 
   connect() {
-    console.log("hello from popup controller")
+    console.log("hello from popup controller");
   }
 
-  showTargets() {
+  showTargets(event) {
     this.hideableTargets.forEach(el => {
-      el.hidden = false
+      el.hidden = false;
     });
     this.element.parentElement.classList.add("body-freeze")
+    // console.log(event.currentTarget.parentElement.dataset.date)
   }
 
   hideTargets() {
     this.hideableTargets.forEach(el => {
       el.hidden = true
     });
-    this.element.parentElement.classList.remove("body-freeze")
-
+    this.element.parentElement.classList.remove("body-freeze");
   }
 
   toggleTargets() {
     this.hideableTargets.forEach((el) => {
-      el.hidden = !el.hidden
+      el.hidden = !el.hidden;
     });
   }
 }

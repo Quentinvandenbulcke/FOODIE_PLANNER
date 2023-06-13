@@ -1,7 +1,8 @@
 <div class="banner-area">
   <h6 class="headline">Welcome to your meal planner</h6>
 </div>
-<div class="containerrr" data-controller="pop-up-menu">
+
+<div class="containerrr">
     <div class="title-home">
       <h6>Trending Recipes</h6>
       <p class="subtitle mb-0">Quickly access our most popular recipes</p>
@@ -51,16 +52,9 @@
       <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
         <div class="day-info">
           <%= date.day %>
-          <i data-action="click->pop-up-menu#showTargets" class="fa-solid fa-plus button"></i>
-          <div data-pop-up-menu-target="hideable" hidden>
-            <div class="darken-screen"></div>
-            <div class="add-recipe">
-              <button>
-                <i class="fa-sharp fa-solid fa-xmark fa-xl" data-action="click->pop-up-menu#hideTargets"></i>
-              </button>
-              <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites, meal_day: @meal_day } %>
-            </div>
-          </div>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
+            <i class="fa-solid fa-plus button"></i>
+          </button>
         </div>
         <% meals.each do |meal| %>
           <%= link_to recipe_path(meal.recipe) do %>
@@ -74,6 +68,24 @@
             </div>
           <% end %>
         <% end %>
+
+        <!-- Modal -->
+        <div class="modal fade" id="mymodal-<%= date %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Choose a meal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites, meal_day: @meal_day, date: date} %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
 </div>
+
+
+<%# Modal meal to calendar %>
