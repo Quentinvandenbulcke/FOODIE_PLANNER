@@ -60,6 +60,19 @@
     }
   }
 
+  .meal-event-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 8px;
+    i {
+      color: rgba(0, 0, 0, 0.4);
+      transition: 0.25s;
+      &:hover {
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
 }
 
 .cal-hide {
