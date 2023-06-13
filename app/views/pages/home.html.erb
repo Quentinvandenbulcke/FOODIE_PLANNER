@@ -1,10 +1,10 @@
 <div class="banner-area">
-  <h6 class="headline">Welcome to your meal planner</h6>
+  <h1 class="headline">Welcome to your <br>meal planner</h1>
 </div>
 <div class="containerrr" data-controller="pop-up-menu">
-    <div class="title-home">
-      <h6>Trending Recipes</h6>
-      <p class="subtitle mb-0">Quickly access our most popular recipes</p>
+    <div class="line-above">
+      <h6 class="first-title">Trending Recipes</h6>
+      <p class="subtitle">Quickly access our most popular recipes</p>
     </div>
     <div class="scroll-box snap">
       <% @top_recipes.each do |recipe| %>
@@ -42,7 +42,9 @@
       <% end %>
     </div>
     <div class="see-more">
-      <h5><%= link_to "See more recipes", recipes_path %>&ensp;</h5><i class="fa-sharp fa-solid fa-chevron-right fa-xl ml-5"></i>
+      <%= link_to recipes_path do %>
+        <h5>See more recipes</h5><div class="arrow-right">&#62;</div>
+      <% end %>
     </div>
     <div class="title-home">
       <h6>Your Calendar</h6>
@@ -53,7 +55,7 @@
 
         <%= date.day %>
         <button>
-          <i class="fa-solid fa-plus button" data-action="click->pop-up-menu#showTargets"></i>
+          <i class="fa-sharp fa-solid fa-plus fa-xl" data-action="click->pop-up-menu#showTargets"></i>
         </button>
         </div>
         <% meals.each do |meal| %>

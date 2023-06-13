@@ -48,10 +48,20 @@ h6 {
   font-size: 2rem !important;
 }
 
-.subtitle{
+.first-title {
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+
+.subtitle {
   font-family: "DM Serif Display" !important;
   font-size: 2rem !important;
   color: rgba($color: #1A1423, $alpha: 0.3) !important ;
+  margin-top: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0;
+  text-decoration: none !important;
 }
 
 

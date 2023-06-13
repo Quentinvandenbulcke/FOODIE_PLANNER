@@ -9,13 +9,13 @@
 }
 
 .headline {
-  text-align: center;
+  text-align: left;
   position: relative;
-  font-size: 50px !important;
-  top: 50%;
+  font-size: 40px !important;
+  top: 15%;
+  left: 15%;
   color: white !important;
   text-shadow: 2px 5px 20px grey !important;
   letter-spacing: 2px !important;
+  text-transform: uppercase;
 }
-
-

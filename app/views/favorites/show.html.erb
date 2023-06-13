@@ -1,6 +1,7 @@
-<div class="container">
-  <div class="line">
-    <h3>Here are your favorite recipes</h3>
+<div class="containerrr">
+  <div class="line-above">
+    <h6 class="first-title">Favorite recipes</h6>
+    <p class="subtitle">Browse through your most liked dishes</p>
   </div>
 
   <div class="index-column">
@@ -23,12 +24,12 @@
                   <% end %>
                 <% else %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
+                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i>
                   <% end %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
-                    <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
+                  <%#= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                    <%# <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i>
                   <% end %>
-                <% end %>
+                <%# end %>
               </div>
               <div class="card-details">
                 <p><i class="fa-solid fa-clock">&nbsp;</i><%= fav.recipe.prep_time %>min</p>
