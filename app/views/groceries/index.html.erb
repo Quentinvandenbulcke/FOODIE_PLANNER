@@ -1,23 +1,29 @@
-<div class="container">
+<div class="containerrr">
+  <div class="line-above grocery-title">
+    <h6 class="first-title">Your grocery lists</h6>
+  </div>
   <div class="grocery-recap">
-    <% @groceries.each do |grocery| %>
+    <ul>
+      <% @groceries.each do |grocery| %>
         <% filtered_dates = [] %>
-        <% grocery.grocery_lists.each do |element| %>
-          <% date_str = element.meal_day.date.strftime("%Y-%m-%d") %>
-          <% if filtered_dates.none? { |date| date == date_str } %>
-            <% filtered_dates << date_str %>
-          <% end %>
-        <% end %>
-        <p>
-          Your groceries for
-          <strong>
-            <%= filtered_dates[0..-2].join(', ') %>
-            <%="and #{filtered_dates[-1]}"%>
-          </strong>
-          -
-          <%= link_to "OPEN", grocery_path(grocery), class:"text-decoration-none " %>
-          <%= link_to "Delete", grocery_path(grocery), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-        </p>
-    <% end %>
+            <% grocery.grocery_lists.each do |element| %>
+              <% date_str = element.meal_day.date.strftime("%A %d/%m") %>
+              <% if filtered_dates.none? { |date| date == date_str } %>
+                <% filtered_dates << date_str %>
+              <% end %>
+            <% end %>
+              <li class="groceries-list-display">
+                 <div class="group">
+                  <p>Your groceries for <%= filtered_dates[0..-1].join(', ')%> </p>
+                    <%= link_to grocery_path(grocery), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                    <% end %>
+                  </div>
+                    <%= link_to grocery_path(grocery), class:"text-decoration-none " do %>
+                      <div class="arrow-right">&#62;</div>
+                    <% end %>
+              </li>
+      <% end %>
+    </ul>
   </div>
 </div>

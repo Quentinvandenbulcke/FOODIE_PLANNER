@@ -1,6 +1,8 @@
 <div class="container">
-  <div class="grocery-recap my-3">
-    <h5><%= link_to "<-- Back to groceries list", groceries_path, class: "button" %></h5>
+  <div class="grocery-recap">
+    <%= link_to groceries_path do %>
+      <h5>&#60; Back to groceries list</h5>
+    <% end %>
   </div>
   <div class="grocery-recap">
     <p></p>

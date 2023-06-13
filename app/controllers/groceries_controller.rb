@@ -3,6 +3,7 @@ require 'bigdecimal'
 class GroceriesController < ApplicationController
   def index
     @groceries = policy_scope(Grocery)
+    # @recipes = MealDay.all
   end
 
   def show
