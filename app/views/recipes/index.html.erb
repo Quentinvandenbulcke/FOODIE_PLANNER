@@ -7,11 +7,11 @@
     </ul>
   </div>
   <% if params[:query].present? %>
-    <div class="line">
+    <div class="line-above less-margin">
       <% if @recipes.size > 0 %>
-        <h3>Here are the results for <%= params[:query] %></h3>
+        <h6 class="subtitle">Search results for '<%= params[:query] %>'</h6>
       <% else %>
-        <h3>No results for <%= params[:query] %></h3>
+        <h6 class="subtitle">Sorry, no results for '<%= params[:query] %>'</h6>
       <% end %>
     </div>
   <% end %>
