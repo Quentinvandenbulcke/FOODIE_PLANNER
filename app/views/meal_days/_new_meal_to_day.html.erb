@@ -1,11 +1,10 @@
 <div class="new-form form-fav">
   <% favorites.each do |favorite| %>
     <div class="form-fav-recipe">
-      <div class="recipe-card">
-        <%= cl_image_tag favorite.photo.key %>
-        <%= favorite.name %>
-      </div>
-      <%= button_to "add this recipe", {:controller => "meal_days", :action => "create", refresh_to: root_path,meal_day: { date: date, quantity: '2' }, recipe_id: favorite.id }, :method=>:post, class: "button modal-button" %>
+      <%= cl_image_tag favorite.photo.key  %>
+      <div class="right-side-info">
+        <p><%= favorite.name %></p>
+      <%= button_to "+", {:controller => "meal_days", :action => "create", refresh_to: root_path,meal_day: { date: date, quantity: '2' }, recipe_id: favorite.id }, :method=>:post, class: " modal-button" %>
     </div>
   <% end %>
 </div>

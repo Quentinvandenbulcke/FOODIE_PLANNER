@@ -54,7 +54,7 @@
         <div class="day-info">
           <%= date.day %>
           <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
-            <i class="fa-solid fa-plus button"></i>
+            <p>+</p>
           </button>
         </div>
         <% meals.each do |meal| %>
@@ -81,7 +81,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Choose a meal</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Favorite meals</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
