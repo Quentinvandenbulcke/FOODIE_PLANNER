@@ -19,5 +19,8 @@ application.register("menu", MenuController)
 import PopUpMenuController from "./pop_up_menu_controller"
 application.register("pop-up-menu", PopUpMenuController)
 
+import ReadonlyController from "./readonly_controller"
+application.register("readonly", ReadonlyController)
+
 import ShowCheckBoxController from "./show_check_box_controller"
 application.register("show-check-box", ShowCheckBoxController)

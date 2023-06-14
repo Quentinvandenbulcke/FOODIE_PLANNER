@@ -34,7 +34,7 @@
       <div class="grocery-row category-row">
         <%= category.capitalize %>
       </div>
-      <div >
+      <div data-controller="readonly">
         <% @lists.each do |list| %>
           <% list_delta = GroceryDelta.find_by(ingredient: list.ingredient, grocery: @grocery) %>
           <% if list.ingredient.category == category %>
@@ -44,20 +44,26 @@
                 <div class="grocery-cell grocery-center">
                   <input type="text"
                   name="my_field"
+                  class="readonly"
                   data-action="change->delta#changeValue"
                   data-delta-target="item"
                   data-update-url="<%= grocery_grocery_delta_path(grocery_id: @grocery, id: list.ingredient ) %>"
-                  value="<%= (list.quantity / 1000).round(1) %>">
+                  value="<%= (list.quantity / 1000).round(1) %>"
+                  data-readonly-target="input"
+                  readonly>
                 </div>
                 <div class="grocery-cell grocery-center">Kilo</div>
               <% else %>
                 <div class="grocery-cell grocery-center">
                   <input type="text"
                       name="my_field"
+                      class="readonly"
                       data-action="change->delta#changeValue"
                       data-delta-target="item"
                       data-update-url="<%= grocery_grocery_delta_path(grocery_id: @grocery, id: list.ingredient) %>"
-                      value="<%= list.quantity.ceil %>">
+                      value="<%= list.quantity.ceil %>"
+                      data-readonly-target="input"
+                      readonly>
                 </div>
                 <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
               <% end %>
@@ -78,7 +84,7 @@
                 <% end %>
               </div>
               <div>
-                <%= link_to "edit" %>
+                <button data-action="click->readonly#toggleEditable" data-readonly-target="button">Edit</button>
                 <%= link_to "delete", grocery_list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
                 <%= link_to "refresh", refresh_grocery_list_path(list), data: {turbo_method: :patch} %>
               </div>
