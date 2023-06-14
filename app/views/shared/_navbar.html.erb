@@ -44,12 +44,15 @@
           <div class="menu-bottom">
             <div class="intro">
               <h6>Hello, <br>
-              <%= @current_user.first_name.capitalize%>.</h6>
+              <%= current_user.first_name.capitalize%>.</h6>
               <div class="subtitle">What would you like to eat today?</div>
             </div>
             <ul>
               <%= link_to favorites_path do %>
                 <li>Favorite recipes<div class="arrow-right">&#62;</div></li>
+              <% end %>
+              <%= link_to new_recipe_path do %>
+                <li>Create A Recipe<div class="arrow-right">&#62;</div></li>
               <% end %>
               <%= link_to groceries_path do %>
                 <li>Grocery lists<div class="arrow-right">&#62;</div></li>

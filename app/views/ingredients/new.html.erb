@@ -1,0 +1,74 @@
+<% content_for :meta_title, "#{@recipe.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @recipe.description %>
+<% content_for :meta_image, cl_image_path(@recipe.photo.key) if @recipe.photo.attached? %>
+
+<div class="container" data-controller="pop-up-menu">
+  <div class="recipe-show">
+    <div class="show-column">
+
+        <div class="one">
+          <h1><%= @recipe.name %></h1>
+          <div class="line"></div>
+          <div class="cooking-details">
+            <div class="one-line"><h3>prep &nbsp;</h3><h2><%= @recipe.prep_time %>min</h2></div>
+            <%# <div class="one-line"><p>Rating: <%= @recipe.rating/5</p></div>  %>
+
+            <div class="one-line px-3">
+              <h3>serves &nbsp;</h3>
+              <h2><%= @recipe.servings %></h2>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="two">
+         <%= cl_image_tag @recipe.photo.key %>
+        </div>
+
+        <div class="three">
+          <h2>What ingredients are in your recipe ?</h2>
+          <div class="line"></div>
+          <% @recipe.ingredients.each do |ingredient| %>
+            <div class="ingredients one-line">
+              <h4><%= ingredient.name.capitalize %>&nbsp;</h4>
+              <% if ingredient.quantity < 1000  %>
+                <h5><%= ingredient.quantity.ceil %>&nbsp;</h5>
+                <h5><%= ingredient.unit %></h5>
+              <% else %>
+                <h5><%= (ingredient.quantity / 1000).round(2) %>&nbsp;</h5>
+                <h5>Kg</h5>
+              <% end %>
+
+            </div>
+          <% end %>
+          <div class="cta-form-ingredient">
+            <%= simple_form_for [@recipe, @ingredient], class: "ingredient-form" do |f| %>
+              <div class="ingrendient-inputs">
+                <div class="ingrendient-input">
+                  <%= f.input :name, label: "Ingredient", input_html: {class: 'form-input', maxlength: 15, size: 40}, label_html: {class: 'form-label'} %>
+                </div>
+                <div class="ingrendient-input">
+                  <%= f.input :category, label: "Food family", input_html: {class: 'form-input', maxlength: 35, size: 60}, label_html: {class: 'form-label'} %>
+                </div>
+                <div class="ingrendient-input">
+                  <%= f.input :quantity, input_html: { min: '1', max: '999', class: 'form-input'}, default: '1', label_html: {class: 'form-label'} %>
+                </div>
+                <div class="ingrendient-input">
+                  <%= f.input :unit, label: "Unit", input_html: { class: 'form-input' }, label_html: { class: 'form-label' } %>
+                </div>
+              </div>
+              <div class="form-buttons">
+                <%= f.submit class:"button", value: "Add ingredient" %>
+                <%= link_to "All Done!", recipe_path(@recipe), class: "button" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="four">
+          <h2>Instructions</h2>
+          <div class="line"></div>
+          <p><%= @recipe.description %></p>
+        </div>
+    </div>
+  </div>
+</div>
