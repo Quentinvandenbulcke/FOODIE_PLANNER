@@ -79,8 +79,8 @@
               </div>
               <div>
                 <%= link_to "edit" %>
-                <%= link_to "delete", restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-                <%= link_to "refresh" %>
+                <%= link_to "delete", grocery_list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                <%= link_to "refresh", refresh_grocery_list_path(list), data: {turbo_method: :patch} %>
               </div>
             </div>
           <% end %>
