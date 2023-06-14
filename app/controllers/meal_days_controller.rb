@@ -7,20 +7,12 @@ class MealDaysController < ApplicationController
   end
 
   def create
-    # raise
     @recipe = Recipe.find(params[:recipe_id])
     @meal_day = MealDay.new(meal_day_params)
-    # @meal_day.save
     @meal_day.recipe = @recipe
     @meal_day.user = current_user
-    # @meal_day.grocery = Grocery.first
-
     if @meal_day.save!
-      # if params[:refresh_to].present?
-      #   redirect_to params[:refresh_to]
-      # else
       redirect_to meal_days_path
-      # end
     else
       render "recipes/show", status: :unprocessable_entity
     end
@@ -29,7 +21,12 @@ class MealDaysController < ApplicationController
 
   def destroy
     @meal_day = MealDay.find(params[:id])
+    # raise
+    grocery = @meal_day.grocery_lists.map { |list| list.grocery }.uniq.first
     @meal_day.destroy
+    unless grocery.nil?
+      grocery.destroy if grocery.grocery_lists.empty?
+    end
     authorize @meal_day
     redirect_to params[:refresh_to]
   end
@@ -42,4 +39,5 @@ class MealDaysController < ApplicationController
     attributes[:quantity] = attributes[:quantity].to_i
     attributes
   end
+
 end

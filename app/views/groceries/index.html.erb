@@ -13,13 +13,15 @@
               <% end %>
             <% end %>
               <li class="groceries-list-display">
-                 <div class="group">
-                  <p>Your groceries for <%= filtered_dates[0..-1].join(', ')%> </p>
+                  <div class="group">
+                    <%= link_to grocery_path(grocery), class:"text-decoration-none" do %>
+                      <p>List for <%= filtered_dates[0..-1].join(', ')%> </p>
+                    <% end %>
                     <%= link_to grocery_path(grocery), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
                       <i class="fa-regular fa-trash-can"></i>
                     <% end %>
                   </div>
-                    <%= link_to grocery_path(grocery), class:"text-decoration-none " do %>
+                    <%= link_to grocery_path(grocery), class:"text-decoration-none" do %>
                       <div class="arrow-right">&#62;</div>
                     <% end %>
               </li>

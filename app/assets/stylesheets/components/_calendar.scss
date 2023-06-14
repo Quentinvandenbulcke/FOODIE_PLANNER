@@ -1,4 +1,5 @@
 .simple-calendar {
+
   background-color: $beige-light;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 24px;
@@ -74,6 +75,10 @@
       }
     }
   }
+
+  td {
+    padding-top: 0;
+  }
 }
 
 .cal-hide {
@@ -93,20 +98,21 @@
   a {
     text-decoration: none;
   }
+}
 
-  .day-info {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 12px 10px 0;
+.day-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 10px 0;
 
-    i {
-      text-decoration: none;
-      border-radius: 32px;
-      transition: 0.2s;
+  i {
+    text-decoration: none;
+    border-radius: 32px;
+    transition: 0.2s;
 
-      &:hover {
-        color: #1A1423;
-      }
+    &:hover {
+      color: #1A1423;
     }
   }
 }
@@ -147,4 +153,10 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 20px;
+}
+
+.add-to-calendar {
+  font-size: 24px !important;
+  padding-bottom: 4px;
+  margin-bottom: 0;
 }

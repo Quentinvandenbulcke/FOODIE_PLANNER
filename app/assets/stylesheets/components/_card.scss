@@ -21,8 +21,9 @@
 .card-details-top {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin: 10px 20px 10px 20px;
-  align-items: center;
+  
   h2 {
       text-align: start;
   }

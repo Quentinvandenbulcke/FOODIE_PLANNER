@@ -1,0 +1,29 @@
+<div class="form-container">
+
+  <div class="cta-form">
+    <h2>Let's create a nice recipe!</h2>
+    <p>Show us your best recipe, inspire other hungry people! Do not hesitate to add spicy details!</p>
+  </div>
+  <%# <div class="cta-form"> %>
+    <%# <h2>What ingredients are in your recipe ?</h2> %>
+    <%#= simple_form_for [@recipe, @ingredient], class: "recipe-form" do |f| %>
+      <%#= f.input :name, label: "Ingredient", input_html: {class: 'form-input'}, wrapper_html: {class: 'form-label'} %>
+      <%#= f.input :category, label: "Food family", input_html: {class: 'form-input'}, wrapper_html: {class: 'form-label'} %>
+      <%#= f.input :quantity, label: "Servings", input_html: { min: '1', max: '999'}, default: '1', input_html: {class: 'form-input'}, wrapper_html: {class: 'form-label'} %>
+      <%#= f.input :unit, label: "Unit", input_html: {class: 'form-input'}, wrapper_html: {class: 'form-label'} %>
+      <%#= f.submit class:"button", value: "Add ingredient recipe"%>
+    <%# end %>
+  <%# </div> %>
+  <div class="new-form-recipe">
+    <%= simple_form_for [@recipe], class: "recipe-form" do |f| %>
+      <%= f.input :name, label: "Recipe Title", input_html: {class: 'form-input', maxlength: 40, size: 80}, label_html: {class: 'form-label'} %>
+      <%= f.input :category, label: "Cuisine Type", input_html: {class: 'form-input', maxlength: 40, size: 80}, label_html: {class: 'form-label'} %>
+      <%= f.input :rating, input_html: { min: '1', max: '5' }, default: '5', input_html: {class: 'form-input'}, label_html: {class: 'form-label'} %>
+      <%= f.input :prep_time, label: "preparation time (in mins)", input_html: { min: '1', max: '999' }, default: '30', input_html: {class: 'form-input'}, label_html: {class: 'form-label'} %>
+      <%= f.input :servings, label: "Servings", input_html: { min: '1', max: '99'}, default: '2', input_html: {class: 'form-input'}, label_html: {class: 'form-label'} %>
+      <%= f.input :description, label: "Instructions", input_html: {class: 'form-input', maxlength: 400, size: 600}, label_html: {class: 'form-label'} %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit class:"button", value: "Create this recipe"%>
+    <% end %>
+  </div>
+</div>

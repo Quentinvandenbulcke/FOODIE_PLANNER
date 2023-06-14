@@ -11,26 +11,22 @@
         <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
             <%= cl_image_tag recipe.photo.key %>
-            <div class="w-100 justify-elements" data-controller="heart" >
+            <div class="w-100 display-space" data-controller="heart" >
               <div class="card-details-top">
                 <h2><%= recipe.name %></h2>
                 <% if recipe.favorites.where(user: current_user).empty? %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
                     <%= render partial: "favorites/icon_empty" %>
-                    <%# <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i> %>
                   <% end %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete }, class: "hide-icon" do %>
                     <%= render partial: "favorites/icon_fill" %>
-                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i> %>
                   <% end %>
                 <% else %>
                   <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
                     <%= render partial: "favorites/icon_fill" %>
-                    <%# <i class="fa-solid fa-heart heart-fill" data-action="click->heart#unfavorite" data-heart-target="iconfill"></i> %>
                   <% end %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
                     <%= render partial: "favorites/icon_empty" %>
-                    <%# <i class="fa-regular fa-heart heart-empty" data-action="click->heart#favorite" data-heart-target="iconempty"></i> %>
                   <% end %>
                 <% end %>
               </div>
@@ -58,7 +54,7 @@
         <div class="day-info">
           <%= date.day %>
           <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
-            <p>+</p>
+            <p class="add-to-calendar">+</p>
           </button>
         </div>
         <% meals.each do |meal| %>
@@ -69,7 +65,7 @@
               </div>
               <div class="meal-info">
                 <p class="pb-1"><%= meal.recipe.name %></p>
-                <p><%= meal.quantity %> pers</p>
+                <p><%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
               </div>
               <div class="meal-event-icons">
                 <i class="fa-solid fa-circle-info"></i>

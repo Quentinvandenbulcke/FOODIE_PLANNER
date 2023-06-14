@@ -1,48 +1,48 @@
+<div class="back-to">
+  <%= link_to groceries_path do %>
+    <h5>&#60; Back to your lists</h5>
+  <% end %>
+</div>
 <div class="container">
-  <div class="grocery-recap">
-    <%= link_to groceries_path do %>
-      <h5>&#60; Back to groceries list</h5>
-    <% end %>
-  </div>
-  <div class="grocery-recap">
-    <p></p>
-    <h2>You ask the groceries list for :</h2>
-    <div class="line"></div>
-    <ul>
-      <% @meals.each do |meal| %>
-        <li><strong><%= meal.date.strftime("%Y-%m-%d") %> </strong>- <%= meal.recipe.name %> (<%= meal.quantity %>pers)</li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="grocery-table">
-    <div class="grocery-row header-row">
-      <div class="grocery-cell"><h5>Ingredients</h5></div>
-      <div class="grocery-cell grocery-center"><h5>My needs</h5></div>
-      <div class="grocery-cell grocery-center"><h5>Measure</h5></div>
-      <div class="grocery-cell grocery-center"><h5>Grocery list</h5></div>
-      <div class="grocery-cell grocery-center"><h5>Last update</h5></div>
+  <div class="left-right-page">
+    <div class="top-part">
+      <h6 class="first-title mb-4">Your are shopping for</h6>
+          <div class="recipes-recap">
+            <ul>
+              <% @meals.each do |meal| %>
+                <li><strong><%= meal.recipe.name %></strong> -
+                <%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group"></i> - <%= meal.date.strftime("%A %d/%m") %></li>
+              <% end %>
+            </ul>
+          </div>
     </div>
-
-    <% categories = [] %>
-    <% @meals.each do |meal| %>
-      <% meal.recipe.ingredients.map do |ingredient| %>
-        <% categories << ingredient.category %>
-      <% end %>
-    <% end %>
-    <% categories = categories.uniq %>
-    <% categories.each do |category| %>
-      <div class="grocery-row category-row">
-        <%= category.capitalize %>
+    <div class="grocery-table">
+      <div class="grocery-row header-row">
+        <div class="grocery-cell first-title"><h6>Ingredients</h6></div>
+        <div class="grocery-cell grocery-center"></div>
+        <%# <div class="grocery-cell grocery-center"><h5>Last update</h5></div> %>
       </div>
-      <div data-controller="readonly">
-        <% @lists.each do |list| %>
-          <% list_delta = GroceryDelta.find_by(ingredient: list.ingredient, grocery: @grocery) %>
-          <% if list.ingredient.category == category %>
-            <div data-controller="delta" class="grocery-row " >
-              <div class="grocery-cell cell-ingredient"><%= list.ingredient.name.capitalize %></div>
-              <% if list.quantity > 600 %>
-                <div class="grocery-cell grocery-center">
-                  <input type="text"
+
+      <% categories = [] %>
+      <% @meals.each do |meal| %>
+        <% meal.recipe.ingredients.map do |ingredient| %>
+          <% categories << ingredient.category %>
+        <% end %>
+      <% end %>
+      <% categories = categories.uniq %>
+      <% categories.each do |category| %>
+        <div class="grocery-row category-row">
+          <%= category.capitalize %>
+        </div>
+        <div data-controller="readonly">
+          <% @lists.each do |list| %>
+            <% list_delta = GroceryDelta.find_by(ingredient: list.ingredient, grocery: @grocery) %>
+            <% if list.ingredient.category == category %>
+              <div data-controller="delta" class="grocery-row " >
+                <div class="grocery-cell cell-ingredient"><%= list.ingredient.name.capitalize %></div>
+                <% if list.quantity > 600 %>
+                  <div class="grocery-cell grocery-center">
+                    <input type="text"
                   name="my_field"
                   class="readonly"
                   data-action="change->delta#changeValue"
@@ -51,11 +51,11 @@
                   value="<%= (list.quantity / 1000).round(1) %>"
                   data-readonly-target="input"
                   readonly>
-                </div>
-                <div class="grocery-cell grocery-center">Kilo</div>
-              <% else %>
-                <div class="grocery-cell grocery-center">
-                  <input type="text"
+                  kg
+                  </div>
+                <% else %>
+                  <div class="grocery-cell grocery-center">
+                    <input type="text"
                       name="my_field"
                       class="readonly"
                       data-action="change->delta#changeValue"
@@ -64,34 +64,32 @@
                       value="<%= list.quantity.ceil %>"
                       data-readonly-target="input"
                       readonly>
-                </div>
-                <div class="grocery-cell grocery-center"><%= list.ingredient.unit %></div>
-              <% end %>
-              <div class="grocery-cell grocery-center">
-                <em>
-                  <% if list_delta %>
-                    <%= list.quantity - list_delta.quantity > 600 ? ((list.quantity - list_delta.quantity)/1000).round(1) : list.quantity - list_delta.quantity   %>
-                  <% else %>
-                    <%= list.quantity > 600 ? (list.quantity / 1000).round(1) : list.quantity.round  %>
-                  <% end %>
-                </em>
-              </div>
-              <div class="grocery-cell grocery-center" data-delta-target="update">
-                <% if list_delta %>
-                  <%= list_delta.updated_at.strftime("%d/%m - %H:%M") %>
-                <% else %>
-                  <%= list.updated_at.strftime("%d/%m - %H:%M") %>
+                  <%= list.ingredient.unit %>
+                  </div>
                 <% end %>
+                <div class="grocery-cell" data-delta-target="update">
+                  <div class="editting-icons">
+                    <div class="delete-ingredient">
+                      <%= link_to grocery_list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                        <i class="fa-regular fa-trash-can"></i>
+                      <% end %>
+                    </div>
+                    <div class="refresh-ingredient">
+                      <%= link_to refresh_grocery_list_path(list), data: {turbo_method: :patch} do %>
+                        <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
+                      <% end %>
+                    </div>
+                    <div class="edit-ingredient">
+                      <button data-action="click->readonly#toggleEditable" data-readonly-target="button"><i class="fa-solid fa-pencil"></i></button>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              <div>
-                <button data-action="click->readonly#toggleEditable" data-readonly-target="button">Edit</button>
-                <%= link_to "delete", grocery_list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-                <%= link_to "refresh", refresh_grocery_list_path(list), data: {turbo_method: :patch} %>
-              </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
