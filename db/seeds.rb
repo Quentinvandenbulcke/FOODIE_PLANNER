@@ -102,10 +102,8 @@ cuisine_types.each do |type|
     end
   end
 
-  10.times do
-    sleep(2)
-    puts"...sleeping for 2 sec..."
-  end
+  sleep(2)
+  puts"...sleeping for 2 sec..."
 
   url_2 = data["_links"]["next"]["href"]
   file_2 = URI.open(url_2).read
@@ -143,10 +141,8 @@ cuisine_types.each do |type|
     end
   end
 
-  10.times do
-    sleep(2)
-    puts"...sleeping for 2 sec..."
-  end
+  sleep(2)
+  puts"...sleeping for 2 sec..."
 
   url_3 = data_2["_links"]["next"]["href"]
   file_3 = URI.open(url_3).read
@@ -182,12 +178,11 @@ cuisine_types.each do |type|
         category: ingredient["foodCategory"]
       )
     end
+    sleep(2)
   end
 
-  10.times do
-    sleep(2)
-    puts"...sleeping for 2 sec..."
-  end
+  sleep(2)
+  puts"...sleeping for 2 sec..."
 
   url_4 = data_3["_links"]["next"]["href"]
   file_4 = URI.open(url_4).read
@@ -225,10 +220,8 @@ cuisine_types.each do |type|
     end
   end
 
-  10.times do
-    sleep(2)
-    puts"...sleeping for 2 sec..."
-  end
+  sleep(2)
+  puts"...sleeping for 2 sec..."
 
   url_5 = data_4["_links"]["next"]["href"]
   file_5 = URI.open(url_4).read
@@ -271,7 +264,7 @@ end
 puts "creating random favorites"
 recipes_ids = Recipe.all.map { |recipe| recipe.id }
 User.all.each do |user|
-  25.times do
+  20.times do
     Favorite.create!(user_id: user.id, recipe_id: recipes_ids.shuffle.pop)
   end
   puts "creating favorites for #{user.first_name}"
