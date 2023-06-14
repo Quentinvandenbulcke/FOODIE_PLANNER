@@ -7,20 +7,12 @@ class MealDaysController < ApplicationController
   end
 
   def create
-    # raise
     @recipe = Recipe.find(params[:recipe_id])
     @meal_day = MealDay.new(meal_day_params)
-    # @meal_day.save
     @meal_day.recipe = @recipe
     @meal_day.user = current_user
-    # @meal_day.grocery = Grocery.first
-
     if @meal_day.save!
-      # if params[:refresh_to].present?
-      #   redirect_to params[:refresh_to]
-      # else
       redirect_to meal_days_path
-      # end
     else
       render "recipes/show", status: :unprocessable_entity
     end
