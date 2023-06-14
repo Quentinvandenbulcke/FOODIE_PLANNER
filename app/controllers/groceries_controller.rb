@@ -3,7 +3,6 @@ require 'bigdecimal'
 class GroceriesController < ApplicationController
   def index
     @groceries = policy_scope(Grocery)
-    # @recipes = MealDay.all
   end
 
   def show
@@ -22,8 +21,8 @@ class GroceriesController < ApplicationController
     meal_day_ids = GroceryList.where(grocery: @grocery).pluck(:meal_day_id)
     @meals = MealDay.where(id: meal_day_ids)
     authorize @grocery
+    # @recipe = Recipe.where(id: meal_day_ids)
   end
-
 
   def create
     meal_days_id = MealDay.where(date: params[:grocery][:meal_days]).pluck(:id)
