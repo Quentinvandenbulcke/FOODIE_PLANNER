@@ -7,14 +7,16 @@ export default class extends Controller {
   toggleEditable(event) {
     const input = this.inputTarget
 
+    console.log(event.currentTarget)
+
     if (input.readOnly) {
       input.readOnly = false
       input.classList.remove("readonly")
-      this.buttonTarget.innerHTML = "Save"
+      event.currentTarget.innerHTML = `<i class="fa-solid fa-check"></i>`
     } else {
       input.readOnly = true
       input.classList.add("readonly")
-      this.buttonTarget.innerHTML = "Edit"
+      event.currentTarget.innerHTML = `<i class="fa-solid fa-pencil"></i>`
     }
   }
 }
