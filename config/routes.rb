@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   resources :groceries, only: [:index, :show, :create, :destroy] do
     resources :grocery_deltas, only: [:update]
   end
+
+  resources :grocery_lists, only: :destroy do
+    member do
+      patch 'refresh'
+    end
+  end
 end
