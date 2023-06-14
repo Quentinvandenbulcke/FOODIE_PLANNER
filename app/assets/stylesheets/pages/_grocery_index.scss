@@ -1,0 +1,34 @@
+.grocery-title {
+margin-bottom: 20px;
+}
+
+.grocery-recap {
+
+  ul {
+    border-top: grey 1px solid;
+    padding-left: 0;
+  }
+  li {
+    list-style-type: none;
+  }
+}
+
+.group {
+  display: flex;
+  align-items: center;
+}
+
+.groceries-list-display {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: grey solid 1px;
+  padding: 20px 0;
+
+  p {
+    margin: 0;
+    padding-right: 15px;
+  }
+  a {
+    color: #1A1423;
+  }
+}

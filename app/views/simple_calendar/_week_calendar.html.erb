@@ -1,5 +1,6 @@
 <div class="simple-calendar" data-controller="show-check-box">
   <div class="calendar-heading">
+    <h2 data-show-check-box-target="select" data-action="click->show-check-box#show" class="button">select days</h2>
     <%= link_to t('simple_calendar.previous', default: '<- previous week'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
       <span class="calendar-title h2"><%= start_date.strftime("%B %Y") %></span>
@@ -41,7 +42,6 @@
         <% end %>
       </tbody>
     </table>
-    <h2 data-show-check-box-target="select" data-action="click->show-check-box#show" class="button">select days</h2>
     <div data-show-check-box-target="generate" class="cal-hide" >
       <%= f.submit value: "GENERATE YOUR GROCERY LIST", data: { show_check_box_target: "submit" }, class: "btn-disable h2" %>
     </div>
