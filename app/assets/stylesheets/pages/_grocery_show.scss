@@ -4,6 +4,18 @@
   }
 }
 
+.back-to {
+
+  padding-top: 50px;
+  margin-left: 60px;
+  padding-left: calc(var(--bs-gutter-x) * .5);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+
 .recipes-recap {
 
  ul {
@@ -14,4 +26,21 @@
  li {
   padding: 5px 0;
  }
+}
+
+.editting-icons {
+  display: flex;
+  justify-content: space-around;
+
+  a{
+    color: rgba($color: #1A1423, $alpha: 0.7);
+  }
+}
+
+.top-part {
+
+}
+
+.left-right-page {
+  display: flex;
 }

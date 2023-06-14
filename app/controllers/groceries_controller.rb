@@ -28,7 +28,7 @@ class GroceriesController < ApplicationController
     meal_days_id = MealDay.where(date: params[:grocery][:meal_days]).pluck(:id)
     populate_grocery_items(meal_days_id)
     authorize @grocery
-    redirect_to groceries_path
+    redirect_to grocery_path(@grocery)
   end
 
   def destroy
