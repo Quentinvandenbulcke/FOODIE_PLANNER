@@ -85,7 +85,8 @@ cuisine_types.each do |type|
       carbon: hit["recipe"]["totalCO2Emissions"],
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
-      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1)
+      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -125,7 +126,8 @@ cuisine_types.each do |type|
       carbon: hit["recipe"]["totalCO2Emissions"],
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
-      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1)
+      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -165,7 +167,8 @@ cuisine_types.each do |type|
       carbon: hit["recipe"]["totalCO2Emissions"],
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
-      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1)
+      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -205,7 +208,7 @@ cuisine_types.each do |type|
       carbon: hit["recipe"]["totalCO2Emissions"],
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
-      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1)
+      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
       glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
@@ -246,7 +249,8 @@ cuisine_types.each do |type|
       carbon: hit["recipe"]["totalCO2Emissions"],
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
-      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1)
+      sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
