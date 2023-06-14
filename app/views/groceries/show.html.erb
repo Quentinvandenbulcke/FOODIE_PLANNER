@@ -70,14 +70,19 @@
                   <% end %>
                 </em>
               </div>
-                <div class="grocery-cell grocery-center" data-delta-target="update">
-                  <% if list_delta %>
-                    <%= list_delta.updated_at.strftime("%d/%m - %H:%M") %>
-                  <% else %>
-                    <%= list.updated_at.strftime("%d/%m - %H:%M") %>
-                  <% end %>
-                </div>
+              <div class="grocery-cell grocery-center" data-delta-target="update">
+                <% if list_delta %>
+                  <%= list_delta.updated_at.strftime("%d/%m - %H:%M") %>
+                <% else %>
+                  <%= list.updated_at.strftime("%d/%m - %H:%M") %>
+                <% end %>
               </div>
+              <div>
+                <%= link_to "edit" %>
+                <%= link_to "delete", restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                <%= link_to "refresh" %>
+              </div>
+            </div>
           <% end %>
         <% end %>
       </div>
