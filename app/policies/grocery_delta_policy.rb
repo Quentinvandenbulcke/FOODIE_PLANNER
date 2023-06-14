@@ -9,4 +9,8 @@ class GroceryDeltaPolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def refresh?
+    true
+  end
 end

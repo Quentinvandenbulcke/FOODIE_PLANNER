@@ -83,3 +83,9 @@
     margin-right: 4px;
   }
 }
+
+.readonly {
+  input[type="text"]{
+    background-color: #f4f4f4 !important;
+  }
+}

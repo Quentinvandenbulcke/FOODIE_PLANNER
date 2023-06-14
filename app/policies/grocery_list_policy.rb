@@ -13,4 +13,8 @@ class GroceryListPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def refresh?
+    true    
+  end
 end
