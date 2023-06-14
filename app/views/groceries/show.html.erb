@@ -1,26 +1,27 @@
 <div class="container">
   <div class="grocery-recap">
     <%= link_to groceries_path do %>
-      <h5>&#60; Back to groceries list</h5>
+      <h5>&#60; Back to your lists</h5>
     <% end %>
   </div>
-  <div class="grocery-recap">
-    <p></p>
-    <h2>You ask the groceries list for :</h2>
-    <div class="line"></div>
-    <ul>
-      <% @meals.each do |meal| %>
-        <li><strong><%= meal.date.strftime("%Y-%m-%d") %> </strong>- <%= meal.recipe.name %> (<%= meal.quantity %>pers)</li>
-      <% end %>
-    </ul>
-  </div>
+    <h6 class="first-title mb-4">Your are shopping for:</h6>
+      <div class="recipes-recap">
+        <ul>
+          <% @meals.each do |meal| %>
+            <%# <%= link_to recipe_path(@recipe) do %>
+            <li><strong><%= meal.recipe.name %></strong> -
+            <%# <% end %>
+            <%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group"></i> - <%= meal.date.strftime("%A %d/%m") %></li>
+          <% end %>
+        </ul>
+      </div>
   <div class="grocery-table">
     <div class="grocery-row header-row">
       <div class="grocery-cell"><h5>Ingredients</h5></div>
       <div class="grocery-cell grocery-center"><h5>My needs</h5></div>
-      <div class="grocery-cell grocery-center"><h5>Measure</h5></div>
-      <div class="grocery-cell grocery-center"><h5>Grocery list</h5></div>
-      <div class="grocery-cell grocery-center"><h5>Last update</h5></div>
+      <div class="grocery-cell grocery-center"><h5></h5></div>
+      <div class="grocery-cell grocery-center"><h5>Recipe needs</h5></div>
+      <%# <div class="grocery-cell grocery-center"><h5>Last update</h5></div> %>
     </div>
 
     <% categories = [] %>

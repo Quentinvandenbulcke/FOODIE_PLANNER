@@ -54,7 +54,7 @@
         <div class="day-info">
           <%= date.day %>
           <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
-            <p>+</p>
+            <p class="add-to-calendar">+</p>
           </button>
         </div>
         <% meals.each do |meal| %>
@@ -65,7 +65,7 @@
               </div>
               <div class="meal-info">
                 <p class="pb-1"><%= meal.recipe.name %></p>
-                <p><%= meal.quantity %> pers</p>
+                <p><%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
               </div>
               <div class="meal-event-icons">
                 <i class="fa-solid fa-circle-info"></i>
