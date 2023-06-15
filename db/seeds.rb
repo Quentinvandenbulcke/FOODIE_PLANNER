@@ -17,7 +17,6 @@ puts "Destroying recipes"
 Recipe.destroy_all
 puts "Destroying Users"
 User.destroy_all
-
 names = [
   "quentin",
   "gab",
@@ -47,9 +46,6 @@ names.each do |name|
 end
 
 puts "done with users!"
-
-puts "Creating empty grocery to initialize mealdays"
-Grocery.create(user: User.first)
 
 cuisine_types = [
   "Mexican",
@@ -86,7 +82,7 @@ cuisine_types.each do |type|
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
       sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
-      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"].nil? ? hit["recipe"]["totalNutrients"]["CHOCDF"]["quantity"].to_f.round(1) : hit["recipe"]["totalNutrients"]["CHOCOF.net"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -102,8 +98,8 @@ cuisine_types.each do |type|
     end
   end
 
-  sleep(2)
-  puts"...sleeping for 2 sec..."
+  sleep(5)
+  puts"...sleeping for 5 sec..."
 
   url_2 = data["_links"]["next"]["href"]
   file_2 = URI.open(url_2).read
@@ -125,7 +121,7 @@ cuisine_types.each do |type|
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
       sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
-      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"].nil? ? hit["recipe"]["totalNutrients"]["CHOCDF"]["quantity"].to_f.round(1) : hit["recipe"]["totalNutrients"]["CHOCOF.net"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -141,8 +137,8 @@ cuisine_types.each do |type|
     end
   end
 
-  sleep(2)
-  puts"...sleeping for 2 sec..."
+  sleep(5)
+  puts"...sleeping for 5 sec..."
 
   url_3 = data_2["_links"]["next"]["href"]
   file_3 = URI.open(url_3).read
@@ -164,7 +160,7 @@ cuisine_types.each do |type|
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
       sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
-      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"].nil? ? hit["recipe"]["totalNutrients"]["CHOCDF"]["quantity"].to_f.round(1) : hit["recipe"]["totalNutrients"]["CHOCOF.net"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -181,8 +177,8 @@ cuisine_types.each do |type|
     sleep(2)
   end
 
-  sleep(2)
-  puts"...sleeping for 2 sec..."
+  sleep(5)
+  puts"...sleeping for 5 sec..."
 
   url_4 = data_3["_links"]["next"]["href"]
   file_4 = URI.open(url_4).read
@@ -204,7 +200,7 @@ cuisine_types.each do |type|
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
       sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
-      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"].nil? ? hit["recipe"]["totalNutrients"]["CHOCDF"]["quantity"].to_f.round(1) : hit["recipe"]["totalNutrients"]["CHOCOF.net"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!
@@ -220,8 +216,8 @@ cuisine_types.each do |type|
     end
   end
 
-  sleep(2)
-  puts"...sleeping for 2 sec..."
+  sleep(5)
+  puts"...sleeping for 5 sec..."
 
   url_5 = data_4["_links"]["next"]["href"]
   file_5 = URI.open(url_4).read
@@ -243,7 +239,7 @@ cuisine_types.each do |type|
       fat: hit["recipe"]["totalNutrients"]["FAT"]["quantity"].to_f.round(1),
       protein: hit["recipe"]["totalNutrients"]["PROCNT"]["quantity"].to_f.round(1),
       sugar: hit["recipe"]["totalNutrients"]["SUGAR"]["quantity"].to_f.round(1),
-      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"]["quantity"].to_f.round(1)
+      glucid: hit["recipe"]["totalNutrients"]["CHOCDF.net"].nil? ? hit["recipe"]["totalNutrients"]["CHOCDF"]["quantity"].to_f.round(1) : hit["recipe"]["totalNutrients"]["CHOCOF.net"].to_f.round(1)
     )
     recipe.photo.attach(io: photo, filename: "#{recipe.name.split().join("_")}.png", content_type: "image/png")
     recipe.save!

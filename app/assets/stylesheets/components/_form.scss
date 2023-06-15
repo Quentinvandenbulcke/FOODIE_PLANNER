@@ -8,11 +8,12 @@
   background-color: $beige-brun;
   border-radius: 8px;
 
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  // display: flex;
+  // justify-content: center;
+  // align-items: flex-start;
 
   .cta-form {
+    width: 70%;
     background-color: $beige-dark;
     margin: 20px auto;
     padding: 20px;
@@ -20,43 +21,56 @@
 
     h1 {
       font-size: clamp(1rem, 6vw, 10rem);
-      margin: 15vh 0 2rem;
+      // margin: 15vh 0 2rem;
     }
 
     h2 {
-    font-size: 1.5rem;
-    width: 100%;
-    max-width: 25ch;
-    margin: 0 auto;
-    text-align: center;
+      font-size: 1.5rem;
+      width: 100%;
+      max-width: 25ch;
+      // margin: 0 auto;
+      // text-align: center;
 
-      @media (min-width: 768px) {
-        text-align: left;
-        margin: 0;
+      // @media (min-width: 768px) {
+        //   text-align: left;
+        //   margin: 0;
+        // }
       }
+
+    p {
+      // margin-top: 1rem;
+      font-size: 1rem;
+      width: 100%;
+      // max-width: 24ch;
     }
   }
 
-  #new_recipe {
+  .new-form-recipe {
     // background-color: white;
     // border: 1px solid rgba(0, 0, 0, 0.4);
     // transition: all 250ms;
-    margin: 20px;
-
-    .form-input {
-
-    }
+    margin: 20px auto;
+    width: 90%;
 
     .form-label {
+      // text-align: center;
       color: rgba(0, 0, 0, 0.6);
     }
+
+    .recipe-form-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .recipe-form-num {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .form-input {
+      border-radius: 4px;
     }
 
-  p {
-    margin-top: 1rem;
-    font-size: 1rem;
-    width: 100%;
-    max-width: 24ch;
   }
 }
 .cta-form-ingredient {
