@@ -9,15 +9,21 @@ class GroceriesController < ApplicationController
     @grocery = Grocery.find(params[:id])
     @lists = []
     @grocery.grocery_lists.each do |list|
-      @grocery_delta = GroceryDelta.find_by(ingredient: list.ingredient.id, grocery_id: @grocery)
-      list[:quantity] += @grocery_delta.quantity if @grocery_delta
       existing_list = @lists.find { |l| l.ingredient.name == list.ingredient.name }
+      # @grocery_delta = GroceryDelta.find_by(ingredient: list.ingredient.id, grocery_id: @grocery)
+      # list[:quantity] += @grocery_delta.quantity if @grocery_delta
       if @lists.any?(existing_list)
         existing_list.quantity += list[:quantity]
       else
         @lists << list
       end
     end
+
+    @lists.each do |list|
+      @grocery_delta = GroceryDelta.find_by(ingredient: list.ingredient.id, grocery_id: @grocery)
+      list[:quantity] += @grocery_delta.quantity if @grocery_delta
+    end
+
     meal_day_ids = GroceryList.where(grocery: @grocery).pluck(:meal_day_id)
     @meals = MealDay.where(id: meal_day_ids)
     authorize @grocery
