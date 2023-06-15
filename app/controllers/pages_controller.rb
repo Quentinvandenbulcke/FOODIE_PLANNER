@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    # @recipes = policy_scope(Recipe)
-    @recipes = Recipe.all
+    @recipes = Recipe.all.uniq { |recipe| recipe.name }
+
     @recipes.each do |recipe|
       if recipe.name.include?(":")
         recipe.name = recipe.name.split(":")[-1]
