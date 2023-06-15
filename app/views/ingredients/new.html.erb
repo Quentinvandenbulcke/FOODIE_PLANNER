@@ -45,16 +45,16 @@
             <%= simple_form_for [@recipe, @ingredient], class: "ingredient-form" do |f| %>
               <div class="ingrendient-inputs">
                 <div class="ingrendient-input">
-                  <%= f.input :name, label: "Ingredient", input_html: {class: 'form-input', maxlength: 15, size: 40}, label_html: {class: 'form-label'} %>
+                  <%= f.input :name, label: "Ingredient", default: 'mystery ingredient', placeholder: 'ingredient', input_html: {class: 'form-input', maxlength: 15, size: 40}, label_html: {class: 'form-label'} %>
                 </div>
                 <div class="ingrendient-input">
-                  <%= f.input :category, label: "Food family", input_html: {class: 'form-input', maxlength: 35, size: 60}, label_html: {class: 'form-label'} %>
+                  <%= f.input :category, label: "Food family", default: 'Italian', placeholder: 'Italian', input_html: {class: 'form-input', maxlength: 35, size: 60}, label_html: {class: 'form-label'} %>
                 </div>
                 <div class="ingrendient-input">
-                  <%= f.input :quantity, input_html: { min: '1', max: '999', class: 'form-input'}, default: '1', label_html: {class: 'form-label'} %>
+                  <%= f.input :quantity, input_html: { min: '1', max: '999', class: 'form-input'}, default: '1', placeholder: '1', label_html: {class: 'form-label'} %>
                 </div>
                 <div class="ingrendient-input">
-                  <%= f.input :unit, label: "Unit", input_html: { class: 'form-input' }, label_html: { class: 'form-label' } %>
+                  <%= f.input :unit, label: "Unit", default: 'unit', placeholder: 'unit', input_html: { class: 'form-input' }, label_html: { class: 'form-label' } %>
                 </div>
               </div>
               <div class="form-buttons">
