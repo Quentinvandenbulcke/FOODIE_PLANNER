@@ -4,7 +4,9 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   def index
-    @recipes = policy_scope(Recipe).uniq { |recipe| recipe.name }
+    @recipes = policy_scope(Recipe)
+    .select('DISTINCT ON (recipes.name) recipes.*')
+    .order('recipes.name')
     @categories = []
     @recipes.each do |recipe|
       if recipe.name.include?(":")
