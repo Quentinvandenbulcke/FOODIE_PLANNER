@@ -5,8 +5,8 @@ export default class extends Controller {
   static targets = ["item", "update"]
 
   connect() {
-    console.log(this.itemTarget)
-    console.log(this.updateTarget)
+    // console.log(this.itemTarget)
+    // console.log(this.updateTarget)
   }
 
   changeValue(event) {
@@ -18,8 +18,10 @@ export default class extends Controller {
     }
 
     const value = event.target.value;
+    const unit = event.target.nextElementSibling.textContent;
+    console.log(value, unit)
     const url = event.target.getAttribute("data-update-url")
-    console.log(url)
+    // console.log(url)
     fetch(url, {
       method: "PATCH",
       headers: {
@@ -27,7 +29,7 @@ export default class extends Controller {
         Accept: "application/json",
         "X-CSRF-Token": csrfToken
       },
-      body: JSON.stringify({ value }),
+      body: JSON.stringify({ value, unit }),
     })
     .then(response => response.json())
     .then(data => {
