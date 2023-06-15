@@ -7,7 +7,7 @@
   <div class="new-form-recipe">
     <%= simple_form_for [@recipe], class: "recipe-form" do |f| %>
       <div class="recipe-form-name">
-        <%= f.input :name, label: "Recipe Title", input_html: {class: 'form-input', maxlength: 40, style: 'width: 250px'}, label_html: {class: 'form-label'} %>
+        <%= f.input :name, label: "Recipe Title", default: 'Mystery meal', placeholder: 'my meal', input_html: {class: 'form-input', maxlength: 40, style: 'width: 250px'}, label_html: {class: 'form-label'} %>
         <%= f.input :category, collection: [
   "Italian",
   "Asian",
@@ -23,11 +23,11 @@
 default: "Italian", label: "Cuisine Type", input_html: {class: 'form-input', maxlength: 40, style: 'width: 250px'}, label_html: {class: 'form-label'} %>
       </div>
       <div class="recipe-form-num">
-        <%= f.input :rating, collection: 1..5, default: 5, input_html: { class: 'form-input', style: 'width: 175px;' }, label_html: { class: 'form-label' } %>
-        <%= f.input :prep_time, label: "Prep. time (mins)", input_html: { min: '1', max: '999', maxlength: 3 }, default: '30', input_html: {class: 'form-input'}, label_html: {class: 'form-label', style: 'width: 175px;' } %>
-        <%= f.input :servings, collection: 1..20, default: 4, label: "Servings", default: '2', input_html: {class: 'form-input', style: 'width: 175px;' }, label_html: {class: 'form-label'} %>
+        <%= f.input :rating, collection: 1..5, default: 5, placeholder: '5', input_html: { class: 'form-input', style: 'width: 175px;' }, label_html: { class: 'form-label' } %>
+        <%= f.input :prep_time, label: "Prep. time (mins)", input_html: { min: '1', max: '999', maxlength: 3 }, default: '30', placeholder: '30', input_html: {class: 'form-input'}, label_html: {class: 'form-label', style: 'width: 175px;' } %>
+        <%= f.input :servings, collection: 1..20, default: 4, label: "Servings", default: '2', placeholder: '2', input_html: {class: 'form-input', style: 'width: 175px;' }, label_html: {class: 'form-label'} %>
       </div>
-      <%= f.input :description, label: "Instructions", input_html: { class: 'form-input', style: 'height: 500px;', maxlength: 1000}, label_html: { class: 'form-label' }, as: :text, input_html: { wrap: 'soft' } %>
+      <%= f.input :description, label: "Instructions", default: 'Instructions to be annouced soon', placeholder: 'Enter instructions here', input_html: { class: 'form-input', style: 'height: 500px;', maxlength: 1000}, label_html: { class: 'form-label' }, as: :text, input_html: { wrap: 'soft' } %>
       <%= f.input :photo, as: :file %>
       <%= f.submit class:"button", value: "Create this recipe"%>
     <% end %>
