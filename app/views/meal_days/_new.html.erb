@@ -1,7 +1,7 @@
 <div class="new-form">
   <%= simple_form_for [recipe, meal_day] do |f| %>
     <%= f.input :date, as: :date, html5: true, class: "group" %>
-    <%= f.input :quantity, default: 2, label:"Servings", input_html: { min: '1'}, class: "group" %>
+    <%= f.input :quantity, default: 2, placeholder: '2', label:"Servings", input_html: { min: '1'}, class: "group" %>
     <%= f.submit class:"button", value: "Plan this meal"%>
   <% end %>
 </div>
