@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :recipes, only: [:index, :show, :create, :new, :edit, :update] do
-    resources :meal_days, only: :create
+    resources :meal_days, only: [:create]
     resources :favorites, only: [:create, :destroy]
     resources :ingredients, only: [:new, :create]
   end
   resources :favorites, only: [:index]
 
-  resources :meal_days, only: [:index, :destroy]
+  resources :meal_days, only: [:index, :destroy, :update]
   resources :groceries, only: [:index, :show, :create, :destroy] do
     resources :grocery_deltas, only: [:update]
   end

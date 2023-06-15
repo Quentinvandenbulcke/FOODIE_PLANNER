@@ -31,6 +31,14 @@ class MealDaysController < ApplicationController
     redirect_to params[:refresh_to]
   end
 
+  def update
+    @meal_day = MealDay.find(params[:id])
+    @value = params[:value]
+    @meal_day.update(quantity: @value)
+    render json: { quantity: @meal_day.quantity }
+    authorize @meal_day
+  end
+
   private
 
   def meal_day_params
