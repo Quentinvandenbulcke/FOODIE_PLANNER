@@ -7,6 +7,21 @@ class RecipesController < ApplicationController
     @recipes = policy_scope(Recipe)
     @categories = []
     @recipes.each do |recipe|
+      if recipe.name.include?(":")
+        recipe.name = recipe.name.split(":")[-1]
+      end
+      if recipe.name.include?("Recipes")
+        recipe.name = recipe.name.gsub("Recipes", "")
+      end
+      if recipe.name.include?("Recipe")
+        recipe.name = recipe.name.gsub("Recipe", "")
+      end
+      if recipe.name.include?("recipe")
+        recipe.name = recipe.name.gsub("recipe", "")
+      end
+      if recipe.name.include?("recipes")
+        recipe.name = recipe.name.gsub("recipes", "")
+      end
       @categories << recipe.category unless @categories.include?(recipe.category)
     end
 
@@ -17,6 +32,21 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    if @recipe.name.include?(":")
+      @recipe.name = @recipe.name.split(":")[-1]
+    end
+    if @recipe.name.include?("Recipes")
+      @recipe.name = @recipe.name.gsub("Recipes", "")
+    end
+    if @recipe.name.include?("Recipe")
+      @recipe.name = @recipe.name.gsub("Recipe", "")
+    end
+    if @recipe.name.include?("recipe")
+      @recipe.name = @recipe.name.gsub("recipe", "")
+    end
+    if @recipe.name.include?("recipes")
+      @recipe.name = @recipe.name.gsub("recipes", "")
+    end
     @meal_day = MealDay.new
     authorize @recipe
     @ingredients = @recipe.ingredients
@@ -24,9 +54,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    # @ingredient = Ingredient.new
     authorize @recipe
-    # authorize @ingredient
   end
 
   def create
@@ -35,12 +63,9 @@ class RecipesController < ApplicationController
       photo_url = "https://source.unsplash.com/random/?#{@recipe.name}"
       photo = URI.open(photo_url)
       @recipe.photo.attach(io: photo, filename: "#{@recipe.name.split().join("_")}.png", content_type: "image/png")
-      # raise
-
     end
     if @recipe.save!
       Favorite.create(user: current_user, recipe: @recipe)
-      # redirect_to recipe_path(@recipe)
       redirect_to new_recipe_ingredient_path(@recipe)
     else
       render :new, status: :unprocessable_entity, notice: "Fill the form correctly dummy"
@@ -48,20 +73,6 @@ class RecipesController < ApplicationController
     end
     authorize @recipe
   end
-
-  # def edit
-  #   @recipe = Recipe.find(params[:id])
-  # end
-
-  # def update
-  #   @recipe = Recipe.find(params[:id])
-  #   if @recipe.save!
-  #     redirect_to recipe_path(@recipe)
-  #   else
-  #     render "recipes/show", status: :unprocessable_entity
-  #     redirect_to root_path
-  #   end
-  # end
 
   private
 
