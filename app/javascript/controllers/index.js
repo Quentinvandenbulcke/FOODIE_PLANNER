@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CounterController from "./counter_controller"
+application.register("counter", CounterController)
+
 import DeltaController from "./delta_controller"
 application.register("delta", DeltaController)
 

@@ -10,7 +10,7 @@
       <% @top_recipes[0..25].shuffle.each do |recipe| %>
           <div class="recipe-card">
         <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
-            <%= cl_image_tag recipe.photo.key, class: "w-100"%>
+            <%= cl_image_tag recipe.photo.key %>
             <div class="w-100 display-space" data-controller="heart" >
               <div class="card-details-top">
                 <h2><%= recipe.name %></h2>
