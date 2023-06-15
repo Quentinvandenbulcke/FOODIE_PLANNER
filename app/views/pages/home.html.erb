@@ -61,14 +61,29 @@
           <span data-controller="servings">
             <% meals.each do |meal| %>
               <%= link_to recipe_path(meal.recipe) do %>
-
                 <div class="event">
                   <div>
                     <%= cl_image_tag meal.recipe.photo.key %>
                   </div>
                   <div class="meal-info">
                     <p class="pb-1"><%= meal.recipe.name.split[0..5].join(' ') %></p>
-                    <p> <span data-servings-target="input<%= meal.id %>"><%= meal.quantity %></span>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
+                    <div class="servings-box" >
+                      <%= button_to "- 1", meal_day_path(meal, value:1),
+                                    data: {
+                                      action: "click->servings#minus",
+                                      meal_id: meal.id,
+                                      meal_url: meal_day_path(meal),
+                                      turbo_method: :patch
+                                    } %>
+                      <p> <span data-servings-target="input<%= meal.id %>"><%= meal.quantity %></span>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
+                      <%= button_to "+ 1", meal_day_path(meal, value:1),
+                                    data: {
+                                      action: "click->servings#add",
+                                      meal_id: meal.id,
+                                      meal_url: meal_day_path(meal),
+                                      turbo_method: :patch
+                                    } %>
+                    </div>
                   </div>
                   <div class="meal-event-icons">
                     <i class="fa-solid fa-circle-info"></i>
@@ -76,20 +91,6 @@
                       <i class="fa-regular fa-trash-can"></i>
                     <% end %>
                   </div>
-                <%= button_to "+ 1", meal_day_path(meal, value:1),
-                              data: {
-                                action: "click->servings#add",
-                                meal_id: meal.id,
-                                meal_url: meal_day_path(meal),
-                                turbo_method: :patch
-                              } %>
-                <%= button_to "- 1", meal_day_path(meal, value:1),
-                              data: {
-                                action: "click->servings#minus",
-                                meal_id: meal.id,
-                                meal_url: meal_day_path(meal),
-                                turbo_method: :patch
-                              } %>
                 </div>
               <% end %>
             <% end %>

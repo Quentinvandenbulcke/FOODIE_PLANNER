@@ -28,7 +28,6 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
         const newQuantity = data.quantity;
         input.textContent = newQuantity;
       })

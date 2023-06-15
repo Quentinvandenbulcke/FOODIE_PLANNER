@@ -146,6 +146,17 @@
   p {
     margin: 0;
   }
+  .servings-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    font-size: 14px;
+    color: black;
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
 }
 
 #new_grocery {
