@@ -8,9 +8,9 @@
     </div>
     <div class="scroll-box snap">
       <% @top_recipes[0..25].shuffle.each do |recipe| %>
-        <%= link_to recipe_path(recipe), class: "remove-link" do %>
           <div class="recipe-card">
-            <%= cl_image_tag recipe.photo.key %>
+        <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
+            <%= cl_image_tag recipe.photo.key, class: "w-100"%>
             <div class="w-100 display-space" data-controller="heart" >
               <div class="card-details-top">
                 <h2><%= recipe.name %></h2>
