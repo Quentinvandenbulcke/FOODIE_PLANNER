@@ -1,98 +1,100 @@
-<div class="banner-area">
-  <h1 class="headline">Welcome to your <br>meal planner</h1>
-</div>
-<div class="containerrr">
-    <div class="line-above">
-      <h6 class="first-title">Trending Recipes</h6>
-      <p class="subtitle">Quickly access our most popular recipes</p>
-    </div>
-    <div class="scroll-box snap">
-      <% @top_recipes[0..25].shuffle.each do |recipe| %>
-          <div class="recipe-card">
-        <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
-            <%= cl_image_tag recipe.photo.key %>
-            <div class="w-100 display-space" data-controller="heart" >
-              <div class="card-details-top">
-                <h2><%= recipe.name.split[0..2].join(' ') %></h2>
-                <% if recipe.favorites.where(user: current_user).empty? %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
-                    <%= render partial: "favorites/icon_empty" %>
+<div>
+  <div class="banner-area">
+    <h1 class="headline">Welcome to your <br>meal planner</h1>
+  </div>
+  <div class="containerrr">
+      <div class="line-above">
+        <h6 class="first-title">Trending Recipes</h6>
+        <p class="subtitle">Quickly access our most popular recipes</p>
+      </div>
+      <div class="scroll-box snap">
+        <% @top_recipes[0..25].shuffle.each do |recipe| %>
+            <div class="recipe-card">
+          <%= link_to recipe_path(recipe), class: "remove-link w-100" do %>
+              <%= cl_image_tag recipe.photo.key %>
+              <div class="w-100 display-space" data-controller="heart" >
+                <div class="card-details-top">
+                  <h2><%= recipe.name.split[0..2].join(' ') %></h2>
+                  <% if recipe.favorites.where(user: current_user).empty? %>
+                    <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
+                      <%= render partial: "favorites/icon_empty" %>
+                    <% end %>
+                    <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete }, class: "hide-icon" do %>
+                      <%= render partial: "favorites/icon_fill" %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
+                      <%= render partial: "favorites/icon_fill" %>
+                    <% end %>
+                    <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
+                      <%= render partial: "favorites/icon_empty" %>
+                    <% end %>
                   <% end %>
-                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete }, class: "hide-icon" do %>
-                    <%= render partial: "favorites/icon_fill" %>
-                  <% end %>
-                <% else %>
-                  <%= link_to recipe_favorite_path(recipe, recipe.favorites.where(user: current_user)), data: { "turbo-method": :delete } do %>
-                    <%= render partial: "favorites/icon_fill" %>
-                  <% end %>
-                  <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post }, class: "hide-icon" do %>
-                    <%= render partial: "favorites/icon_empty" %>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="card-details">
-                <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
-                <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
-                <p><% recipe.rating.times do %><i class="fa-solid fa-star"></i>
-                  <% end %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="see-more">
-      <%= link_to recipes_path do %>
-        <h5>See more recipes</h5><div class="arrow-right">&#62;</div>
-      <% end %>
-    </div>
-    <div class="title-home">
-      <h6>Your Calendar</h6>
-    </div>
-    <div class="home-calendar">
-      <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
-        <div class="day-info">
-          <%= date.day %>
-          <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
-            <p class="add-to-calendar">+</p>
-          </button>
-        </div>
-        <% meals.each do |meal| %>
-          <%= link_to recipe_path(meal.recipe) do %>
-            <div class="event">
-              <div>
-                <%= cl_image_tag meal.recipe.photo.key %>
-              </div>
-              <div class="meal-info">
-                <p class="pb-1"><%= meal.recipe.name.split[0..5].join(' ') %></p>
-                <p><%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
-              </div>
-              <div class="meal-event-icons">
-                <i class="fa-solid fa-circle-info"></i>
-                <%= link_to meal_day_path(meal, refresh_to: root_path), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                  <i class="fa-regular fa-trash-can"></i>
-                <% end %>
+                </div>
+                <div class="card-details">
+                  <p><i class="fa-solid fa-clock">&nbsp;</i><%= recipe.prep_time %>min</p>
+                  <p><i class="fa-solid fa-user-group">&nbsp;</i><%= recipe.servings %></p>
+                  <p><% recipe.rating.times do %><i class="fa-solid fa-star"></i>
+                    <% end %></p>
+                </div>
               </div>
             </div>
           <% end %>
         <% end %>
-
-        <!-- Modal -->
-        <div class="modal fade" id="mymodal-<%= date %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Favorite meals</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="see-more">
+        <%= link_to recipes_path do %>
+          <h5>See more recipes</h5><div class="arrow-right">&#62;</div>
+        <% end %>
+      </div>
+      <div class="title-home">
+        <h6>Your Calendar</h6>
+      </div>
+      <div class="home-calendar">
+        <%= week_calendar(events: @meal_days, number_of_weeks: 1) do |date, meals| %>
+          <div class="day-info">
+            <%= date.day %>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#mymodal-<%= date %>">
+              <p class="add-to-calendar">+</p>
+            </button>
+          </div>
+          <% meals.each do |meal| %>
+            <%= link_to recipe_path(meal.recipe) do %>
+              <div class="event">
+                <div>
+                  <%= cl_image_tag meal.recipe.photo.key %>
+                </div>
+                <div class="meal-info">
+                  <p class="pb-1"><%= meal.recipe.name.split[0..5].join(' ') %></p>
+                  <p><%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
+                </div>
+                <div class="meal-event-icons">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <%= link_to meal_day_path(meal, refresh_to: root_path), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                    <i class="fa-regular fa-trash-can"></i>
+                  <% end %>
+                </div>
               </div>
-              <div class="modal-body">
-                <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites, meal_day: @meal_day, date: date} %>
+            <% end %>
+          <% end %>
+
+          <!-- Modal -->
+          <div class="modal fade" id="mymodal-<%= date %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Favorite meals</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= render partial: "meal_days/new_meal_to_day", locals: { favorites: @favorites, meal_day: @meal_day, date: date} %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+  </div>
 </div>
 
 
