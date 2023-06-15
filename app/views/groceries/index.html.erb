@@ -12,6 +12,7 @@
                 <% filtered_dates << date_str %>
               <% end %>
             <% end %>
+            <% unless grocery.grocery_lists.empty? %>
               <li class="groceries-list-display">
                   <div class="group">
                     <%= link_to grocery_path(grocery), class:"text-decoration-none" do %>
@@ -25,6 +26,7 @@
                       <div class="arrow-right">&#62;</div>
                     <% end %>
               </li>
+            <% end %>
       <% end %>
     </ul>
   </div>
