@@ -30,9 +30,11 @@
       <% end %>
       <% categories = categories.uniq %>
       <% categories.each do |category| %>
-        <div class="grocery-row category-row">
-          <%= category.capitalize %>
-        </div>
+         <% if @lists.any? { |list| list.ingredient.category == category } %>
+          <div class="grocery-row category-row">
+            <%= category.capitalize  %>
+          </div>
+        <% end %>
         <div data-controller="readonly">
           <% @lists.each do |list| %>
             <% list_delta = GroceryDelta.find_by(ingredient: list.ingredient, grocery: @grocery) %>
