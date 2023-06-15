@@ -5,20 +5,17 @@
 <div class="container" data-controller="pop-up-menu">
   <div class="recipe-show">
     <div class="show-column">
-
         <div class="one">
           <h1><%= @recipe.name %></h1>
           <div class="line"></div>
           <div class="cooking-details">
-            <div class="one-line"><h3>prep &nbsp;</h3><h2><%= @recipe.prep_time %>min</h2></div>
-            <%# <div class="one-line"><p>Rating: <%= @recipe.rating/5</p></div>  %>
-
+            <div class="one-line"><h4>prep &nbsp;</h4><h4><strong><%= @recipe.prep_time %>min</strong></h4></div>
             <div class="one-line px-3">
-              <h3>serves &nbsp;</h3>
-              <h2><%= @recipe.servings %></h2>
+              <h4>serves &nbsp;</h4>
+              <h4><strong><%= @recipe.servings %></strong></h4>
             </div>
             <button class="button" data-action="click->pop-up-menu#showTargets">
-              <h2>calendar +</h2>
+              <h4 id="add-to-cal">Add to calendar</h4>
             </button>
             <div data-pop-up-menu-target="hideable" hidden>
               <div class="darken-screen"></div>
@@ -29,17 +26,33 @@
                 <%= render partial: "meal_days/new", locals: { recipe: @recipe, meal_day: @meal_day } %>
               </div>
             </div>
-
-<%# add alert successfully signed in %>
-<%# add hide when meal created%>
-<%# hide when click outside %>
+          </div>
+          <div class="nutritional-details">
+            <div class="nutri-button">
+              <p class="nutri-top nutri-font">220</p>
+              <p class="nutri-font">calories</p>
+            </div>
+            <div class="nutri-button">
+              <p class="nutri-top nutri-font">30g</p>
+              <p class="nutri-font">carbs</p>
+            </div>
+            <div class="nutri-button">
+              <p class="nutri-top nutri-font">30g</p>
+              <p class="nutri-font">protein</p>
+            </div>
+            <div class="nutri-button">
+              <p class="nutri-top nutri-font">30g</p>
+              <p class="nutri-font">fat</p>
+            </div>
+            <div class="nutri-button nutri-different">
+              <p class="nutri-top footprint-font"><strong>E</strong></p>
+              <p class="nutri-font">CO2</p>
+            </div>
           </div>
         </div>
-
         <div class="two">
          <%= cl_image_tag @recipe.photo.key %>
         </div>
-
         <div class="three">
           <h2>Ingredients</h2>
           <div class="line"></div>
