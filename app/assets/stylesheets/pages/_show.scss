@@ -30,10 +30,18 @@
   grid-row: 2;
 }
 
+#add-to-cal {
+  font-size: 14px !important;
+  text-transform: uppercase;
+  font-weight: 600 !important;
+  margin-bottom: 0;
+}
+
 .cooking-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
   h2, h3 {
     margin: 0;
   }
@@ -50,4 +58,41 @@
 .body-freeze {
   overflow: hidden;
   height: 100vh;
+}
+
+.nutritional-details {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-around;
+}
+
+.nutri-button {
+  text-align: center;
+  background-color: #EDE8DC;
+  padding: 10px 8px;
+  border-radius: 40px;
+}
+
+.nutri-top {
+  border-radius: 50%;
+  padding: 11px;
+  background-color: #FDF9F4;
+}
+
+.nutri-font {
+  font-size: 12px !important;
+  margin-bottom: 5px;
+  min-width: 45px;
+  max-width: 45px;
+}
+
+.nutri-different {
+  background-color: #F9EDDB !important;
+}
+
+.footprint-font {
+  font-size: 14px !important;
+  margin-bottom: 5px;
+  min-width: 45px;
+  max-width: 45px;
 }
