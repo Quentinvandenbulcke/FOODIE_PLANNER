@@ -25,12 +25,15 @@ class RecipesController < ApplicationController
       if recipe.name.include?("recipes")
         recipe.name = recipe.name.gsub("recipes", "")
       end
+      recipe.save
       @categories << recipe.category unless @categories.include?(recipe.category)
     end
+
 
     if params[:query].present?
       @recipes = @recipes.search_by_name_desc_cat(params[:query])
     end
+
   end
 
   def show
