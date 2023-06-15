@@ -6,10 +6,11 @@ class GroceryDeltasController < ApplicationController
     find_initial_values
     @quantity_initial = @lists.find { |list| list.ingredient_id == params[:id].to_i && list.grocery_id == params[:grocery_id].to_i }.quantity
     @quantity_unit = params[:unit]
+
     if @quantity_unit == "kg"
-      @quantity_input = params[:value].to_i * 1000
+      @quantity_input = params[:value].to_f * 1000
     else
-      @quantity_input = params[:value].to_i
+      @quantity_input = params[:value].to_f
     end
     # @quantity_input = params[:value].to_i
     @quantity_delta = @quantity_input - @quantity_initial
