@@ -12,7 +12,7 @@
             <div class="w-100 justify-elements">
               <div class="card-details-top" data-controller="heart">
                 <%= link_to recipe_path(recipe), class: "remove-link" do %>
-                  <h2><%= recipe.name %></h2>
+                  <h2><%= recipe.name.split[0..4].join(' ') %></h2>
                 <% end %>
                 <% if @fav_recipes.empty? %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>

@@ -13,7 +13,7 @@
             <%= cl_image_tag recipe.photo.key %>
             <div class="w-100 display-space" data-controller="heart" >
               <div class="card-details-top">
-                <h2><%= recipe.name %></h2>
+                <h2><%= recipe.name.split[0..2].join(' ') %></h2>
                 <% if recipe.favorites.where(user: current_user).empty? %>
                   <%= link_to recipe_favorites_path(recipe), data: { "turbo-method": :post } do %>
                     <%= render partial: "favorites/icon_empty" %>
@@ -64,7 +64,7 @@
                 <%= cl_image_tag meal.recipe.photo.key %>
               </div>
               <div class="meal-info">
-                <p class="pb-1"><%= meal.recipe.name %></p>
+                <p class="pb-1"><%= meal.recipe.name.split[0..5].join(' ') %></p>
                 <p><%= meal.quantity %>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
               </div>
               <div class="meal-event-icons">
