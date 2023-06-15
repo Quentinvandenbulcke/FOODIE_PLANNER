@@ -41,7 +41,7 @@
               <div data-controller="delta" class="grocery-row " >
                 <div class="grocery-cell cell-ingredient"><%= list.ingredient.name.capitalize %></div>
                 <% if list.quantity > 600 %>
-                  <div class="grocery-cell grocery-center">
+                  <div class="grocery-cell grocery-center" >
                     <input type="text"
                   name="my_field"
                   class="readonly"
@@ -49,12 +49,12 @@
                   data-delta-target="item"
                   data-update-url="<%= grocery_grocery_delta_path(grocery_id: @grocery, id: list.ingredient ) %>"
                   value="<%= (list.quantity / 1000).round(1) %>"
-                  data-readonly-target="input"
+                  data-readonly-target="input<%= list.id %>"
                   readonly>
-                  kg
+                  <span data-readonly-target="unit<%= list.id %>">kg</span>
                   </div>
                 <% else %>
-                  <div class="grocery-cell grocery-center">
+                  <div class="grocery-cell grocery-center" >
                     <input type="text"
                       name="my_field"
                       class="readonly"
@@ -62,9 +62,9 @@
                       data-delta-target="item"
                       data-update-url="<%= grocery_grocery_delta_path(grocery_id: @grocery, id: list.ingredient) %>"
                       value="<%= list.quantity.ceil %>"
-                      data-readonly-target="input"
+                      data-readonly-target="input<%= list.id %>"
                       readonly>
-                  <%= list.ingredient.unit %>
+                  <span data-readonly-target="unit<%= list.id %>"><%= list.ingredient.unit %></span>
                   </div>
                 <% end %>
                 <div class="grocery-cell" data-delta-target="update">
@@ -80,7 +80,7 @@
                       <% end %>
                     </div>
                     <div class="edit-ingredient">
-                      <button data-action="click->readonly#toggleEditable" data-readonly-target="button"><i class="fa-solid fa-pencil"></i></button>
+                      <button data-action="click->readonly#toggleEditable" data-list-id="<%= list.id %>"><i class="fa-solid fa-pencil"></i></button>
                     </div>
                   </div>
                 </div>
