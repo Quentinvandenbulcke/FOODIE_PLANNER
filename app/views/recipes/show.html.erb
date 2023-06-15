@@ -29,23 +29,23 @@
           </div>
           <div class="nutritional-details">
             <div class="nutri-button">
-              <p class="nutri-top nutri-font">220</p>
+              <p class="nutri-top nutri-font"><%= @recipe.calories.round %></p>
               <p class="nutri-font">calories</p>
             </div>
             <div class="nutri-button">
-              <p class="nutri-top nutri-font">30g</p>
+              <p class="nutri-top nutri-font"><%= @recipe.glucid.round %>g</p>
               <p class="nutri-font">carbs</p>
             </div>
             <div class="nutri-button">
-              <p class="nutri-top nutri-font">30g</p>
+              <p class="nutri-top nutri-font"><%= @recipe.protein.round %>g</p>
               <p class="nutri-font">protein</p>
             </div>
             <div class="nutri-button">
-              <p class="nutri-top nutri-font">30g</p>
+              <p class="nutri-top nutri-font"><%= @recipe.fat.round %>g</p>
               <p class="nutri-font">fat</p>
             </div>
             <div class="nutri-button nutri-different">
-              <p class="nutri-top footprint-font"><strong>E</strong></p>
+              <p class="nutri-top footprint-font"><strong><%= @recipe.carbon %></strong></p>
               <p class="nutri-font">CO2</p>
             </div>
           </div>
