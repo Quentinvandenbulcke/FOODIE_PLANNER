@@ -1,3 +1,5 @@
+require "open-uri"
+
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
@@ -29,6 +31,13 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(params_recipe)
+    if @recipe.photo.blank?
+      photo_url = "https://source.unsplash.com/random/?#{@recipe.name}"
+      photo = URI.open(photo_url)
+      @recipe.photo.attach(io: photo, filename: "#{@recipe.name.split().join("_")}.png", content_type: "image/png")
+      # raise
+
+    end
     if @recipe.save!
       Favorite.create(user: current_user, recipe: @recipe)
       # redirect_to recipe_path(@recipe)
