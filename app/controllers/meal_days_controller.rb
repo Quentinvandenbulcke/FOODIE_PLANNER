@@ -34,6 +34,7 @@ class MealDaysController < ApplicationController
   def update
     @meal_day = MealDay.find(params[:id])
     @value = params[:value]
+    @value = 1 if @value < 1
     @meal_day.update(quantity: @value)
     render json: { quantity: @meal_day.quantity }
     authorize @meal_day

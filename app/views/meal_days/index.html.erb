@@ -15,7 +15,7 @@
             <div class="meal-info">
               <p class="pb-1"><%= meal.recipe.name.split[0..5].join(' ') %></p>
                 <div class="servings-box" >
-                  <%= button_to "- 1", meal_day_path(meal, value:1),
+                  <%= button_to "-", meal_day_path(meal),
                                 data: {
                                   action: "click->servings#minus",
                                   meal_id: meal.id,
@@ -23,7 +23,7 @@
                                   turbo_method: :patch
                                 } %>
                   <p> <span data-servings-target="input<%= meal.id %>"><%= meal.quantity %></span>&nbsp;<i class="fa-solid fa-user-group fa-xs"></i></p>
-                  <%= button_to "+ 1", meal_day_path(meal, value:1),
+                  <%= button_to "+", meal_day_path(meal),
                                 data: {
                                   action: "click->servings#add",
                                   meal_id: meal.id,
