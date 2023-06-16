@@ -149,8 +149,9 @@
   .servings-box {
     display: flex;
     justify-content: space-evenly;
-    align-items: flex-end;
-    font-size: 14px;
+    align-items: center;
+    font-size: 18px !important;
+    font-weight: bold;
     color: black;
     a {
       color: black;
@@ -172,7 +173,7 @@
   margin-bottom: 0;
 }
 
-.servings-box {
-  font-size: 18px !important;
-  font-weight: bold;
-}
+// .servings-box {
+//   font-size: 18px !important;
+//   font-weight: bold;
+// }
